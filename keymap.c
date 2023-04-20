@@ -758,7 +758,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             case _EQUATION:
             case _SYMBOL:
             case _MOUSE:                
-                if (clockwise) { ++ticks; } else { --ticks; } {
+                if (clockwise) { ++ticks; } else { ++ticks; } {
                     if (abs(ticks) >= 2) {
                         if (!is_ctrl_tab_active) {
                             is_ctrl_tab_active = true;
@@ -771,7 +771,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
                 break;
             default:
-                if (clockwise) { ++ticks; } else { --ticks; } {
+                if (clockwise) { ++ticks; } else { ++ticks; } {
                     if (abs(ticks) >= 2) {
                         if (!is_alt_tab_active) {
                             is_alt_tab_active = true;
