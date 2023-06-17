@@ -32,11 +32,19 @@ enum custom_keycodes {
     FUNCTION,
     NUMPAD,
 //    SELWORD,
-//    REPEAT,
-    MUTE
+    MUTE,
+    REPEAT,
+    CS_COMM,
+    CS_DOT,
+    CS_MINS,
+    CS_EQL,
+    CS_AMPR,
+//    CS_BSLS,
 };
 
 
+
+// mod-tap keys
 #define MT_A LGUI_T(KC_A)
 #define MT_S LALT_T(KC_S)
 #define MT_D LSFT_T(KC_D)
@@ -47,57 +55,62 @@ enum custom_keycodes {
 #define MT_L LALT_T(KC_L)
 #define MT_LBRC RGUI_T(KC_LBRC)
 
+// shifted keys
+#define CS_PIPE LSFT(KC_NUBS)
+#define CS_TILD LSFT(KC_NUHS)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_DEFAULT] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                  KC_6,           KC_7,   KC_8,    KC_9,    KC_0, KC_NUHS,
-     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                  KC_Y,           KC_U,   KC_I,    KC_O,    KC_P, KC_SCLN,
-    KC_LSFT,    MT_A,    MT_S,    MT_D,    MT_F,    KC_G,                                  KC_H,           MT_J,   MT_K,    MT_L, MT_LBRC, KC_RBRC,
-    KC_LCTL, KC_NUBS,    KC_Z,    KC_X,    KC_C,    KC_V,         TG(7),           TG(8),  KC_B,           KC_N,   KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                      KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC), TT(5), LT(6,KC_MINS), KC_EQL, KC_SLSH),
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                    KC_6,     KC_7,   KC_8,    KC_9,    KC_0, KC_NUHS,
+     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                    KC_Y,     KC_U,   KC_I,    KC_O,    KC_P, KC_SCLN,
+    KC_LSFT,    MT_A,    MT_S,    MT_D,    MT_F,    KC_G,                                    KC_H,     MT_J,   MT_K,    MT_L, MT_LBRC, KC_RBRC,
+    KC_LCTL, KC_NUBS,    KC_Z,    KC_X,    KC_C,    KC_V,         TG(7),           TG(8),    KC_B,     KC_N,   KC_M, KC_COMM,  KC_DOT, KC_QUOT,
+                      KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),  REPEAT,    MO(5), KC_UNDS, KC_SLSH),
+//                    KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),  QK_REP,    TT(5), KC_UNDS, KC_SLSH),
 
 [_GAME] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7, KC_8,    KC_9,    KC_0, KC_NUHS,
-     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                           KC_Y,    KC_U, KC_I,    KC_O,    KC_P, KC_SCLN,
-    KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                           KC_H,    KC_J, KC_K,    KC_L, KC_LBRC, KC_RBRC,
-    KC_LCTL, KC_NUBS,    KC_Z,    KC_X,    KC_C,    KC_V, KC_TRNS,       KC_TRNS,   KC_B,    KC_N, KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,       KC_BSPC,  KC_NO, KC_TRNS, KC_EQL, KC_SLSH),
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_NUHS,
+     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                           KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
+    KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                           KC_H,    KC_J,    KC_K,    KC_L, KC_LBRC, KC_RBRC,
+    KC_LCTL, KC_NUBS,    KC_Z,    KC_X,    KC_C,    KC_V, KC_TRNS,       KC_TRNS,   KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,       KC_BSPC, REPEAT, CAPSWRD, KC_UNDS, KC_SLSH),
+//                    KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,       KC_BSPC, QK_REP, CAPSWRD, KC_UNDS, KC_SLSH),
 
 [_EDIT] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_DEL,
-     KC_TAB, KC_PGUP, KC_HOME,   KC_UP,  KC_END,  KC_DEL,                        KC_PLUS, KC_RCBR, KC_LCBR, KC_CIRC, KC_UNDS,  KC_DEL,
-    KC_LSFT, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, CAPSWRD,                         KC_EQL, KC_RPRN, KC_LPRN, KC_ASTR, KC_DQUO,  KC_ENT,
-    KC_LCTL, KC_NUBS, KC_PAUS,  KC_INS, KC_PSCR,  KC_ENT, KC_TRNS,      KC_TRNS, KC_MINS, KC_RBRC, KC_LBRC, KC_SCLN, KC_NUBS,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,    KC_0, KC_MINS,  KC_EQL, KC_SLSH),
+     KC_TAB, KC_PGUP, KC_HOME,   KC_UP,  KC_END,  KC_DEL,                         KC_EQL, KC_RCBR, KC_LCBR, KC_CIRC, KC_UNDS,  KC_DEL,
+    KC_LSFT, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                          KC_LT, KC_RPRN, KC_LPRN, KC_ASTR, KC_DQUO,  KC_ENT,
+    KC_LCTL, KC_NUBS, KC_PAUS,  KC_INS, KC_PSCR,  KC_ENT, KC_TRNS,      KC_TRNS,   KC_GT, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,    KC_0, CAPSWRD, KC_UNDS, KC_SLSH),
 
 [_EQUATION] = LAYOUT(
-     KC_GRV,         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-     KC_TAB,       KC_SLSH, KC_ASTR, KC_MINS, KC_PLUS, KC_CIRC,                       KC_PLUS,    KC_7,    KC_8,    KC_9, KC_UNDS,  KC_DEL,
-    KC_LSFT, LSFT(KC_NUBS), KC_COLN,  KC_DOT, KC_COMM,  KC_EQL,                        KC_EQL,    KC_4,    KC_5,    KC_6, KC_DQUO,  KC_ENT,
-    KC_LCTL,       KC_NUBS, KC_COLN,  KC_DOT, KC_COMM, KC_UNDS, KC_TRNS,     KC_TRNS, KC_MINS,    KC_1,    KC_2,    KC_3, KC_NUBS,  KC_ENT,
-                            KC_LGUI, KC_LALT, KC_SLSH, KC_NUBS,  KC_SPC,     KC_TRNS,    KC_0, KC_RPRN, KC_LPRN, KC_SLSH),
+     KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+     KC_TAB, KC_SLSH, KC_ASTR, KC_MINS, KC_PLUS, KC_CIRC,                        KC_PLUS,    KC_7,    KC_8,    KC_9, KC_UNDS,  KC_DEL,
+    KC_LSFT, CS_PIPE, KC_COLN,  CS_DOT, CS_COMM,  CS_EQL,                         KC_EQL,    KC_4,    KC_5,    KC_6, KC_DQUO,  KC_ENT,
+    KC_LCTL, KC_NUBS,   KC_LT, KC_UNDS,   KC_GT, KC_UNDS, KC_TRNS,      KC_TRNS, KC_MINS,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_SLSH, KC_TRNS, KC_TRNS,      KC_TRNS,    KC_0, CAPSWRD, KC_TRNS, KC_TRNS),
 
 [_SYMBOL] = LAYOUT(
-     KC_GRV,       KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                         KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
-     KC_TAB,       KC_PERC, KC_ASTR,  KC_DLR, KC_AMPR, KC_CIRC,                         KC_PLUS, KC_RCBR, KC_LCBR, KC_CIRC, KC_UNDS,  KC_DEL,
-    KC_LSFT, LSFT(KC_NUBS),   KC_LT, KC_MINS,   KC_GT,  KC_EQL,                          KC_EQL, KC_RPRN, KC_LPRN, KC_ASTR, KC_DQUO,  KC_ENT,
-    KC_LCTL,       KC_NUBS, KC_COLN,  KC_DOT, KC_COMM, KC_UNDS, KC_TRNS,       KC_TRNS, KC_MINS, KC_RBRC, KC_LBRC, KC_SCLN, KC_NUBS,  KC_ENT,
-                            KC_LGUI, KC_LALT, KC_SLSH, KC_NUBS,  KC_SPC,       KC_TRNS, KC_TRNS, KC_MINS,  KC_EQL, KC_SLSH),
+     KC_GRV, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                        KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
+     KC_TAB, KC_PERC, KC_ASTR,  KC_DLR, CS_AMPR, KC_CIRC,                        KC_PLUS, KC_RCBR, KC_LCBR, KC_CIRC, KC_UNDS,  KC_DEL,
+    KC_LSFT, CS_PIPE,   KC_LT, CS_MINS,   KC_GT,  CS_EQL,                         KC_EQL, KC_RPRN, KC_LPRN, KC_ASTR, KC_DQUO,  KC_ENT,
+    KC_LCTL, KC_NUBS, KC_COLN,  CS_DOT, CS_COMM, KC_UNDS, KC_TRNS,      KC_TRNS, KC_MINS, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_SLSH, KC_NUBS,  KC_SPC,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
 [_MOUSE] = LAYOUT(
-     KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
-     KC_TAB, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS,  KC_DEL,                             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
-    KC_LSFT, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,                             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_ENT,
-    KC_LCTL, KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R,  KC_ENT,  KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_BTN3, KC_BTN2,  KC_BTN1,          KC_TRNS,   TG(5), KC_TRNS, KC_TRNS, KC_TRNS),
+     KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
+     KC_TAB, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS,  KC_DEL,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
+    KC_LSFT, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_ENT,
+    KC_LCTL, KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R,  KC_ENT,  KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_BTN3, KC_BTN2,  KC_BTN1,     KC_TRNS, KC_TRNS,   TG(5), KC_TRNS, KC_TRNS),
 
 [_MEDIA] = LAYOUT(
-     KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-     KC_TAB, KC_TRNS, KC_MSTP, KC_VOLU, KC_MPLY, KC_TRNS,                       KC_TRNS, KC_MPLY, KC_VOLU, KC_MSTP, KC_TRNS, KC_TRNS,
-    KC_LSFT, KC_TRNS, KC_MPRV, KC_VOLD, KC_MNXT, KC_TRNS,                       KC_TRNS, KC_MNXT, KC_VOLD, KC_MPRV, KC_TRNS, KC_TRNS,
-    KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                      KC_LGUI, KC_LALT, KC_MSTP,    MUTE, KC_MPLY,     KC_MPLY,    MUTE, KC_MSTP, KC_TRNS, KC_TRNS),
+     KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+     KC_TAB, KC_TRNS, KC_MSTP, KC_VOLU, KC_MPLY, KC_TRNS,                        KC_TRNS, KC_MPLY, KC_VOLU, KC_MSTP, KC_TRNS, KC_TRNS,
+    KC_LSFT, KC_TRNS, KC_MPRV, KC_VOLD, KC_MNXT, KC_TRNS,                        KC_TRNS, KC_MNXT, KC_VOLD, KC_MPRV, KC_TRNS, KC_TRNS,
+    KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                      KC_LGUI, KC_LALT, KC_MSTP,    MUTE, KC_MPLY,      KC_MPLY,    MUTE, KC_MSTP, KC_TRNS, KC_TRNS),
 
 [_FUNCTION] = LAYOUT(
     KC_TRNS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
@@ -107,11 +120,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
 [_NUMPAD] = LAYOUT(
-     KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                      KC_TRNS,  KC_NUM, KC_SLSH, KC_ASTR, KC_MINS, KC_TRNS,
-     KC_TAB, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                      KC_TRNS,   KC_P7,   KC_P8,   KC_P9, KC_PLUS, KC_TRNS,
-    KC_LSFT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                      KC_TRNS,   KC_P4,   KC_P5,   KC_P6, KC_COMM, KC_TRNS,
-    KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS,   KC_P1,   KC_P2,   KC_P3,  KC_EQL, KC_TRNS,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS,   KC_P0,  KC_DOT, KC_TRNS, KC_TRNS),
+     KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,  KC_NUM, KC_SLSH, KC_ASTR, KC_MINS, KC_TRNS,
+     KC_TAB, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,   KC_P7,   KC_P8,   KC_P9, KC_PLUS, KC_TRNS,
+    KC_LSFT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,   KC_P4,   KC_P5,   KC_P6, KC_COMM, KC_TRNS,
+    KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS,   KC_P1,   KC_P2,   KC_P3,  KC_EQL, KC_TRNS,
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_P0,  KC_DOT, KC_TRNS, KC_TRNS),
 
 //[_NAVIGATION] = LAYOUT(
 //     KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
@@ -158,11 +171,11 @@ void matrix_scan_user(void) {
             layer_off(_FUNCTION);
         }
     }
-    else if (get_highest_layer(layer_state) == _MOUSE) {
-        if (last_input_activity_elapsed() > NUM_LAYER_TIMEOUT) {
-            layer_off(_MOUSE);
-        }
-    }
+//    else if (get_highest_layer(layer_state) == _MOUSE) {
+//        if (last_input_activity_elapsed() > NUM_LAYER_TIMEOUT) {
+//            layer_off(_MOUSE);
+//        }
+//    }
     if (is_alt_tab_active) {
         if (timer_elapsed(alt_tab_timer) > tabbing_timeout) {
             unregister_code(KC_LALT);
@@ -268,10 +281,10 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 
 const uint16_t PROGMEM capslock[] = {MT_D, MT_K, COMBO_END};
 const uint16_t PROGMEM scrolllock[] = {MT_F, MT_J, COMBO_END};
-const uint16_t PROGMEM homerowmodtaps[] = {KC_EQL, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM homerowmodtaps[] = {KC_UNDS, KC_SLSH, COMBO_END};
 
-const uint16_t PROGMEM lessthan[] = {MT_S, KC_E, COMBO_END};
-const uint16_t PROGMEM greaterthan[] = {KC_E, MT_F, COMBO_END};
+const uint16_t PROGMEM leftparen[] = {MT_S, KC_E, COMBO_END};
+const uint16_t PROGMEM rightparen[] = {KC_E, MT_F, COMBO_END};
 const uint16_t PROGMEM l_exponent[] = {MT_S, KC_E, MT_F, COMBO_END};
 const uint16_t PROGMEM l_asterisk[] = {MT_D, KC_C, COMBO_END};
 const uint16_t PROGMEM l_comma[] = {MT_F, KC_V, COMBO_END};
@@ -291,8 +304,8 @@ const uint16_t PROGMEM at[] = {KC_R, KC_G, COMBO_END};
 //const uint16_t PROGMEM l_at[] = {KC_W, KC_E, KC_R, COMBO_END};
 //const uint16_t PROGMEM [] = {MT_S, MT_D, MT_F, COMBO_END};
 
-const uint16_t PROGMEM leftparen[] = {MT_J, KC_I, COMBO_END};
-const uint16_t PROGMEM rightparen[] = {KC_I, MT_L, COMBO_END};
+const uint16_t PROGMEM lessthan[] = {MT_J, KC_I, COMBO_END};
+const uint16_t PROGMEM greaterthan[] = {KC_I, MT_L, COMBO_END};
 const uint16_t PROGMEM r_exponent[] = {MT_J, KC_I, MT_L, COMBO_END};
 const uint16_t PROGMEM r_asterisk[] = {KC_N, MT_K, COMBO_END};
 const uint16_t PROGMEM r_comma[] = {KC_B, MT_J, COMBO_END};
@@ -344,8 +357,8 @@ combo_t key_combos[] = {
     [CAPSLOCK] = COMBO_ACTION(capslock),
     [SCROLLLOCK] = COMBO_ACTION(scrolllock),
     [HOMEROWMODTAPS] = COMBO_ACTION(homerowmodtaps),
-    [LESSTHAN] = COMBO_ACTION(lessthan),
-    [GREATERTHAN] = COMBO_ACTION(greaterthan),
+    [LEFTPAREN] = COMBO_ACTION(leftparen),
+    [RIGHTPAREN] = COMBO_ACTION(rightparen),
     [L_EXPONENT] = COMBO_ACTION(l_exponent),
     [L_ASTERISK] = COMBO_ACTION(l_asterisk),
     [L_COMMA] = COMBO_ACTION(l_comma),
@@ -356,8 +369,8 @@ combo_t key_combos[] = {
     [L_DOT] = COMBO_ACTION(l_dot),
     [AT] = COMBO_ACTION(bar),
     [BAR] = COMBO_ACTION(at),
-    [LEFTPAREN] = COMBO_ACTION(leftparen),
-    [RIGHTPAREN] = COMBO_ACTION(rightparen),
+    [LESSTHAN] = COMBO_ACTION(lessthan),
+    [GREATERTHAN] = COMBO_ACTION(greaterthan),
     [R_EXPONENT] = COMBO_ACTION(r_exponent),
     [R_ASTERISK] = COMBO_ACTION(r_asterisk),
     [R_COMMA] = COMBO_ACTION(r_comma),
@@ -388,14 +401,14 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
                 layer_invert(_GAME);
             }
             break;
-        case LESSTHAN:
+        case LEFTPAREN:
             if (pressed) {
-                tap_code16(KC_LT);
+                tap_code16(KC_LPRN);
             }
             break;
-        case GREATERTHAN:
+        case RIGHTPAREN:
             if (pressed) {
-                tap_code16(KC_GT);
+                tap_code16(KC_RPRN);
             }
             break;
         case L_EXPONENT:
@@ -448,14 +461,15 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
                 tap_code16(S(KC_QUOT));
             }
             break;
-        case LEFTPAREN:
+
+        case LESSTHAN:
             if (pressed) {
-                tap_code16(KC_LPRN);
+                tap_code16(KC_LT);
             }
             break;
-        case RIGHTPAREN:
+        case GREATERTHAN:
             if (pressed) {
-                tap_code16(KC_RPRN);
+                tap_code16(KC_GT);
             }
             break;
         case R_EXPONENT:
@@ -552,6 +566,7 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 
 
 
+uint16_t lastkey = KC_NO;
 
 bool muted = false;
 //#include "features/repeat_key.h"
@@ -571,6 +586,196 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             } else {
                 unregister_code(KC_MUTE);
             }
+        break;
+
+
+        
+        case CS_COMM:
+            unregister_mods(MOD_MASK_SHIFT);
+            if (record->event.pressed) {
+                register_code(KC_COMM);
+            } else {
+                unregister_code(KC_COMM);
+            }
+        break;
+        case CS_DOT:
+            unregister_mods(MOD_MASK_SHIFT);
+            if (record->event.pressed) {
+                register_code(KC_DOT);
+            } else {
+                unregister_code(KC_DOT);
+            }
+        break;
+        case CS_MINS:
+            unregister_mods(MOD_MASK_SHIFT);
+            if (record->event.pressed) {
+                register_code(KC_MINS);
+            } else {
+                unregister_code(KC_MINS);
+            }
+        break;
+        case CS_EQL:
+            unregister_mods(MOD_MASK_SHIFT);
+            if (record->event.pressed) {
+                register_code(KC_EQL);
+            } else {
+                unregister_code(KC_EQL);
+            }
+        break;
+        case CS_AMPR:
+            if (record->event.pressed) {
+                register_code16(KC_AMPR);
+                unregister_code16(KC_AMPR);
+                unregister_mods(MOD_MASK_SHIFT);
+            }
+        break;
+
+
+
+        
+        case KC_A:
+        case MT_A:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_A;
+            }
+            break;
+        case KC_B:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_B;
+            }
+            break;
+        case KC_C:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_C;
+            }
+            break;
+        case KC_D:
+        case MT_D:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_D;
+            }
+            break;
+        case KC_E:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_E;
+            }
+            break;
+        case KC_F:
+        case MT_F:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_F;
+            }
+            break;
+        case KC_G:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_G;
+            }
+            break;
+        case KC_H:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_H;
+            }
+            break;
+        case KC_I:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_I;
+            }
+            break;
+        case KC_J:
+        case MT_J:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_J;
+            }
+            break;
+        case KC_K:
+        case MT_K:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_K;
+            }
+            break;
+        case KC_L:
+        case MT_L:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_L;
+            }
+            break;
+        case KC_M:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_M;
+            }
+            break;
+        case KC_N:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_N;
+            }
+            break;
+        case KC_O:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_O;
+            }
+            break;
+        case KC_P:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_P;
+            }
+            break;
+        case KC_Q:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_Q;
+            }
+            break;
+        case KC_R:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_R;
+            }
+            break;
+        case KC_S:
+        case MT_S:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_S;
+            }
+            break;
+        case KC_T:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_T;
+            }
+            break;
+        case KC_U:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_U;
+            }
+            break;
+        case KC_V:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_V;
+            }
+            break;
+        case KC_W:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_W;
+            }
+            break;
+        case KC_X:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_X;
+            }
+            break;
+        case KC_Y:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_Y;
+            }
+            break;
+        case KC_Z:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_Z;
+            }
+            break;
+        case REPEAT:
+            if (record->event.pressed) {
+                register_code(lastkey);
+            } else {
+                unregister_code(lastkey);
+            };
             break;
     }
     return true;
