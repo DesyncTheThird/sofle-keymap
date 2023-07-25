@@ -12,16 +12,16 @@
 #define COMBO_SHOULD_TRIGGER
 #define COMBO_ONLY_FROM_LAYER 0
 
-// timer for mod and layer taps
+// Timer for mod and layer taps
 #undef TAPPING_TERM
-#define TAPPING_TERM 250
+#define TAPPING_TERM 200
 //#define TAPPING_TERM_PER_KEY
 
 //#define PERMISSIVE_HOLD
 #define PERMISSIVE_HOLD_PER_KEY
 
-// hold action if other keys are pressed 
-//#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+// Perform hold action if other keys are pressed.
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT
@@ -58,10 +58,13 @@
 
 
 
+#define OLED_FONT_H "keyboards/sofle/keymaps/desync/font.c"
 
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
 
-
-
-
-
+#define NO_ACTION_ONESHOT
+#define NO_MUSIC_MODE
+//#define LAYER_STATE_8BIT
+//saves space, but only supports 7 layers or fewer
 
