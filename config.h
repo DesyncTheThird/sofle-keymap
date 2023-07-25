@@ -24,7 +24,7 @@
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
-#define IGNORE_MOD_TAP_INTERRUPT
+//#define IGNORE_MOD_TAP_INTERRUPT //now default behaviour
 
 // Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
 //#define TAPPING_FORCE_HOLD //Breaks tap toggles. Use per key instead.
@@ -65,6 +65,7 @@
 
 #define NO_ACTION_ONESHOT
 #define NO_MUSIC_MODE
+#define NO_ALT_REPEAT_KEY
 //#define LAYER_STATE_8BIT
 //saves space, but only supports 7 layers or fewer
 

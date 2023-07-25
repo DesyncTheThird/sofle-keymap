@@ -33,7 +33,6 @@ enum custom_keycodes {
     NUMPAD,
 //    SELWORD,
     MUTE,
-    REPEAT,
     CS_COLN,
     CS_UNDS,
     CS_PIPE,
@@ -81,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                    KC_Y,     KC_U,   KC_I,    KC_O,    KC_P, KC_SCLN,
     KC_LSFT,    MT_A,    MT_S,    MT_D,    MT_F,    KC_G,                                    KC_H,     MT_J,   MT_K,    MT_L, MT_LBRC, KC_RBRC,
     KC_LCTL, KC_NUBS,    KC_Z,    KC_X,    KC_C,    KC_V,         TG(7),           TG(8),    KC_B,     KC_N,   KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                      KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),  REPEAT,    MO(5), CS_UNDS, KC_SLSH),
+                      KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),  QK_REP,    MO(5), CS_UNDS, KC_SLSH),
 //                    KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),  QK_REP,    TT(5), KC_UNDS, KC_SLSH),
 
 [_GAME] = LAYOUT(
@@ -89,29 +88,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                           KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
     KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                           KC_H,    KC_J,    KC_K,    KC_L, KC_LBRC, KC_RBRC,
     KC_LCTL, KC_NUBS,    KC_Z,    KC_X,    KC_C,    KC_V, KC_TRNS,       KC_TRNS,   KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,       KC_BSPC, KC_TRNS, CAPSWRD, CS_UNDS, KC_SLSH),
-//                    KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,       KC_BSPC, QK_REP, CAPSWRD, KC_UNDS, KC_SLSH),
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,       KC_BSPC, KC_TRNS, CW_TOGG, CS_UNDS, KC_SLSH),
+//                    KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,       KC_BSPC, QK_REP, CW_TOGG, KC_UNDS, KC_SLSH),
 
 [_EDIT] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_DEL,
      KC_TAB, KC_PGUP, KC_HOME,   KC_UP,  KC_END,  KC_DEL,                         KC_EQL, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
     KC_LSFT, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                          CS_LT, KC_RPRN, KC_LPRN, CS_ASTR,   CS_AT,  KC_ENT,
     KC_LCTL, KC_NUBS, KC_PAUS,  KC_INS, KC_PSCR, C(KC_V), KC_TRNS,      KC_TRNS,   CS_GT, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,    KC_0, CAPSWRD, CS_UNDS, KC_SLSH),
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,    KC_0, CW_TOGG, CS_UNDS, KC_SLSH),
 //
 //[_EQUATION] = LAYOUT(
 //     KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
 //     KC_TAB, KC_SLSH, CS_ASTR, KC_MINS, CS_PLUS, CS_CIRC,                        KC_PLUS,    KC_7,    KC_8,    KC_9, CS_UNDS,  KC_DEL,
 //    KC_LSFT, CS_PIPE, CS_COLN,  KC_DOT, KC_COMM,  KC_EQL,                         KC_EQL,    KC_4,    KC_5,    KC_6,   CS_AT,  KC_ENT,
 //    KC_LCTL, KC_NUBS,   CS_LT, CS_UNDS,   CS_GT, CS_UNDS, KC_TRNS,      KC_TRNS, KC_MINS,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
-//                      KC_LGUI, KC_LALT, KC_SLSH, KC_TRNS, KC_TRNS,      KC_TRNS,    KC_0, CAPSWRD, KC_TRNS, KC_TRNS),
+//                      KC_LGUI, KC_LALT, KC_SLSH, KC_TRNS, KC_TRNS,      KC_TRNS,    KC_0, CW_TOGG, KC_TRNS, KC_TRNS),
 
 [_EQUATION] = LAYOUT(
      KC_GRV, CS_EXLM, CS_DQUO, CS_POUN,  CS_DLR, CS_PERC,                        CS_CIRC, CS_AMPR, CS_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
      KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        CS_PLUS, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
     KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_ENT,
     KC_LCTL, KC_NUBS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS, KC_MINS, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_SLSH, KC_NUBS,  KC_SPC,      KC_TRNS,    KC_0, CAPSWRD, KC_TRNS, KC_TRNS),
+                      KC_LGUI, KC_LALT, KC_SLSH, KC_NUBS,  KC_SPC,      KC_TRNS,    KC_0, CW_TOGG, KC_TRNS, KC_TRNS),
 
 
 
@@ -602,10 +601,8 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 
 
 
-uint16_t lastkey = KC_NO;
 
 bool muted = false;
-//#include "features/repeat_key.h"
 //#include "features/select_word.h"
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 //    if (!process_select_word(keycode, record, REPEAT)) {
@@ -717,164 +714,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 unregister_mods(MOD_MASK_SHIFT);
             }
         break;
-
-
-
-        // jank homebrew repeat key implementation yee haw
-        case KC_A:
-        case MT_A:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_A;
-            }
-            break;
-        case KC_B:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_B;
-            }
-            break;
-        case KC_C:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_C;
-            }
-            break;
-        case KC_D:
-        case MT_D:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_D;
-            }
-            break;
-        case KC_E:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_E;
-            }
-            break;
-        case KC_F:
-        case MT_F:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_F;
-            }
-            break;
-        case KC_G:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_G;
-            }
-            break;
-        case KC_H:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_H;
-            }
-            break;
-        case KC_I:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_I;
-            }
-            break;
-        case KC_J:
-        case MT_J:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_J;
-            }
-            break;
-        case KC_K:
-        case MT_K:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_K;
-            }
-            break;
-        case KC_L:
-        case MT_L:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_L;
-            }
-            break;
-        case KC_M:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_M;
-            }
-            break;
-        case KC_N:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_N;
-            }
-            break;
-        case KC_O:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_O;
-            }
-            break;
-        case KC_P:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_P;
-            }
-            break;
-        case KC_Q:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_Q;
-            }
-            break;
-        case KC_R:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_R;
-            }
-            break;
-        case KC_S:
-        case MT_S:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_S;
-            }
-            break;
-        case KC_T:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_T;
-            }
-            break;
-        case KC_U:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_U;
-            }
-            break;
-        case KC_V:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_V;
-            }
-            break;
-        case KC_W:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_W;
-            }
-            break;
-        case KC_X:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_X;
-            }
-            break;
-        case KC_Y:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_Y;
-            }
-            break;
-        case KC_Z:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
-                lastkey = KC_Z;
-            }
-            break;
-        case REPEAT:
-            if (record->event.pressed) {
-                register_code(lastkey);
-            } else {
-                unregister_code(lastkey);
-            };
-            break;
-
-//        case LT(2, LTREP):
-//            if (record->tap.count && record->event.pressed) {
-//                tap_code(lastkey);
-//            } else if (record->event.pressed) {
-//                layer_on(2);
-//            } else {
-//                layer_off(2);
-//            }
-//            return false;
     }
     return true;
 }
