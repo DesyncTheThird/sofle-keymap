@@ -5,7 +5,7 @@
 
 enum sofle_layers {
     _DEFAULT,
-    _GAME,
+    _BASIC,
     _EDIT,
     _EQUATION,
     _SYMBOL,
@@ -23,7 +23,7 @@ enum sofle_layers {
 
 enum custom_keycodes {
     DEFAULT = SAFE_RANGE,
-    GAME,
+    BASIC,
     EDIT,
     EQUATION,
     SYMBOL,
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),  QK_REP,    MO(5), CS_UNDS, KC_SLSH),
 //                    KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),  QK_REP,    TT(5), KC_UNDS, KC_SLSH),
 
-[_GAME] = LAYOUT(
+[_BASIC] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
      KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                           KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
     KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                           KC_H,    KC_J,    KC_K,    KC_L, KC_LBRC, KC_RBRC,
@@ -106,13 +106,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                      KC_LGUI, KC_LALT, KC_SLSH, KC_TRNS, KC_TRNS,      KC_TRNS,    KC_0, CW_TOGG, KC_TRNS, KC_TRNS),
 
 [_EQUATION] = LAYOUT(
-     KC_GRV, CS_EXLM, CS_DQUO, CS_POUN,  CS_DLR, CS_PERC,                        CS_CIRC, CS_AMPR, CS_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
+     KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
      KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        CS_PLUS, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
     KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_ENT,
     KC_LCTL, KC_NUBS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS, KC_MINS, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
                       KC_LGUI, KC_LALT, KC_SLSH, KC_NUBS,  KC_SPC,      KC_TRNS,    KC_0, CW_TOGG, KC_TRNS, KC_TRNS),
-
-
 
 [_SYMBOL] = LAYOUT(
      KC_GRV, CS_EXLM, CS_DQUO, CS_POUN,  CS_DLR, CS_PERC,                        CS_CIRC, CS_AMPR, CS_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
@@ -433,7 +431,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             break;
         case HOMEROWMODTAPS:
             if (pressed) {
-                layer_invert(_GAME);
+                layer_invert(_BASIC);
             }
             break;
         case LEFTPAREN:
@@ -588,7 +586,7 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
         case R_MINUS:
         case R_UNDERSCORE:
         case R_DOT:
-            if (layer_state_is(_GAME) || layer_state_is(_EDIT) || layer_state_is(_SYMBOL) || layer_state_is(_MEDIA) || layer_state_is(_MOUSE)) {
+            if (layer_state_is(_BASIC) || layer_state_is(_EDIT) || layer_state_is(_SYMBOL) || layer_state_is(_MEDIA) || layer_state_is(_MOUSE)) {
                 return false;
             }
             break;
@@ -816,7 +814,7 @@ static void print_status_narrow(void) {
         case _DEFAULT:
             oled_write_P(PSTR("Std.\n"), false);
             break;
-        case _GAME:
+        case _BASIC:
             oled_write_P(PSTR("Basic"), false);
             break;
 //        case _NAVIGATION:
