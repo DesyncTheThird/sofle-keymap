@@ -7,7 +7,7 @@ enum sofle_layers {
     _DEFAULT,
     _BASIC,
     _EDIT,
-    _EQUATION,
+    _DATA,
     _SYMBOL,
     _MOUSE,
     _MEDIA,
@@ -25,7 +25,7 @@ enum custom_keycodes {
     DEFAULT = SAFE_RANGE,
     BASIC,
     EDIT,
-    EQUATION,
+    DATA,
     SYMBOL,
     MOUSE,
     MEDIA,
@@ -46,8 +46,8 @@ enum custom_keycodes {
     CS_EXLM,
     CS_TILD,
     CS_PLUS,
+    REP,
 //    CS_BSLS,
-//    LTREP,
 };
 
 
@@ -63,61 +63,52 @@ enum custom_keycodes {
 #define MT_L LALT_T(KC_L)
 #define MT_LBRC RGUI_T(KC_LBRC)
 
-// shifted keys
-//#define CS_PIPE LSFT(KC_NUBS)
-//#define CS_TILD LSFT(KC_NUHS)
-
 // ISO
 #define CS_AT KC_DQUO
 #define CS_DQUO KC_AT
 #define CS_HASH KC_NUHS
 #define CS_POUN KC_HASH
+#define CS_BSLS KC_NUBS
+
+
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_DEFAULT] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                    KC_6,     KC_7,   KC_8,    KC_9,    KC_0, CS_HASH,
-     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                    KC_Y,     KC_U,   KC_I,    KC_O,    KC_P, KC_SCLN,
-    KC_LSFT,    MT_A,    MT_S,    MT_D,    MT_F,    KC_G,                                    KC_H,     MT_J,   MT_K,    MT_L, MT_LBRC, KC_RBRC,
-    KC_LCTL, KC_NUBS,    KC_Z,    KC_X,    KC_C,    KC_V,         TG(7),           TG(8),    KC_B,     KC_N,   KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                      KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),  QK_REP,    MO(5), CS_UNDS, KC_SLSH),
-//                    KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),  QK_REP,    TT(5), KC_UNDS, KC_SLSH),
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
+     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
+    KC_LSFT,    MT_A,    MT_S,    MT_D,    MT_F,    KC_G,                                        KC_H,    MT_J,    MT_K,    MT_L, MT_LBRC, KC_RBRC,
+    KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    KC_C,    KC_V,         TG(7),           TG(8),        KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
+                      KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC), LT(3,REP),   MO(5), CS_UNDS, KC_SLSH),
 
 [_BASIC] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
      KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                           KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
     KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                           KC_H,    KC_J,    KC_K,    KC_L, KC_LBRC, KC_RBRC,
-    KC_LCTL, KC_NUBS,    KC_Z,    KC_X,    KC_C,    KC_V, KC_TRNS,       KC_TRNS,   KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,       KC_BSPC, KC_TRNS, CW_TOGG, CS_UNDS, KC_SLSH),
-//                    KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,       KC_BSPC, QK_REP, CW_TOGG, KC_UNDS, KC_SLSH),
+    KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    KC_C,    KC_V, KC_TRNS,      KC_TRNS,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,      KC_BSPC, KC_TRNS, KC_TRNS, CS_UNDS, KC_SLSH),
 
 [_EDIT] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_DEL,
-     KC_TAB, KC_PGUP, KC_HOME,   KC_UP,  KC_END,  KC_DEL,                         KC_EQL, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
-    KC_LSFT, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                          CS_LT, KC_RPRN, KC_LPRN, CS_ASTR,   CS_AT,  KC_ENT,
-    KC_LCTL, KC_NUBS, KC_PAUS,  KC_INS, KC_PSCR, C(KC_V), KC_TRNS,      KC_TRNS,   CS_GT, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,    KC_0, CW_TOGG, CS_UNDS, KC_SLSH),
-//
-//[_EQUATION] = LAYOUT(
-//     KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-//     KC_TAB, KC_SLSH, CS_ASTR, KC_MINS, CS_PLUS, CS_CIRC,                        KC_PLUS,    KC_7,    KC_8,    KC_9, CS_UNDS,  KC_DEL,
-//    KC_LSFT, CS_PIPE, CS_COLN,  KC_DOT, KC_COMM,  KC_EQL,                         KC_EQL,    KC_4,    KC_5,    KC_6,   CS_AT,  KC_ENT,
-//    KC_LCTL, KC_NUBS,   CS_LT, CS_UNDS,   CS_GT, CS_UNDS, KC_TRNS,      KC_TRNS, KC_MINS,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
-//                      KC_LGUI, KC_LALT, KC_SLSH, KC_TRNS, KC_TRNS,      KC_TRNS,    KC_0, CW_TOGG, KC_TRNS, KC_TRNS),
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                              KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_DEL,
+     KC_TAB, KC_PGUP, KC_HOME,   KC_UP,  KC_END,  KC_DEL,                            KC_EQL, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
+    KC_LSFT, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                             CS_LT, KC_RPRN, KC_LPRN, CS_ASTR,   CS_AT,  KC_ENT,
+    KC_LCTL, CS_BSLS, KC_PAUS,  KC_INS, KC_PSCR, C(KC_V), KC_TRNS,      KC_TRNS,      CS_GT, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, LT(3,KC_0), KC_TRNS, CS_UNDS, KC_SLSH),
 
-[_EQUATION] = LAYOUT(
+[_DATA] = LAYOUT(
      KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
      KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        CS_PLUS, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
     KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_ENT,
-    KC_LCTL, KC_NUBS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS, KC_MINS, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_SLSH, KC_NUBS,  KC_SPC,      KC_TRNS,    KC_0, CW_TOGG, KC_TRNS, KC_TRNS),
+    KC_LCTL, CS_BSLS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS, KC_MINS, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS,    KC_0, KC_TRNS, KC_TRNS, KC_TRNS),
 
 [_SYMBOL] = LAYOUT(
      KC_GRV, CS_EXLM, CS_DQUO, CS_POUN,  CS_DLR, CS_PERC,                        CS_CIRC, CS_AMPR, CS_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
      KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        CS_PLUS, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
     KC_LSFT, CS_PIPE,   CS_LT, KC_MINS,   CS_GT,  KC_EQL,                         KC_EQL, KC_RPRN, KC_LPRN, CS_ASTR,   CS_AT,  KC_ENT,
-    KC_LCTL, KC_NUBS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS, KC_MINS, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_SLSH, KC_NUBS,  KC_SPC,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+    KC_LCTL, CS_BSLS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS, KC_MINS, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
 [_MOUSE] = LAYOUT(
      KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
@@ -243,21 +234,12 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 }
 */
 
+
 /*
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MT_A:
             return 250;
-        default:
-            return TAPPING_TERM;
-    }
-}
-*/
-
-/*
-\\ has problems with arrow keys
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
         case LT(3, KC_SPC):
             return 100;
         case LT(4, KC_BSPC):
@@ -268,13 +250,15 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 }
 */
 
-// Has problems with spaces when typing quickly, use only with backspace
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 //        case LT(3, KC_SPC):
+//        case LT(3, REP):
         case LT(4, KC_BSPC):
+            // Immediately select the hold action when another key is pressed.
             return true;
         default:
+            // Do not select the hold action when another key is pressed.
             return false;
     }
 }
@@ -598,18 +582,256 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 }
 
 
-
-
+// Store last key
+uint16_t lastkey = KC_NO;
+// Store mute state.
 bool muted = false;
-//#include "features/select_word.h"
+// Binary representation of active modifiers.
+uint8_t mod_state;
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-//    if (!process_select_word(keycode, record, REPEAT)) {
-//        return false;
-//    }
-//    if (!process_select_word(keycode, record, SELWORD)) {
-//        return false;
-//    }
+    // Store the current modifier state in the variable for later reference
+//    mod_state = get_mods();
     switch (keycode) {
+//        case KC_BSPC:
+//        {
+//        // Initialize a boolean variable that keeps track
+//        // of the delete key status: registered or not?
+//        static bool delkey_registered;
+//        if (record->event.pressed) {
+//            // Detect the activation of either shift keys
+//            if (mod_state & MOD_MASK_SHIFT) {
+//                // First temporarily canceling both shifts so that
+//                // shift isn't applied to the KC_DEL keycode
+//                del_mods(MOD_MASK_SHIFT);
+//                register_code(KC_DEL);
+//                // Update the boolean variable to reflect the status of KC_DEL
+//                delkey_registered = true;
+//                // Reapplying modifier state so that the held shift key(s)
+//                // still work even after having tapped the Backspace/Delete key.
+//                set_mods(mod_state);
+//                return false;
+//            }
+//        } else { // on release of KC_BSPC
+//            // In case KC_DEL is still being sent even after the release of KC_BSPC
+//            if (delkey_registered) {
+//                unregister_code(KC_DEL);
+//                delkey_registered = false;
+//                return false;
+//            }
+//        }
+//        // Let QMK process the KC_BSPC keycode as usual outside of shift
+//        return true;
+//        }
+//
+//        case LT(4,KC_BSPC):
+//        {
+//            if (!record->tap.count && record->event.pressed) { // Intercept holds only
+//                layer_on(_SYMBOL);
+//            } else { // On keyup
+//                layer_off(_SYMBOL);
+//            }
+//            // Initialize a boolean variable that keeps track
+//            // of the delete key status: registered or not?
+//            static bool delkey_registered;
+//            if (record->event.pressed) {
+//                // Detect the activation of either shift keys
+//                if (mod_state & MOD_MASK_SHIFT) {
+//                    // First temporarily canceling both shifts so that
+//                    // shift isn't applied to the KC_DEL keycode
+//                    del_mods(MOD_MASK_SHIFT);
+//                    register_code(KC_DEL);
+//                    // Update the boolean variable to reflect the status of KC_DEL
+//                    delkey_registered = true;
+//                    // Reapplying modifier state so that the held shift key(s)
+//                    // still work even after having tapped the Backspace/Delete key.
+//                    set_mods(mod_state);
+//                    return false;
+//                }
+//            } else { // on release of KC_BSPC
+//                // In case KC_DEL is still being sent even after the release of KC_BSPC
+//                if (delkey_registered) {
+//                    unregister_code(KC_DEL);
+//                    delkey_registered = false;
+//                    return false;
+//                }
+//            }
+//            return true; // Return true for normal processing of unshifted BSPC
+//        }
+
+
+        case KC_A:
+        case MT_A:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_A;
+            }
+            break;
+        case KC_B:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_B;
+            }
+            break;
+        case KC_C:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_C;
+            }
+            break;
+        case KC_D:
+        case MT_D:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_D;
+            }
+            break;
+        case KC_E:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_E;
+            }
+            break;
+        case KC_F:
+        case MT_F:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_F;
+            }
+            break;
+        case KC_G:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_G;
+            }
+            break;
+        case KC_H:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_H;
+            }
+            break;
+        case KC_I:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_I;
+            }
+            break;
+        case KC_J:
+        case MT_J:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_J;
+            }
+            break;
+        case KC_K:
+        case MT_K:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_K;
+            }
+            break;
+        case KC_L:
+        case MT_L:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_L;
+            }
+            break;
+        case KC_M:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_M;
+            }
+            break;
+        case KC_N:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_N;
+            }
+            break;
+        case KC_O:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_O;
+            }
+            break;
+        case KC_P:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_P;
+            }
+            break;
+        case KC_Q:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_Q;
+            }
+            break;
+        case KC_R:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_R;
+            }
+            break;
+        case KC_S:
+        case MT_S:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_S;
+            }
+            break;
+        case KC_T:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_T;
+            }
+            break;
+        case KC_U:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_U;
+            }
+            break;
+        case KC_V:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_V;
+            }
+            break;
+        case KC_W:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_W;
+            }
+            break;
+        case KC_X:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_X;
+            }
+            break;
+        case KC_Y:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_Y;
+            }
+            break;
+        case KC_Z:
+            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+                lastkey = KC_Z;
+            }
+            break;
+//        case REPEAT:
+//            if (record->event.pressed) {
+//                register_code(lastkey);
+//            } else {
+//                unregister_code(lastkey);
+//            };
+//            break;
+
+
+        case LT(3,REP):
+        {
+            if (!record->tap.count && record->event.pressed) { // Intercept holds only
+                layer_on(_DATA);
+            } else { // On keyup
+                layer_off(_DATA);
+            }
+            if (record->tap.count && record->event.pressed) { // Intercept taps
+                register_code(lastkey);
+            } else {
+                unregister_code(lastkey);
+            }
+            return false; // Return true for normal processing of key
+        }
+
+
+
+
+
+
+//        case NEWSENT: 
+//            if (record->event.pressed) {
+//                SEND_STRING(". ");
+//                add_oneshot_mods(MOD_BIT(KC_LSFT));  // Set one-shot mod for shift.
+//            }
+//        break;
+
         case MUTE:
             if (record->event.pressed) {
                 register_code(KC_MUTE);
@@ -618,6 +840,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 unregister_code(KC_MUTE);
             }
         break;
+
 
 
         case CS_COLN:
@@ -700,8 +923,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         break;
         case CS_TILD:
             if (record->event.pressed) {
-                register_code16(KC_TILD);
-                unregister_code16(KC_TILD);
+                register_code16(S(KC_NUHS));
+                unregister_code16(S(KC_NUHS));
                 unregister_mods(MOD_MASK_SHIFT);
             }
         break;
@@ -728,17 +951,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 //    }
 //    return state;
 //}
-
-
-
-
-
-
-
-
-
-
-
 
 #ifdef OLED_ENABLE
 
@@ -820,7 +1032,7 @@ static void print_status_narrow(void) {
 //        case _NAVIGATION:
 //            oled_write_P(PSTR("Nav.\n"), false);
 //            break;
-        case _EQUATION:
+        case _DATA:
             oled_write_P(PSTR("Data\n"), false);
             break;
         case _EDIT:
@@ -879,13 +1091,12 @@ bool oled_task_user(void) {
 
 #ifdef ENCODER_ENABLE
 
-
 static int8_t ticks = 0; // reduce sensitivity of right encoder
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         switch (get_highest_layer(layer_state)){
             case _EDIT:
-            case _EQUATION:
+            case _DATA:
             case _SYMBOL:
             case _MOUSE:
                 if (clockwise) {
@@ -906,7 +1117,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     } else if (index == 1) {
         switch (get_highest_layer(layer_state)){
             case _EDIT:
-            case _EQUATION:
+            case _DATA:
             case _SYMBOL:
             case _MOUSE:                
                 if (clockwise) { ++ticks; } else { ++ticks; } {
@@ -935,7 +1146,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
         }
     }
-    return true;
+    return false; // Stops the keyboard-level encoder code to run on top (defaults encoders to volume control)
 }
 
 #endif

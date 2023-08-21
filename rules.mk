@@ -12,9 +12,11 @@ MOUSEKEY_ENABLE = yes # Mouse keys
 EXTRAKEY_ENABLE = yes # Audio control and System control
 #AUTO_SHIFT_ENABLE = yes # Auto Shift
 LTO_ENABLE = yes
-CAPS_WORD_ENABLE = yes
+#CAPS_WORD_ENABLE = yes
+#REPEAT_KEY_ENABLE = yes
 
-REPEAT_KEY_ENABLE = yes
+
+
 
 
 # Save space
