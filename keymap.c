@@ -47,6 +47,7 @@ enum custom_keycodes {
     CS_TILD,
     CS_PLUS,
     REP,
+    SFT,
 //    CS_BSLS,
 };
 
@@ -76,11 +77,11 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_DEFAULT] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
-     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
-    KC_LSFT,    MT_A,    MT_S,    MT_D,    MT_F,    KC_G,                                        KC_H,    MT_J,    MT_K,    MT_L, MT_LBRC, KC_RBRC,
-    KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    KC_C,    KC_V,         TG(7),           TG(8),        KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                      KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC), LT(3,REP),   MO(5), CS_UNDS, KC_SLSH),
+           KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
+           KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
+    OSM(MOD_LSFT),    MT_A,    MT_S,    MT_D,    MT_F,    KC_G,                                      KC_H,    MT_J,    MT_K,    MT_L, MT_LBRC, KC_RBRC,
+          KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    KC_C,    KC_V,         TG(7),           TG(8),      KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
+                            KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC), LT(3,REP),   MO(5), CS_UNDS, KC_SLSH),
 
 [_BASIC] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
@@ -91,9 +92,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_EDIT] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                              KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_DEL,
-     KC_TAB, KC_PGUP, KC_HOME,   KC_UP,  KC_END,  KC_DEL,                            KC_EQL, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
-    KC_LSFT, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                             CS_LT, KC_RPRN, KC_LPRN, CS_ASTR,   CS_AT,  KC_ENT,
-    KC_LCTL, CS_BSLS, KC_PAUS,  KC_INS, KC_PSCR, C(KC_V), KC_TRNS,      KC_TRNS,      CS_GT, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
+     KC_TAB, KC_PAUS, KC_PGUP,   KC_UP, KC_PGDN,  KC_DEL,                            KC_EQL, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
+    KC_LSFT, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                             CS_LT, KC_RPRN, KC_LPRN, CS_ASTR,   CS_AT,  KC_ENT,
+    KC_LCTL, CS_BSLS, KC_HOME,  KC_INS,  KC_END, CS_UNDS, KC_TRNS,      KC_TRNS,      CS_GT, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
                       KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, LT(3,KC_0), KC_TRNS, CS_UNDS, KC_SLSH),
 
 [_DATA] = LAYOUT(
@@ -162,7 +163,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-#define NUM_LAYER_TIMEOUT 10000  //idle timeout in milliseconds
+#define IDLE_TIMEOUT 10000  //idle timeout in milliseconds
 
 bool is_alt_tab_active = false; //alt tabbing on rotary encoder
 uint16_t alt_tab_timer = 0;
@@ -174,20 +175,20 @@ uint16_t tabbing_timeout = 1250;
 
 void matrix_scan_user(void) {
     if (get_highest_layer(layer_state) == _NUMPAD) {
-        if (last_input_activity_elapsed() > NUM_LAYER_TIMEOUT) {
+        if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
             layer_off(_NUMPAD);
         }
     }
     else if (get_highest_layer(layer_state) == _FUNCTION) {
-        if (last_input_activity_elapsed() > NUM_LAYER_TIMEOUT) {
+        if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
             layer_off(_FUNCTION);
         }
     }
-//    else if (get_highest_layer(layer_state) == _MOUSE) {
-//        if (last_input_activity_elapsed() > NUM_LAYER_TIMEOUT) {
-//            layer_off(_MOUSE);
-//        }
-//    }
+    else if (get_highest_layer(layer_state) == _MOUSE) {
+        if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
+            layer_off(_MOUSE);
+        }
+    }
     if (is_alt_tab_active) {
         if (timer_elapsed(alt_tab_timer) > tabbing_timeout) {
             unregister_code(KC_LALT);
@@ -202,11 +203,10 @@ void matrix_scan_user(void) {
     }
 }
 
-bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(3, KC_SPC):
         case LT(4, KC_BSPC):
-//        case TT(6):
         case MT_A:
         case MT_S:
         case MT_D:
@@ -215,9 +215,13 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
         case MT_K:
         case MT_L:
         case MT_LBRC:
-            return true;
+        case OSM(MOD_LSFT): // disables locking shift
+            return 0;
+//        case TT(5):
+//        case OSM(MOD_LSFT):
+//            return TAPPING_TERM;
         default:
-            return false;
+            return TAPPING_TERM;
     }
 }
 
@@ -234,16 +238,17 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 }
 */
 
-
 /*
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case MT_A:
-            return 250;
-        case LT(3, KC_SPC):
-            return 100;
-        case LT(4, KC_BSPC):
-            return 100;
+//        case MT_A:
+//            return 250;
+//        case LT(3, KC_SPC):
+//            return 100;
+//        case LT(4, KC_BSPC):
+//            return 100;
+        case LT(0,SFT):
+            return 500;
         default:
             return TAPPING_TERM;
     }
@@ -592,73 +597,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     // Store the current modifier state in the variable for later reference
 //    mod_state = get_mods();
     switch (keycode) {
-//        case KC_BSPC:
-//        {
-//        // Initialize a boolean variable that keeps track
-//        // of the delete key status: registered or not?
-//        static bool delkey_registered;
-//        if (record->event.pressed) {
-//            // Detect the activation of either shift keys
-//            if (mod_state & MOD_MASK_SHIFT) {
-//                // First temporarily canceling both shifts so that
-//                // shift isn't applied to the KC_DEL keycode
-//                del_mods(MOD_MASK_SHIFT);
-//                register_code(KC_DEL);
-//                // Update the boolean variable to reflect the status of KC_DEL
-//                delkey_registered = true;
-//                // Reapplying modifier state so that the held shift key(s)
-//                // still work even after having tapped the Backspace/Delete key.
-//                set_mods(mod_state);
-//                return false;
-//            }
-//        } else { // on release of KC_BSPC
-//            // In case KC_DEL is still being sent even after the release of KC_BSPC
-//            if (delkey_registered) {
-//                unregister_code(KC_DEL);
-//                delkey_registered = false;
-//                return false;
-//            }
-//        }
-//        // Let QMK process the KC_BSPC keycode as usual outside of shift
-//        return true;
-//        }
-//
-//        case LT(4,KC_BSPC):
-//        {
-//            if (!record->tap.count && record->event.pressed) { // Intercept holds only
-//                layer_on(_SYMBOL);
-//            } else { // On keyup
-//                layer_off(_SYMBOL);
-//            }
-//            // Initialize a boolean variable that keeps track
-//            // of the delete key status: registered or not?
-//            static bool delkey_registered;
-//            if (record->event.pressed) {
-//                // Detect the activation of either shift keys
-//                if (mod_state & MOD_MASK_SHIFT) {
-//                    // First temporarily canceling both shifts so that
-//                    // shift isn't applied to the KC_DEL keycode
-//                    del_mods(MOD_MASK_SHIFT);
-//                    register_code(KC_DEL);
-//                    // Update the boolean variable to reflect the status of KC_DEL
-//                    delkey_registered = true;
-//                    // Reapplying modifier state so that the held shift key(s)
-//                    // still work even after having tapped the Backspace/Delete key.
-//                    set_mods(mod_state);
-//                    return false;
-//                }
-//            } else { // on release of KC_BSPC
-//                // In case KC_DEL is still being sent even after the release of KC_BSPC
-//                if (delkey_registered) {
-//                    unregister_code(KC_DEL);
-//                    delkey_registered = false;
-//                    return false;
-//                }
-//            }
-//            return true; // Return true for normal processing of unshifted BSPC
-//        }
-
-
         case KC_A:
         case MT_A:
             if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
@@ -804,7 +742,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 //            };
 //            break;
 
-
         case LT(3,REP):
         {
             if (!record->tap.count && record->event.pressed) { // Intercept holds only
@@ -819,11 +756,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             return false; // Return true for normal processing of key
         }
-
-
-
-
-
 
 //        case NEWSENT: 
 //            if (record->event.pressed) {
@@ -938,6 +870,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     }
     return true;
 }
+
+
+
+
+
+bool ONESHOT_SHIFT = true;
+void oneshot_mods_changed_user(uint8_t mods) {
+    if (mods & MOD_MASK_SHIFT) {
+        ONESHOT_SHIFT = true;
+    }
+    if (!mods) {
+        ONESHOT_SHIFT = false;
+    }
+}
+
+
+
+
 
 
 //layer_state_t layer_state_set_user(layer_state_t state) {
@@ -1067,7 +1017,7 @@ static void print_status_narrow(void) {
     oled_write_P(PSTR("_____\n"), false);
     oled_write_P(PSTR("G"), (get_mods() & MOD_BIT(KC_LGUI)) == MOD_BIT(KC_LGUI) || (get_mods() & MOD_BIT(KC_RGUI)) == MOD_BIT(KC_RGUI));
     oled_write_P(PSTR("A"), (get_mods() & MOD_BIT(KC_LALT)) == MOD_BIT(KC_LALT) || (get_mods() & MOD_BIT(KC_RALT)) == MOD_BIT(KC_RALT));
-    oled_write_P(PSTR("S"), (get_mods() & MOD_BIT(KC_LSFT)) == MOD_BIT(KC_LSFT) || (get_mods() & MOD_BIT(KC_RSFT)) == MOD_BIT(KC_RSFT));
+    oled_write_P(PSTR("S"), (get_mods() & MOD_BIT(KC_LSFT)) == MOD_BIT(KC_LSFT) || (get_mods() & MOD_BIT(KC_RSFT)) == MOD_BIT(KC_RSFT) || ONESHOT_SHIFT );
     oled_write_P(PSTR("C"), (get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL));
 }
 
