@@ -9,7 +9,7 @@
 - Number layer moves number row down to home row, with normal number row replaced with function keys.
 - Rotary encoders:
   - Left: Volume controls by default, history scrubbing when symbol, equation or navigation layers are active. Press to overlay function keys.
-  - Right: Window swapping by default, tab swapping when, equation or navigation layers are active. Press to overlay numpad on right side.
+  - Right: Window swapping by default, tab swapping when symbol, equation or navigation layers are active. Press to overlay numpad on right side.
 - Mouse emulation layer to reduce moving hands about on table; same position as arrow keys on navigation layer, scrolling underneath in vim layout.
 - Media control layer on left hand.
 - Combo to disable home row mods available.
