@@ -1,8 +1,5 @@
 #include QMK_KEYBOARD_H
 
-
-
-
 enum sofle_layers {
     _DEFAULT,
     _BASIC,
@@ -13,6 +10,7 @@ enum sofle_layers {
     _MEDIA,
     _FUNCTION,
     _NUMPAD,
+    _TOUHOU,
 };
 
 /*
@@ -51,18 +49,27 @@ enum custom_keycodes {
 //    CS_BSLS,
 };
 
+// Home row mods
+// #define MT_A LGUI_T(KC_A)
+// #define MT_S LALT_T(KC_S)
+// #define MT_D LSFT_T(KC_D)
+// #define MT_F LCTL_T(KC_F)
 
+// #define MT_J RCTL_T(KC_J)
+// #define MT_K RSFT_T(KC_K)
+// #define MT_L LALT_T(KC_L)
+// #define MT_LBRC RGUI_T(KC_LBRC)
 
-// mod-tap keys
-#define MT_A LGUI_T(KC_A)
-#define MT_S LALT_T(KC_S)
-#define MT_D LSFT_T(KC_D)
-#define MT_F LCTL_T(KC_F)
+// Home block mods
+#define MT_S LGUI_T(KC_S)
+#define MT_D LALT_T(KC_D)
+#define MT_F LSFT_T(KC_F)
+#define MT_C LCTL_T(KC_C)
 
-#define MT_J RCTL_T(KC_J)
-#define MT_K RSFT_T(KC_K)
-#define MT_L LALT_T(KC_L)
-#define MT_LBRC RGUI_T(KC_LBRC)
+#define MT_N RCTL_T(KC_N)
+#define MT_J RSFT_T(KC_J)
+#define MT_K LALT_T(KC_K)
+#define MT_L RGUI_T(KC_L)
 
 // ISO
 #define CS_AT KC_DQUO
@@ -73,15 +80,14 @@ enum custom_keycodes {
 
 
 
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_DEFAULT] = LAYOUT(
-           KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
-           KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
-    OSM(MOD_LSFT),    MT_A,    MT_S,    MT_D,    MT_F,    KC_G,                                      KC_H,    MT_J,    MT_K,    MT_L, MT_LBRC, KC_RBRC,
-          KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    KC_C,    KC_V,         TG(7),           TG(8),      KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                            KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC), LT(3,REP),   MO(5), CS_UNDS, KC_SLSH),
+       KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
+       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
+    LT(0,SFT),    KC_A,    MT_S,    MT_D,    MT_F,    KC_G,                                      KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
+      KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,    KC_V,         TG(7),           TG(8),      KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
+                            KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),   REP,   MO(5), CS_UNDS, KC_SLSH),
 
 [_BASIC] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
@@ -91,23 +97,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,      KC_BSPC, KC_TRNS, KC_TRNS, CS_UNDS, KC_SLSH),
 
 [_EDIT] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                              KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_DEL,
-     KC_TAB, KC_PAUS, KC_PGUP,   KC_UP, KC_PGDN,  KC_DEL,                            KC_EQL, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
-    KC_LSFT, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                             CS_LT, KC_RPRN, KC_LPRN, CS_ASTR,   CS_AT,  KC_ENT,
-    KC_LCTL, CS_BSLS, KC_HOME,  KC_INS,  KC_END, CS_UNDS, KC_TRNS,      KC_TRNS,      CS_GT, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, LT(3,KC_0), KC_TRNS, CS_UNDS, KC_SLSH),
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_DEL,
+     KC_TAB, KC_PAUS, KC_HOME,   KC_UP,  KC_END, KC_PGUP,                        KC_EQL, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
+    KC_LSFT, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                         CS_LT, KC_RPRN, KC_LPRN, CS_ASTR,   CS_AT,  KC_ENT,
+    KC_LCTL, CS_BSLS, C(KC_Z),  KC_INS, C(KC_Y), KC_PGDN, KC_TRNS,      KC_TRNS,  CS_GT, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_0,  KC_SPC, CS_UNDS, KC_SLSH),
 
 [_DATA] = LAYOUT(
-     KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-     KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        CS_PLUS, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
-    KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_ENT,
-    KC_LCTL, CS_BSLS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS, KC_MINS, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS,    KC_0, KC_TRNS, KC_TRNS, KC_TRNS),
+     KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+     KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        KC_EQL,    KC_7,    KC_8,    KC_9, CS_UNDS,  KC_DEL,
+    KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         CS_LT,    KC_4,    KC_5,    KC_6,    KC_0,  KC_ENT,
+    KC_LCTL, CS_BSLS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS,  CS_GT,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS,   KC_0,  KC_DOT, KC_TRNS, KC_TRNS),
 
 [_SYMBOL] = LAYOUT(
      KC_GRV, CS_EXLM, CS_DQUO, CS_POUN,  CS_DLR, CS_PERC,                        CS_CIRC, CS_AMPR, CS_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
-     KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        CS_PLUS, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
-    KC_LSFT, CS_PIPE,   CS_LT, KC_MINS,   CS_GT,  KC_EQL,                         KC_EQL, KC_RPRN, KC_LPRN, CS_ASTR,   CS_AT,  KC_ENT,
+     KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                         KC_EQL, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
+    KC_LSFT, CS_PIPE,   CS_LT, KC_MINS,   CS_GT,  KC_EQL,                        CS_PLUS, KC_RPRN, KC_LPRN, CS_ASTR,   CS_AT,  KC_ENT,
     KC_LCTL, CS_BSLS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS, KC_MINS, KC_RBRC, KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
                       KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
@@ -139,6 +145,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS,   KC_P1,   KC_P2,   KC_P3,  KC_EQL, KC_TRNS,
                       KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_P0,  KC_DOT, KC_TRNS, KC_TRNS),
 
+[_TOUHOU] = LAYOUT(
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS,   KC_UP, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS,                        KC_TRNS,    KC_Z,    KC_X, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+
 //[_NAVIGATION] = LAYOUT(
 //     KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
 //     KC_TAB, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_TRNS, KC_WH_L, KC_MS_U, KC_WH_R, KC_TRNS,  KC_DEL,
@@ -162,7 +175,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-
 #define IDLE_TIMEOUT 10000  //idle timeout in milliseconds
 
 bool is_alt_tab_active = false; //alt tabbing on rotary encoder
@@ -183,10 +195,15 @@ void matrix_scan_user(void) {
         if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
             layer_off(_FUNCTION);
         }
+//    else if (get_highest_layer(layer_state) == _MOUSE) {
+//    }
+//        if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
+//            layer_off(_MOUSE);
+//        }
     }
-    else if (get_highest_layer(layer_state) == _MOUSE) {
-        if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
-            layer_off(_MOUSE);
+    else if (get_highest_layer(layer_state) == _TOUHOU) {
+        if (last_input_activity_elapsed() > 900000) { //15 minute time out
+            layer_off(_TOUHOU);
         }
     }
     if (is_alt_tab_active) {
@@ -205,17 +222,19 @@ void matrix_scan_user(void) {
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(3, KC_SPC):
-        case LT(4, KC_BSPC):
-        case MT_A:
+        case LT(3,KC_SPC):
+        case LT(4,KC_BSPC):
+        case LT(3,KC_0):
         case MT_S:
         case MT_D:
         case MT_F:
+        case MT_C:
+        case MT_N:
         case MT_J:
         case MT_K:
         case MT_L:
-        case MT_LBRC:
-        case OSM(MOD_LSFT): // disables locking shift
+//        case OSM(MOD_LSFT): // disables locking shift
+        case LT(0,SFT):
             return 0;
 //        case TT(5):
 //        case OSM(MOD_LSFT):
@@ -238,7 +257,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 }
 */
 
-/*
+
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 //        case MT_A:
@@ -248,17 +267,18 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 //        case LT(4, KC_BSPC):
 //            return 100;
         case LT(0,SFT):
-            return 500;
+            return 100;
         default:
             return TAPPING_TERM;
     }
 }
-*/
+
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 //        case LT(3, KC_SPC):
 //        case LT(3, REP):
+        case LT(3,KC_0):
         case LT(4, KC_BSPC):
             // Immediately select the hold action when another key is pressed.
             return true;
@@ -272,7 +292,9 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 enum combo_events {
     CAPSLOCK,
     SCROLLLOCK,
-    HOMEROWMODTAPS,
+    NOMODS,
+    TOUHOU,
+//    SWAPSHIFT,
     LESSTHAN,
     GREATERTHAN,
     L_EXPONENT,
@@ -303,12 +325,17 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 
 const uint16_t PROGMEM capslock[] = {MT_D, MT_K, COMBO_END};
 const uint16_t PROGMEM scrolllock[] = {MT_F, MT_J, COMBO_END};
-const uint16_t PROGMEM homerowmodtaps[] = {CS_UNDS, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM nomods[] = {KC_ESC, CS_HASH, COMBO_END};
+//const uint16_t PROGMEM touhou[] = {KC_0, CS_HASH, KC_ESC, COMBO_END};
+//const uint16_t PROGMEM swapshift[] = {CS_UNDS, KC_SLSH, COMBO_END};
+
+// const uint16_t PROGMEM nomods[] = {CS_UNDS, KC_SLSH, COMBO_END};
+//const uint16_t PROGMEM touhou[] = {KC_LGUI, KC_LALT, COMBO_END};
 
 const uint16_t PROGMEM leftparen[] = {MT_S, KC_E, COMBO_END};
 const uint16_t PROGMEM rightparen[] = {KC_E, MT_F, COMBO_END};
 const uint16_t PROGMEM l_exponent[] = {MT_S, KC_E, MT_F, COMBO_END};
-const uint16_t PROGMEM l_asterisk[] = {MT_D, KC_C, COMBO_END};
+const uint16_t PROGMEM l_asterisk[] = {MT_D, MT_C, COMBO_END};
 const uint16_t PROGMEM l_comma[] = {MT_F, KC_V, COMBO_END};
 
 //const uint16_t PROGMEM forwardslash[] = {MT_S, KC_E, KC_R, COMBO_END};
@@ -316,9 +343,9 @@ const uint16_t PROGMEM l_comma[] = {MT_F, KC_V, COMBO_END};
 
 const uint16_t PROGMEM l_equals[] = {KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM l_plus[] = {MT_D, MT_F, COMBO_END};
-const uint16_t PROGMEM l_underscore[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM l_underscore[] = {KC_X, MT_C, COMBO_END};
 const uint16_t PROGMEM l_minus[] = {MT_F, KC_G, COMBO_END};
-const uint16_t PROGMEM l_dot[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM l_dot[] = {MT_C, KC_V, COMBO_END};
 
 const uint16_t PROGMEM bar[] = {KC_R, KC_T, COMBO_END};
 const uint16_t PROGMEM at[] = {KC_R, KC_G, COMBO_END};
@@ -329,7 +356,7 @@ const uint16_t PROGMEM at[] = {KC_R, KC_G, COMBO_END};
 const uint16_t PROGMEM lessthan[] = {MT_J, KC_I, COMBO_END};
 const uint16_t PROGMEM greaterthan[] = {KC_I, MT_L, COMBO_END};
 const uint16_t PROGMEM r_exponent[] = {MT_J, KC_I, MT_L, COMBO_END};
-const uint16_t PROGMEM r_asterisk[] = {KC_N, MT_K, COMBO_END};
+const uint16_t PROGMEM r_asterisk[] = {MT_N, MT_K, COMBO_END};
 const uint16_t PROGMEM r_comma[] = {KC_B, MT_J, COMBO_END};
 
 //const uint16_t PROGMEM dot[] = {MT_J, KC_I, KC_O, COMBO_END};
@@ -337,9 +364,9 @@ const uint16_t PROGMEM r_comma[] = {KC_B, MT_J, COMBO_END};
 
 const uint16_t PROGMEM r_equals[] = {KC_U, KC_I, COMBO_END};
 const uint16_t PROGMEM r_plus[] = {MT_J, MT_K, COMBO_END};
-const uint16_t PROGMEM r_underscore[] = {KC_N, KC_M, COMBO_END};
+const uint16_t PROGMEM r_underscore[] = {MT_N, KC_M, COMBO_END};
 const uint16_t PROGMEM r_minus[] = {KC_H, MT_J, COMBO_END};
-const uint16_t PROGMEM r_dot[] = {KC_B, KC_N, COMBO_END};
+const uint16_t PROGMEM r_dot[] = {KC_B, MT_N, COMBO_END};
 
 const uint16_t PROGMEM colon[] = {KC_Y, KC_U, COMBO_END};
 const uint16_t PROGMEM semicolon[] = {KC_H, KC_U, COMBO_END};
@@ -351,7 +378,7 @@ const uint16_t PROGMEM semicolon[] = {KC_H, KC_U, COMBO_END};
 combo_t key_combos[] = {
     COMBO(capslock, KC_CAPS),
     COMBO(scrolllock, KC_SCRL),
-    COMBO(homerowmodtaps, TG(1)),
+    COMBO(nomods, TG(1)),
     COMBO(lessthan, KC_LT),
     COMBO(greaterthan, KC_GT),
     COMBO(l_exponent, KC_CIRC),
@@ -378,7 +405,8 @@ combo_t key_combos[] = {
 combo_t key_combos[] = {
     [CAPSLOCK] = COMBO_ACTION(capslock),
     [SCROLLLOCK] = COMBO_ACTION(scrolllock),
-    [HOMEROWMODTAPS] = COMBO_ACTION(homerowmodtaps),
+    [NOMODS] = COMBO_ACTION(nomods),
+//    [SWAPSHIFT] = COMBO_ACTION(swapshift),
     [LEFTPAREN] = COMBO_ACTION(leftparen),
     [RIGHTPAREN] = COMBO_ACTION(rightparen),
     [L_EXPONENT] = COMBO_ACTION(l_exponent),
@@ -405,6 +433,7 @@ combo_t key_combos[] = {
     [SEMICOLON] = COMBO_ACTION(semicolon),
 };
 
+//bool OSMstate = true;
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
     switch(combo_index) {
@@ -418,11 +447,25 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
                 tap_code(KC_SCRL);
             }
             break;
-        case HOMEROWMODTAPS:
+        case NOMODS:
             if (pressed) {
-                layer_invert(_BASIC);
+                if (layer_state_is(_DEFAULT)) {
+                    layer_move(_BASIC);
+                }
+                else if (layer_state_is(_BASIC)) {
+                    layer_move(_TOUHOU);
+                }
+                else if (layer_state_is(_TOUHOU)) {
+                    layer_move(_DEFAULT);
+                }
             }
             break;
+//        case SWAPSHIFT:
+//            if (pressed) {
+//                OSMstate = !OSMstate;
+//                oneshot_toggle();
+//            }
+//            break;
         case LEFTPAREN:
             if (pressed) {
                 tap_code16(KC_LPRN);
@@ -547,10 +590,11 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     }
 }
 
-
-
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     switch (combo_index) {
+        case NOMODS:
+            return true;
+            break;
         case CAPSLOCK:
         case SCROLLLOCK:
         //left hand
@@ -561,9 +605,11 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
         case L_COMMA:
         case L_EQUALS:
         case L_PLUS:
-        case L_MINUS:
         case L_UNDERSCORE:
+        case L_MINUS:
         case L_DOT:
+        case AT:
+        case BAR:
         //right hand
         case LEFTPAREN:
         case RIGHTPAREN:
@@ -572,190 +618,216 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
         case R_COMMA:
         case R_EQUALS:
         case R_PLUS:
-        case R_MINUS:
         case R_UNDERSCORE:
+        case R_MINUS:
         case R_DOT:
-            if (layer_state_is(_BASIC) || layer_state_is(_EDIT) || layer_state_is(_SYMBOL) || layer_state_is(_MEDIA) || layer_state_is(_MOUSE)) {
+        case COLON:
+        case SEMICOLON:
+            if (layer_state_is(_BASIC) || layer_state_is(_TOUHOU) || layer_state_is(_MOUSE)) {
                 return false;
             }
             break;
-        case HOMEROWMODTAPS:
-            return true;
-            break;
+//        case SWAPSHIFT:
+//            if (!(layer_state_is(_DEFAULT))) {
+//                return false;
+//            }
+//            break;
     }
     return true;
 }
 
+bool no_ctrl(void) {
+    return !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL));
+}
 
 // Store last key
 uint16_t lastkey = KC_NO;
-// Store mute state.
+// Store mute state
 bool muted = false;
-// Binary representation of active modifiers.
+// Binary representation of active modifiers
 uint8_t mod_state;
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     // Store the current modifier state in the variable for later reference
 //    mod_state = get_mods();
     switch (keycode) {
         case KC_A:
-        case MT_A:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+        // case MT_A:
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_A;
             }
             break;
         case KC_B:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_B;
             }
             break;
         case KC_C:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+        case MT_C:
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_C;
             }
             break;
         case KC_D:
         case MT_D:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_D;
             }
             break;
         case KC_E:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_E;
             }
             break;
         case KC_F:
         case MT_F:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_F;
             }
             break;
         case KC_G:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_G;
             }
             break;
         case KC_H:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_H;
             }
             break;
         case KC_I:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_I;
             }
             break;
         case KC_J:
         case MT_J:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_J;
             }
             break;
         case KC_K:
         case MT_K:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_K;
             }
             break;
         case KC_L:
         case MT_L:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_L;
             }
             break;
         case KC_M:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_M;
             }
             break;
         case KC_N:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+        case MT_N:
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_N;
             }
             break;
         case KC_O:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_O;
             }
             break;
         case KC_P:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_P;
             }
             break;
         case KC_Q:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_Q;
             }
             break;
         case KC_R:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_R;
             }
             break;
         case KC_S:
         case MT_S:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_S;
             }
             break;
         case KC_T:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_T;
             }
             break;
         case KC_U:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_U;
             }
             break;
         case KC_V:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_V;
             }
             break;
         case KC_W:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_W;
             }
             break;
         case KC_X:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_X;
             }
             break;
         case KC_Y:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_Y;
             }
             break;
         case KC_Z:
-            if (record->event.pressed && !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL))) {
+            if (record->event.pressed && no_ctrl()) {
                 lastkey = KC_Z;
             }
             break;
-//        case REPEAT:
-//            if (record->event.pressed) {
-//                register_code(lastkey);
-//            } else {
-//                unregister_code(lastkey);
-//            };
-//            break;
 
-        case LT(3,REP):
-        {
-            if (!record->tap.count && record->event.pressed) { // Intercept holds only
-                layer_on(_DATA);
-            } else { // On keyup
-                layer_off(_DATA);
-            }
-            if (record->tap.count && record->event.pressed) { // Intercept taps
+        case REP:
+            if (record->event.pressed) {
                 register_code(lastkey);
             } else {
                 unregister_code(lastkey);
+            };
+            break;
+
+        // case LT(3,REP):
+        // {
+        //     if (!record->tap.count && record->event.pressed) { // Intercept holds only
+        //         layer_on(_DATA);
+        //     } else { // On keyup
+        //         layer_off(_DATA);
+        //     }
+        //     if (record->tap.count && record->event.pressed) { // Intercept taps
+        //         register_code(lastkey);
+        //     } else {
+        //         unregister_code(lastkey);
+        //     }
+        //     return false; // Return true for normal processing of key
+        // }
+
+        case LT(0,SFT):
+        {
+            if (!record->tap.count && record->event.pressed) { // Intercept holds only
+                register_mods(MOD_MASK_SHIFT);
+            } else { // On keyup
+                unregister_mods(MOD_MASK_SHIFT);
+            }
+            if (record->tap.count && record->event.pressed) { // Intercept taps
+                set_oneshot_mods(MOD_BIT(KC_LSFT));
+            } else {
+                /* intentionally empty */;
             }
             return false; // Return true for normal processing of key
         }
+
 
 //        case NEWSENT: 
 //            if (record->event.pressed) {
@@ -945,33 +1017,89 @@ static void render_logo(void) {
 }
 
 
-static void print_status_narrow(void) {
-    // Print current mode
+//void render_mode(void) {
 //    oled_write_ln_P(PSTR("MODE"), false);
 //    oled_write_ln_P(PSTR(""), false);
 //    if (keymap_config.swap_lctl_lgui) {
 //        oled_write_ln_P(PSTR("MAC"), false);
 //    } else {
 //        oled_write_ln_P(PSTR("WIN"), false);
-    //    }
+//    }
+//}
 
-    // wpm counter 
+void render_wpm(void) {
     //oled_write_ln_P(PSTR("WPM\n"), false);
     uint8_t n = get_current_wpm();
-    char    wpm_str[4];
-    oled_set_cursor(0, 0);//column, row
-    wpm_str[3] = '\0';
-    wpm_str[2] = '0' + n % 10;
-    wpm_str[1] = '0' + (n /= 10) % 10;
-    wpm_str[0] = '0' + n / 10;
-    oled_write(wpm_str, false);
+    //oled_set_cursor(0, 0);//column, row
+    char render_str[4];
+    render_str[3] = '\0';
+    render_str[2] = '0' + n % 10;
+    render_str[1] = '0' + (n /= 10) % 10;
+    render_str[0] = '0' + n / 10;
 
 
 
+//    char render_str0[4];
+//    render_str0[3] = '\0';
+//    render_str0[2] = '0'+ n%10;
+//    render_str0[1] = '0' + (n /= 10)%10;
+//    render_str0[0] = '0' + n/10 ;
 
-    oled_write_P(PSTR("\n_____\n"), false);
-    // Print current layer
-    oled_write_ln_P(PSTR("LAYER"), false);
+//    char* render_str;
+//    if(render_str0[0] == '0'){
+//        render_str = &render_str0[1];
+//        if(render_str0[1] == '0'){
+//            render_str = &render_str0[1];
+//            if(render_str0[2] == '0'){
+//                render_str = &render_str0[1];
+//            }
+//        }
+//    }else {render_str = render_str0;}
+
+
+
+// Left align
+//    render_str[3] = '\0';
+//    if (0<=n && n<10) {
+//        render_str[2] = ' ';
+//        render_str[1] = ' ';
+//        render_str[0] = '0' + n % 10;
+//    }
+//    else if (10<=n && n<100) {
+//        render_str[2] = ' ';
+//        render_str[1] = '0' + n % 10;
+//        render_str[0] = '0' + (n /= 10) % 10;
+//    }
+//    else {
+//        render_str[2] = '0' + n % 10;
+//        render_str[1] = '0' + (n /= 10) % 10;
+//        render_str[0] = '0' + n / 10;
+//    }
+
+
+
+// Left align + no output when WPM = 0
+//    render_str[3] = '\0';
+//    render_str[2] = '0'+ n%10;
+//    render_str[1] = '0' + (n /= 10)%10;
+//    render_str[0] = '0' + n/10 ;
+//    
+//    while(render_str[0] == '0'){
+//        render_str[0] = render_str[1];
+//        render_str[1] = render_str[2];
+//        render_str[2] = render_str[3];
+//        render_str[3] = ' ';
+//    }
+
+    oled_write(render_str, false);
+    oled_write_P(PSTR("\n"), false);
+}
+
+void render_linebreak(void) {
+    oled_write_P(PSTR("_____\n"), false);
+}
+
+void render_layer(void) {
     switch (get_highest_layer(layer_state)) {
         case _DEFAULT:
             oled_write_P(PSTR("Std.\n"), false);
@@ -1003,22 +1131,39 @@ static void print_status_narrow(void) {
         case _FUNCTION:
             oled_write_P(PSTR("F.Key"), false);
             break;
+        case _TOUHOU:
+            oled_write_P(PSTR("ToHo."), false);
+            break;
         default:
             oled_write_ln_P(PSTR("Undef"), false);
     }
-    oled_write_P(PSTR("_____\n"), false);
-    led_t led_usb_state = host_keyboard_led_state();
+}
+
+void render_locking_key_state(led_t led_usb_state) {
     oled_write_P(PSTR("CPSLK"), led_usb_state.caps_lock);
     oled_write_P(PSTR("NUMLK"), led_usb_state.num_lock);
     oled_write_P(PSTR("SCRLK"), led_usb_state.scroll_lock);
-    
     oled_write_P(PSTR("MUTED"), muted);
+}
 
-    oled_write_P(PSTR("_____\n"), false);
+void render_modifier_state(void) {
     oled_write_P(PSTR("G"), (get_mods() & MOD_BIT(KC_LGUI)) == MOD_BIT(KC_LGUI) || (get_mods() & MOD_BIT(KC_RGUI)) == MOD_BIT(KC_RGUI));
     oled_write_P(PSTR("A"), (get_mods() & MOD_BIT(KC_LALT)) == MOD_BIT(KC_LALT) || (get_mods() & MOD_BIT(KC_RALT)) == MOD_BIT(KC_RALT));
     oled_write_P(PSTR("S"), (get_mods() & MOD_BIT(KC_LSFT)) == MOD_BIT(KC_LSFT) || (get_mods() & MOD_BIT(KC_RSFT)) == MOD_BIT(KC_RSFT) || ONESHOT_SHIFT );
     oled_write_P(PSTR("C"), (get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL));
+//    oled_write_P(PSTR("O"), OSMstate);
+}
+
+static void render_status(void) {
+    oled_write_ln_P(PSTR("LAYER"), false);
+    render_layer();
+    render_linebreak();
+    oled_write_P(PSTR("WPM:\n"), false);
+    render_wpm();
+    render_linebreak();
+    render_locking_key_state(host_keyboard_led_state());
+    render_linebreak();
+    render_modifier_state();
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -1030,9 +1175,10 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
-        print_status_narrow();
+        render_status();
     } else {
         render_logo();
+        oled_scroll_right();
     }
     return false;
 }
