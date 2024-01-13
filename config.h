@@ -20,7 +20,7 @@
 // Timer for mod and layer taps
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
-//#define TAPPING_TERM_PER_KEY
+#define TAPPING_TERM_PER_KEY
 
 // Superceded by hold on other key press
 //#define PERMISSIVE_HOLD
@@ -85,6 +85,5 @@
 //#define NO_ACTION_ONESHOT
 #define NO_MUSIC_MODE
 #define NO_ALT_REPEAT_KEY
-//#define LAYER_STATE_8BIT
-//saves space, but only supports 7 layers or fewer
+#define LAYER_STATE_16BIT
 
