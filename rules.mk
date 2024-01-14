@@ -15,6 +15,7 @@ EXTRAKEY_ENABLE = yes # Audio control and System control
 # REPEAT_KEY_ENABLE = yes
 
 
+# include "quantum.h"
 
 
 

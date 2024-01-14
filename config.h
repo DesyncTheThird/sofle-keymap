@@ -7,12 +7,12 @@
 #undef TAPPING_TOGGLE
 #define TAPPING_TOGGLE 2
 
-//#undef ONESHOT_TAP_TOGGLE
-//#define ONESHOT_TAP_TOGGLE 5
+// #undef ONESHOT_TAP_TOGGLE
+// #define ONESHOT_TAP_TOGGLE 5
 #undef ONESHOT_TIMEOUT
 #define ONESHOT_TIMEOUT 1000
 
-//#define COMBO_COUNT 23
+// #define COMBO_COUNT 23
 #define COMBO_TERM 20 //Combo timer
 #define COMBO_SHOULD_TRIGGER
 #define COMBO_ONLY_FROM_LAYER 0
@@ -23,28 +23,28 @@
 #define TAPPING_TERM_PER_KEY
 
 // Superceded by hold on other key press
-//#define PERMISSIVE_HOLD
-//#define PERMISSIVE_HOLD_PER_KEY
+// #define PERMISSIVE_HOLD
+// #define PERMISSIVE_HOLD_PER_KEY
 
 // Perform hold action if other keys are pressed.
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 // Disable repeating tap function on tap-hold keys.
-//#define QUICK_TAP_TERM 0
+// #define QUICK_TAP_TERM 0
 #define QUICK_TAP_TERM_PER_KEY
 
 // N-key rollover
 #define FORCE_NKRO
 
 // Auto Shift
-//#define NO_AUTO_SHIFT_ALPHA
-//#define NO_AUTO_SHIFT_NUMERIC
-//#define NO_AUTO_SHIFT_SPECIAL
-//#define AUTO_SHIFT_TIMEOUT TAPPING_TERM
-//#define AUTO_SHIFT_NO_SETUP
+// #define NO_AUTO_SHIFT_ALPHA
+// #define NO_AUTO_SHIFT_NUMERIC
+// #define NO_AUTO_SHIFT_SPECIAL
+// #define AUTO_SHIFT_TIMEOUT TAPPING_TERM
+// #define AUTO_SHIFT_NO_SETUP
 
 // Auto Shift for modtaps
-//#define RETRO_SHIFT 500 
+// #define RETRO_SHIFT 500 
 
 // Mouse key speed and acceleration.
 #undef MOUSEKEY_DELAY
@@ -69,7 +69,7 @@
 
 
 // Makes GESC key output escape while ctrl is held
-//#define GRAVE_ESC_CTRL_OVERRIDE
+// #define GRAVE_ESC_CTRL_OVERRIDE
 
 #define OLED_FONT_H "keyboards/sofle/keymaps/desync/font.c"
 
@@ -82,8 +82,8 @@
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 
-//#define NO_ACTION_ONESHOT
+// #define NO_ACTION_ONESHOT
 #define NO_MUSIC_MODE
 #define NO_ALT_REPEAT_KEY
-#define LAYER_STATE_16BIT
+#define LAYER_STATE_8BIT
 

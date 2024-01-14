@@ -8,8 +8,8 @@ enum sofle_layers {
     _SYMBOL,
     _MOUSE,
     _MEDIA,
-    _FUNCTION,
-    _NUMPAD,
+    // _FUNCTION,
+    // _NUMPAD,
     _TOUHOU,
 };
 
@@ -27,8 +27,8 @@ enum custom_keycodes {
     SYMBOL,
     MOUSE,
     MEDIA,
-    FUNCTION,
-    NUMPAD,
+    // FUNCTION,
+    // NUMPAD,
     SELECT,
     MUTE,
     CS_COLN,
@@ -75,6 +75,9 @@ enum custom_keycodes {
 #define MT_K LALT_T(KC_K)
 #define MT_L RGUI_T(KC_L)
 
+#define MT_RBRC LCTL_T(KC_RBRC)
+
+
 // ISO
 #define CS_AT KC_DQUO
 #define CS_DQUO KC_AT
@@ -87,11 +90,11 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_DEFAULT] = LAYOUT(
-       KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
-       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
-    LT(0,SFT),    KC_A,    MT_S,    MT_D,    MT_F,    KC_G,                                      KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
-      KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,    KC_V,         TG(7),           TG(8),      KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                            KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),   REP,   MO(5), CS_UNDS, KC_SLSH),
+       KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                  KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
+       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
+    LT(0,SFT),    KC_A,    MT_S,    MT_D,    MT_F,    KC_G,                                  KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
+      KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,    KC_V,          MUTE,           KC_NO,  KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
+                        KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),   REP,   MO(5), CS_UNDS, KC_SLSH),
 
 [_BASIC] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
@@ -101,18 +104,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,      KC_BSPC, KC_TRNS, KC_TRNS, CS_UNDS, KC_SLSH),
 
 [_EDIT] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_DEL,
-     KC_TAB, KC_PAUS, KC_HOME,   KC_UP,  KC_END, KC_BSPC,                        KC_EQL, KC_RCBR, KC_LCBR, CS_CIRC, CS_UNDS,  KC_DEL,
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,          KC_9,    KC_0,  KC_DEL,
+     KC_TAB, KC_PAUS, KC_HOME,   KC_UP,  KC_END, KC_CAPS,                        KC_EQL, KC_RCBR, KC_LCBR,       CS_CIRC, CS_UNDS,  KC_DEL,
     KC_LSFT, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                         CS_LT, LT(0,MT_RPRN), LT(0,MT_LPRN), LT(0,MT_ASTR),   CS_AT,  KC_ENT,
-    KC_LCTL, KC_TRNS, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS,  CS_GT, LT(0,MT_RBRC), KC_LBRC, KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_0,  KC_SPC, CS_UNDS, KC_SLSH),
+    KC_LCTL, KC_SCRL, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS,  CS_GT, MT_RBRC, KC_LBRC,       KC_QUES, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_0,  KC_SPC, CS_UNDS,       KC_SLSH),
 
 [_DATA] = LAYOUT(
      KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-     KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        KC_EQL,    KC_7,    KC_8,    KC_9, CS_UNDS,  KC_DEL,
-    KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         CS_LT,    KC_4,    KC_5,    KC_6,    KC_0,  KC_ENT,
-    KC_LCTL, KC_TRNS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS,  CS_GT,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS,   KC_0,  KC_DOT, KC_TRNS, KC_TRNS),
+     KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        KC_EQL,   KC_P7,   KC_P8,   KC_P9, CS_UNDS,  KC_DEL,
+    KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         CS_LT,   KC_P4,   KC_P5,   KC_P6,   CS_AT,  KC_ENT,
+    KC_LCTL,  KC_NUM, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS,  CS_GT,   KC_P1,   KC_P2,   KC_P3, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS,  KC_P0,  KC_DOT, KC_TRNS, KC_TRNS),
 
 [_SYMBOL] = LAYOUT(
      KC_GRV, CS_EXLM, CS_DQUO, CS_POUN,  CS_DLR, CS_PERC,                        CS_CIRC, CS_AMPR, CS_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
@@ -129,25 +132,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_LGUI, KC_LALT, KC_BTN3, KC_BTN2,  KC_BTN1,     KC_TRNS, KC_TRNS,   TG(5), KC_TRNS, KC_TRNS),
 
 [_MEDIA] = LAYOUT(
-     KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-     KC_TAB, KC_TRNS, KC_MSTP, KC_VOLU, KC_MPLY, KC_TRNS,                        KC_TRNS, KC_MPLY, KC_VOLU, KC_MSTP, KC_TRNS, KC_TRNS,
+    KC_TRNS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+     KC_TAB, KC_TRNS, KC_MSTP, KC_VOLU, KC_MPLY, KC_TRNS,                        KC_TRNS, KC_MPLY, KC_VOLU, KC_MSTP, KC_TRNS,  KC_F12,
     KC_LSFT, KC_TRNS, KC_MPRV, KC_VOLD, KC_MNXT, KC_TRNS,                        KC_TRNS, KC_MNXT, KC_VOLD, KC_MPRV, KC_TRNS, KC_TRNS,
     KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                       KC_LGUI, KC_LALT, KC_MSTP,    MUTE, KC_MPLY,      KC_MPLY,    MUTE, KC_MSTP, KC_TRNS, KC_TRNS),
 
-[_FUNCTION] = LAYOUT(
-    KC_TRNS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_F12,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+// [_FUNCTION] = LAYOUT(
+//     KC_TRNS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+//     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_F12,
+//     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+//     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+//                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
-[_NUMPAD] = LAYOUT(
-     KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,  KC_NUM, KC_SLSH, KC_ASTR, KC_MINS, KC_TRNS,
-     KC_TAB, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,   KC_P7,   KC_P8,   KC_P9, KC_PLUS, KC_TRNS,
-    KC_LSFT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,   KC_P4,   KC_P5,   KC_P6, KC_COMM, KC_TRNS,
-    KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS,   KC_P1,   KC_P2,   KC_P3,  KC_EQL, KC_TRNS,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_P0,  KC_DOT, KC_TRNS, KC_TRNS),
+// [_NUMPAD] = LAYOUT(
+//      KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,  KC_NUM, KC_SLSH, KC_ASTR, KC_MINS, KC_TRNS,
+//      KC_TAB, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,   KC_P7,   KC_P8,   KC_P9, KC_PLUS, KC_TRNS,
+//     KC_LSFT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,   KC_P4,   KC_P5,   KC_P6, KC_COMM, KC_TRNS,
+//     KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS,   KC_P1,   KC_P2,   KC_P3,  KC_EQL, KC_TRNS,
+//                       KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_P0,  KC_DOT, KC_TRNS, KC_TRNS),
 
 [_TOUHOU] = LAYOUT(
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -179,7 +182,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-#define IDLE_TIMEOUT 10000  //idle timeout in milliseconds
+// #define IDLE_TIMEOUT 10000  //idle timeout in milliseconds
 
 bool is_alt_tab_active = false; //alt tabbing on rotary encoder
 uint16_t alt_tab_timer = 0;
@@ -190,22 +193,22 @@ uint16_t ctrl_tab_timer = 0;
 uint16_t tabbing_timeout = 1250;
 
 void matrix_scan_user(void) {
-    if (get_highest_layer(layer_state) == _NUMPAD) {
-        if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
-            layer_off(_NUMPAD);
-        }
-    }
-    else if (get_highest_layer(layer_state) == _FUNCTION) {
-        if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
-            layer_off(_FUNCTION);
-        }
+    // if (get_highest_layer(layer_state) == _NUMPAD) {
+    //     if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
+    //         layer_off(_NUMPAD);
+    //     }
+    // }
+    // else if (get_highest_layer(layer_state) == _FUNCTION) {
+    //     if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
+    //         layer_off(_FUNCTION);
+    //     }
 //    else if (get_highest_layer(layer_state) == _MOUSE) {
 //    }
 //        if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
 //            layer_off(_MOUSE);
 //        }
-    }
-    else if (get_highest_layer(layer_state) == _TOUHOU) {
+    // }
+    if (get_highest_layer(layer_state) == _TOUHOU) {
         if (last_input_activity_elapsed() > 900000) { //15 minute time out
             layer_off(_TOUHOU);
         }
@@ -294,8 +297,8 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 
 
 enum combo_events {
-    CAPSLOCK,
-    SCROLLLOCK,
+    // CAPSLOCK,
+    // SCROLLLOCK,
     NOMODS,
     TOUHOU,
     LESSTHAN,
@@ -326,8 +329,8 @@ enum combo_events {
 };
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
-const uint16_t PROGMEM capslock[] = {MT_D, MT_K, COMBO_END};
-const uint16_t PROGMEM scrolllock[] = {MT_F, MT_J, COMBO_END};
+// const uint16_t PROGMEM capslock[] = {MT_D, MT_K, COMBO_END};
+// const uint16_t PROGMEM scrolllock[] = {MT_F, MT_J, COMBO_END};
 const uint16_t PROGMEM nomods[] = {KC_0, CS_HASH, COMBO_END};
 const uint16_t PROGMEM touhou[] = {KC_0, CS_HASH, KC_ESC, COMBO_END};
 
@@ -405,8 +408,8 @@ combo_t key_combos[] = {
 */
 
 combo_t key_combos[] = {
-    [CAPSLOCK] = COMBO_ACTION(capslock),
-    [SCROLLLOCK] = COMBO_ACTION(scrolllock),
+    // [CAPSLOCK] = COMBO_ACTION(capslock),
+    // [SCROLLLOCK] = COMBO_ACTION(scrolllock),
     [NOMODS] = COMBO_ACTION(nomods),
     [TOUHOU] = COMBO_ACTION(touhou),
     [LEFTPAREN] = COMBO_ACTION(leftparen),
@@ -437,16 +440,16 @@ combo_t key_combos[] = {
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
     switch(combo_index) {
-        case CAPSLOCK:
-            if (pressed) {
-                tap_code(KC_CAPS);
-            }
-            break;
-        case SCROLLLOCK:
-            if (pressed) {
-                tap_code(KC_SCRL);
-            }
-            break;
+        // case CAPSLOCK:
+        //     if (pressed) {
+        //         tap_code(KC_CAPS);
+        //     }
+        //     break;
+        // case SCROLLLOCK:
+        //     if (pressed) {
+        //         tap_code(KC_SCRL);
+        //     }
+        //     break;
         case NOMODS:
             if (pressed) {
                 if (layer_state_is(_BASIC) || layer_state_is(_TOUHOU)) {
@@ -598,8 +601,8 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
             return true;
             break;
 
-        case CAPSLOCK:
-        case SCROLLLOCK:
+        // case CAPSLOCK:
+        // case SCROLLLOCK:
         
         //left hand
         case LESSTHAN:
@@ -628,7 +631,7 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
         case R_DOT:
         case COLON:
         case SEMICOLON:
-            if (layer_state_is(_BASIC) || layer_state_is(_TOUHOU) || layer_state_is(_MOUSE)) {
+            if (layer_state_is(_BASIC) || layer_state_is(_TOUHOU) || layer_state_is(_MOUSE) || layer_state_is(_EDIT)) {
                 return false;
             }
             break;
@@ -646,10 +649,66 @@ bool no_ctrl(void) {
     return !((get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL));
 }
 
-// #include "features/select_word.h"
+enum { STATE_NONE, STATE_SELECTED, STATE_WORD, STATE_FIRST_LINE, STATE_LINE };
+bool process_select_word(uint16_t keycode, keyrecord_t* record, uint16_t sel_keycode) {
+    static uint8_t state = STATE_NONE;
+
+    if (keycode == KC_LSFT || keycode == KC_RSFT || keycode == MO(2)) {
+        return true;
+    }
+
+    if (keycode == sel_keycode && record->event.pressed) {  // On key press.
+        const uint8_t mods = get_mods();
+        const uint8_t all_mods = mods;
+        if ((all_mods & MOD_MASK_SHIFT) == 0) {  // Select word.
+            register_code(KC_LCTL);
+            if (state == STATE_NONE) {
+                SEND_STRING(SS_TAP(X_RGHT) SS_TAP(X_LEFT));
+            }
+            register_code(KC_LSFT);
+            register_code(KC_RGHT);
+            state = STATE_WORD;
+        } else {  // Select line.
+            if (state == STATE_NONE) {
+                clear_mods();
+                SEND_STRING(SS_TAP(X_HOME) SS_LSFT(SS_TAP(X_END)));
+                set_mods(mods);
+                state = STATE_FIRST_LINE;
+            } else {
+                register_code(KC_DOWN);
+                state = STATE_LINE;
+            }
+        }
+        return false;
+    }
+
+    // `sel_keycode` was released, or another key was pressed.
+    switch (state) {
+        case STATE_WORD:
+            unregister_code(KC_RGHT);
+            unregister_code(KC_LSFT);
+            unregister_code(KC_LCTL);
+            state = STATE_SELECTED;
+            break;
+
+        case STATE_FIRST_LINE:
+            state = STATE_SELECTED;
+            break;
+
+        case STATE_LINE:
+            unregister_code(KC_DOWN);
+            state = STATE_SELECTED;
+            break;
+
+        case STATE_SELECTED:
+        default:
+        state = STATE_NONE;
+    }
+    return true;
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-    // if (!process_select_word(keycode, record, SELWORD)) { return false; }
+    if (!process_select_word(keycode, record, SELECT)) { return false; }
     switch (keycode) {
         case KC_A:
         // case MT_A:
@@ -844,7 +903,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             } else {
                 unregister_code(KC_MUTE);
             }
-        break;
+            break;
 
 
 
@@ -854,120 +913,92 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 unregister_code16(KC_COLN);
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
+            break;
         case CS_UNDS:
             if (record->event.pressed) {
                 register_code16(KC_UNDS);
                 unregister_code16(KC_UNDS);
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
+            break;
         case CS_PIPE:
             if (record->event.pressed) {
                 register_code16(LSFT(KC_NUBS));
                 unregister_code16(LSFT(KC_NUBS));
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
-
+            break;
         case CS_LT:
             if (record->event.pressed) {
                 register_code16(KC_LT);
                 unregister_code16(KC_LT);
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
+            break;
         case CS_GT:
             if (record->event.pressed) {
                 register_code16(KC_GT);
                 unregister_code16(KC_GT);
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
+            break;
         case CS_PERC:
             if (record->event.pressed) {
                 register_code16(KC_PERC);
                 unregister_code16(KC_PERC);
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
+            break;
         case CS_ASTR:
             if (record->event.pressed) {
                 register_code16(KC_ASTR);
                 unregister_code16(KC_ASTR);
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
+            break;
         case CS_DLR:
             if (record->event.pressed) {
                 register_code16(KC_DLR);
                 unregister_code16(KC_DLR);
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
+            break;
         case CS_AMPR:
             if (record->event.pressed) {
                 register_code16(KC_AMPR);
                 unregister_code16(KC_AMPR);
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
+            break;
         case CS_CIRC:
             if (record->event.pressed) {
                 register_code16(KC_CIRC);
                 unregister_code16(KC_CIRC);
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
+            break;
         case CS_EXLM:
             if (record->event.pressed) {
                 register_code16(KC_EXLM);
                 unregister_code16(KC_EXLM);
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
+            break;
         case CS_TILD:
             if (record->event.pressed) {
                 register_code16(S(KC_NUHS));
                 unregister_code16(S(KC_NUHS));
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
+            break;
         case CS_PLUS:
             if (record->event.pressed) {
                 register_code16(KC_PLUS);
                 unregister_code16(KC_PLUS);
                 unregister_mods(MOD_MASK_SHIFT);
             }
-        break;
+            break;
 
-        case SELECT:
-            if (record->event.pressed) {
-                register_mods(MOD_MASK_CTRL);
-                tap_code16(KC_LEFT);
-                register_mods(MOD_MASK_SHIFT);
-                tap_code16(KC_RIGHT);
-                unregister_mods(MOD_MASK_CS);
-            }
-        break;
-
-
-        // Edit-layer mod-taps
-        case LT(0,MT_RBRC):
-        {
-            if (!record->tap.count && record->event.pressed) { // Intercept holds only
-                register_mods(MOD_MASK_CTRL);
-            } else { // On keyup
-                unregister_mods(MOD_MASK_CTRL);
-            }
-            if (record->tap.count && record->event.pressed) { // Intercept taps
-                register_code16(KC_RBRC);
-            } else {
-                unregister_code(KC_RBRC);
-            }
-            return false; // Return true for normal processing of key
-        }
-        break;
         case LT(0,MT_RPRN):
         {
             if (!record->tap.count && record->event.pressed) { // Intercept holds only
@@ -977,12 +1008,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             if (record->tap.count && record->event.pressed) { // Intercept taps
                 register_code16(KC_RPRN);
-            } else {
                 unregister_code16(KC_RPRN);
+                unregister_mods(MOD_MASK_SHIFT);
+            } else {
+                /* intentionally empty */;
             }
             return false; // Return true for normal processing of key
         }
-        break;
+            break;
+
         case LT(0,MT_LPRN):
         {
             if (!record->tap.count && record->event.pressed) { // Intercept holds only
@@ -992,12 +1026,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             if (record->tap.count && record->event.pressed) { // Intercept taps
                 register_code16(KC_LPRN);
-            } else {
                 unregister_code16(KC_LPRN);
+                unregister_mods(MOD_MASK_SHIFT);
+            } else {
+                /* intentionally empty */;
             }
             return false; // Return true for normal processing of key
         }
-        break;
+            break;
+
         case LT(0,MT_ASTR):
         {
             if (!record->tap.count && record->event.pressed) { // Intercept holds only
@@ -1014,13 +1051,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             return false; // Return true for normal processing of key
         }
-        break;
+            break;
+        
     }
     return true;
 }
 
 
-bool ONESHOT_SHIFT = true;
+bool ONESHOT_SHIFT = false;
 void oneshot_mods_changed_user(uint8_t mods) {
     if (mods & MOD_MASK_SHIFT) {
         ONESHOT_SHIFT = true;
@@ -1172,12 +1210,12 @@ void render_layer(void) {
         case _MEDIA:
             oled_write_P(PSTR("Media"), false);
             break;
-        case _NUMPAD:
-            oled_write_P(PSTR("N.Pad"), false);
-            break;
-        case _FUNCTION:
-            oled_write_P(PSTR("F.Key"), false);
-            break;
+        // case _NUMPAD:
+        //     oled_write_P(PSTR("N.Pad"), false);
+        //     break;
+        // case _FUNCTION:
+        //     oled_write_P(PSTR("F.Key"), false);
+        //     break;
         case _TOUHOU:
             oled_write_P(PSTR("ToHo."), false);
             break;
