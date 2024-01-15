@@ -368,8 +368,8 @@ const uint16_t PROGMEM colon[]          = {KC_Y, KC_U, COMBO_END};
 const uint16_t PROGMEM semicolon[]      = {KC_H, KC_U, COMBO_END};
 
 // Steno
-const uint16_t PROGMEM sg_the[]         = {REP, KC_J, COMBO_END};
-const uint16_t PROGMEM sg_and[]         = {REP, KC_K, COMBO_END};
+const uint16_t PROGMEM sg_the[]         = {REP, MT_J, COMBO_END};
+const uint16_t PROGMEM sg_and[]         = {REP, MT_K, COMBO_END};
 const uint16_t PROGMEM sg_that[]        = {REP, KC_T, KC_H, COMBO_END};
 const uint16_t PROGMEM sg_this[]        = {REP, KC_T, KC_I, COMBO_END};
 const uint16_t PROGMEM sg_here[]        = {REP, KC_H, COMBO_END};
