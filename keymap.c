@@ -50,6 +50,13 @@ enum custom_keycodes {
     MT_RPRN,
     MT_LPRN,
     MT_ASTR,
+    CM_ASTR,
+    CM_COMM,
+    CM_EQL,
+    CM_PLUS,
+    CM_UNDS,
+    CM_MINS,
+    CM_DOT,
     // CS_BSLS,
 };
 
@@ -297,14 +304,23 @@ enum combo_events {
     COLON,
     SEMICOLON,
     
-    EXPONENT,
-    ASTERISK,
-    COMMA,
-    PLUS,
-    EQUALS,
-    MINUS,
-    UNDERSCORE,
-    DOT,
+    L_EXPONENT,
+    L_ASTERISK,
+    L_COMMA,
+    L_PLUS,
+    L_EQUALS,
+    L_MINUS,
+    L_UNDERSCORE,
+    L_DOT,
+
+    R_EXPONENT,
+    R_ASTERISK,
+    R_COMMA,
+    R_PLUS,
+    R_EQUALS,
+    R_MINUS,
+    R_UNDERSCORE,
+    R_DOT,
 
     // Steno
     SG_THE,
@@ -315,7 +331,7 @@ enum combo_events {
     SG_HAVE,
     SG_WITH,
     SG_YOU,
-    SG_EVERY,
+    SG_EVER,
     SG_FROM,
     SG_SOME,
     SG_WHAT,
@@ -324,7 +340,7 @@ enum combo_events {
     SG_POLY,
     SG_OUGH,
     SG_OULD,
-    SG_TION,
+    SG_ION,
     SG_ING,
     SG_MENT,
 
@@ -368,15 +384,15 @@ const uint16_t PROGMEM colon[]          = {KC_Y, KC_U, COMBO_END};
 const uint16_t PROGMEM semicolon[]      = {KC_H, KC_U, COMBO_END};
 
 // Steno
-const uint16_t PROGMEM sg_the[]         = {REP, MT_J, COMBO_END};
-const uint16_t PROGMEM sg_and[]         = {REP, MT_K, COMBO_END};
+const uint16_t PROGMEM sg_the[]         = {REP, MT_K, COMBO_END};
+const uint16_t PROGMEM sg_and[]         = {REP, MT_J, COMBO_END};
 const uint16_t PROGMEM sg_that[]        = {REP, KC_T, KC_H, COMBO_END};
 const uint16_t PROGMEM sg_this[]        = {REP, KC_T, KC_I, COMBO_END};
 const uint16_t PROGMEM sg_here[]        = {REP, KC_H, COMBO_END};
-const uint16_t PROGMEM sg_have[]        = {REP, KC_H, KC_V, COMBO_END};
+const uint16_t PROGMEM sg_have[]        = {REP, KC_H, KC_A, COMBO_END};
 const uint16_t PROGMEM sg_with[]        = {REP, KC_W, KC_I, COMBO_END};
 const uint16_t PROGMEM sg_you[]         = {REP, KC_U, COMBO_END};
-const uint16_t PROGMEM sg_every[]       = {REP, KC_E, COMBO_END};
+const uint16_t PROGMEM sg_ever[]        = {REP, KC_E, COMBO_END};
 const uint16_t PROGMEM sg_from[]        = {REP, MT_F, COMBO_END};
 const uint16_t PROGMEM sg_some[]        = {REP, MT_S, COMBO_END};
 const uint16_t PROGMEM sg_what[]        = {REP, KC_W, COMBO_END};
@@ -385,69 +401,46 @@ const uint16_t PROGMEM sg_but[]         = {REP, KC_B, COMBO_END};
 const uint16_t PROGMEM sg_poly[]        = {REP, KC_P, COMBO_END};
 const uint16_t PROGMEM sg_ough[]        = {REP, KC_O, COMBO_END};
 const uint16_t PROGMEM sg_ould[]        = {REP, MT_L, COMBO_END};
-const uint16_t PROGMEM sg_tion[]        = {REP, MT_N, COMBO_END};
+const uint16_t PROGMEM sg_ion[]         = {REP, MT_N, COMBO_END};
 const uint16_t PROGMEM sg_ing[]         = {REP, KC_I, COMBO_END};
 const uint16_t PROGMEM sg_ment[]        = {REP, KC_M, COMBO_END};
 
 combo_t key_combos[] = {
     // [CAPSLOCK]     = COMBO_ACTION(capslock),
     // [SCROLLLOCK]   = COMBO_ACTION(scrolllock),
-    [NOMODS]        = COMBO_ACTION(nomods),
+    [NOMODS]         = COMBO_ACTION(nomods),
     [TOUHOU]        = COMBO_ACTION(touhou),
     
     // Manual control
-    // [LEFTPAREN]     = COMBO_ACTION(leftparen),
-    // [RIGHTPAREN]    = COMBO_ACTION(rightparen),
-    // [EXPONENT]      = COMBO_ACTION(l_exponent),
-    [ASTERISK]      = COMBO_ACTION(l_asterisk),
-    [COMMA]         = COMBO_ACTION(l_comma),
-    [EQUALS]        = COMBO_ACTION(l_equals),
-    [PLUS]          = COMBO_ACTION(l_plus),
-    [UNDERSCORE]    = COMBO_ACTION(l_underscore),
-    [MINUS]         = COMBO_ACTION(l_minus),
-    [DOT]           = COMBO_ACTION(l_dot),
-    // [AT]            = COMBO_ACTION(bar),
-    // [BAR]           = COMBO_ACTION(at),
-    // [LESSTHAN]      = COMBO_ACTION(lessthan),
-    // [GREATERTHAN]   = COMBO_ACTION(greaterthan),
-    [ASTERISK]      = COMBO_ACTION(r_asterisk),
-    [COMMA]         = COMBO_ACTION(r_comma),
-    [EQUALS]        = COMBO_ACTION(r_equals),
-    [PLUS]          = COMBO_ACTION(r_plus),
-    [UNDERSCORE]    = COMBO_ACTION(r_underscore),
-    [MINUS]         = COMBO_ACTION(r_minus),
-    [DOT]           = COMBO_ACTION(r_dot),
+    [L_ASTERISK]    = COMBO(l_asterisk,    CM_ASTR),
+    [L_COMMA]       = COMBO(l_comma,       CM_COMM),
+    [L_EQUALS]      = COMBO(l_equals,      CM_EQL),
+    [L_PLUS]        = COMBO(l_plus,        CM_PLUS),
+    [L_UNDERSCORE]  = COMBO(l_underscore,  CM_UNDS),
+    [L_MINUS]       = COMBO(l_minus,       CM_MINS),
+    [L_DOT]         = COMBO(l_dot,         CM_DOT),
+    [R_ASTERISK]    = COMBO(r_asterisk,    CM_ASTR),
+    [R_COMMA]       = COMBO(r_comma,       CM_COMM),
+    [R_EQUALS]      = COMBO(r_equals,      CM_EQL),
+    [R_PLUS]        = COMBO(r_plus,        CM_PLUS),
+    [R_UNDERSCORE]  = COMBO(r_underscore,  CM_UNDS),
+    [R_MINUS]       = COMBO(r_minus,       CM_MINS),
+    [R_DOT]         = COMBO(r_dot,         CM_DOT),
+    
     [COLON]         = COMBO_ACTION(colon),
-    // [SEMICOLON]     = COMBO_ACTION(semicolon),
 
     // Basic key combos
     [LEFTPAREN]     = COMBO(leftparen, KC_LPRN),
     [RIGHTPAREN]    = COMBO(rightparen, KC_RPRN),
-    [EXPONENT]      = COMBO(l_exponent, KC_CIRC),
-    // [ASTERISK]     = COMBO(l_asterisk, KC_ASTR),
-    // [COMMA]        = COMBO(l_comma, KC_COMM),
-    // [EQUALS]       = COMBO(l_equals, KC_EQL),
-    // [PLUS]         = COMBO(l_plus, KC_PLUS),
-    // [UNDERSCORE]   = COMBO(l_underscore, KC_UNDS),
-    // [MINUS]        = COMBO(l_minus, KC_MINS),
-    // [DOT]          = COMBO(l_dot, KC_DOT),
+    [L_EXPONENT]    = COMBO(l_exponent, KC_CIRC),
     [AT]            = COMBO(bar, S(KC_NUBS)),
     [BAR]           = COMBO(at, S(KC_QUOT)),
     [LESSTHAN]      = COMBO(lessthan, KC_LT),
     [GREATERTHAN]   = COMBO(greaterthan, KC_GT),
-    [EXPONENT]      = COMBO(r_exponent, KC_CIRC),
-    // [ASTERISK]     = COMBO(r_asterisk, KC_ASTR),
-    // [COMMA]        = COMBO(r_comma, KC_COMM),
-    // [EQUALS]       = COMBO(r_equals, KC_EQL),
-    // [PLUS]         = COMBO(r_plus, KC_PLUS),
-    // [UNDERSCORE]   = COMBO(r_underscore, KC_UNDS),
-    // [MINUS]        = COMBO(r_minus, KC_MINS),
-    // [DOT]          = COMBO(r_dot, KC_DOT),
-    // [COLON]        = COMBO(colon, KC_COLN),
+    [R_EXPONENT]    = COMBO(r_exponent, KC_CIRC),
     [SEMICOLON]     = COMBO(semicolon, KC_SCLN),
 
     // Steno
-
     [SG_THE]        = COMBO_ACTION(sg_the),
     [SG_AND]        = COMBO_ACTION(sg_and),
     [SG_THAT]       = COMBO_ACTION(sg_that),
@@ -456,7 +449,7 @@ combo_t key_combos[] = {
     [SG_HAVE]       = COMBO_ACTION(sg_have),
     [SG_WITH]       = COMBO_ACTION(sg_with),
     [SG_YOU]        = COMBO_ACTION(sg_you),
-    [SG_EVERY]      = COMBO_ACTION(sg_every),
+    [SG_EVER]       = COMBO_ACTION(sg_ever),
     [SG_FROM]       = COMBO_ACTION(sg_from),
     [SG_SOME]       = COMBO_ACTION(sg_some),
     [SG_WHAT]       = COMBO_ACTION(sg_what),
@@ -465,7 +458,7 @@ combo_t key_combos[] = {
     [SG_POLY]       = COMBO_ACTION(sg_poly),
     [SG_OUGH]       = COMBO_ACTION(sg_ough),
     [SG_OULD]       = COMBO_ACTION(sg_ould),
-    [SG_TION]       = COMBO_ACTION(sg_tion),
+    [SG_ION]        = COMBO_ACTION(sg_ion),
     [SG_ING]        = COMBO_ACTION(sg_ing),
     [SG_MENT]       = COMBO_ACTION(sg_ment),
 
@@ -505,90 +498,6 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             }
             break;
 
-        // case LEFTPAREN:
-        //     if (pressed) {
-        //         tap_code16(KC_LPRN);
-        //     }
-        //     break;
-        // case RIGHTPAREN:
-        //     if (pressed) {
-        //         tap_code16(KC_RPRN);
-        //     }
-        //     break;
-        // case EXPONENT:
-        //     if (pressed) {
-        //         tap_code16(KC_CIRC);
-        //     }
-        //     break;
-        case ASTERISK:
-            if (pressed) {
-                tap_code16(KC_ASTR);
-            }
-            break;
-        case COMMA:
-            if (pressed) {
-                const uint8_t mods = get_mods();
-                del_mods(MOD_MASK_SHIFT);
-                tap_code(KC_COMM);
-                set_mods(mods);
-            }
-            break;
-        case PLUS:
-            if (pressed) {
-                tap_code16(KC_PLUS);
-            }
-            break;
-        case EQUALS:
-            if (pressed) {
-                const uint8_t mods = get_mods();
-                del_mods(MOD_MASK_SHIFT);
-                tap_code(KC_EQL);
-                set_mods(mods);
-            }
-            break;
-        case UNDERSCORE:
-            if (pressed) {
-                tap_code16(KC_UNDS);
-            }
-            break;
-        case MINUS:
-            if (pressed) {
-                const uint8_t mods = get_mods();
-                del_mods(MOD_MASK_SHIFT);
-                tap_code(KC_MINS);
-                set_mods(mods);
-            }
-            break;
-        case DOT:
-            if (pressed) {
-                const uint8_t mods = get_mods();
-                del_mods(MOD_MASK_SHIFT);
-                tap_code(KC_DOT);
-                set_mods(mods);
-            }
-            break;
-        // case BAR:
-        //     if (pressed) {
-        //         tap_code16(S(KC_NUBS));
-        //     }
-        //     break;
-        // case AT:
-        //     if (pressed) {
-        //         tap_code16(S(KC_QUOT));
-        //     }
-        //     break;
-
-        // case LESSTHAN:
-        //     if (pressed) {
-        //         tap_code16(KC_LT);
-        //     }
-        //     break;
-        // case GREATERTHAN:
-        //     if (pressed) {
-        //         tap_code16(KC_GT);
-        //     }
-        //     break;
-
         case COLON:
             if (pressed) {
                 const uint8_t mods = get_mods();
@@ -597,11 +506,6 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
                 set_mods(mods);
             }
             break;
-        // case SEMICOLON:
-        //     if (pressed) {
-        //         tap_code(KC_SCLN);
-        //     }
-        //     break;
 
         // Steno
         case SG_THE:
@@ -644,9 +548,9 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
                 SEND_STRING("you");
             }
             break;
-        case SG_EVERY:
+        case SG_EVER:
             if (pressed) {
-                SEND_STRING("every");
+                SEND_STRING("ever");
             }
             break;
         case SG_FROM:
@@ -688,9 +592,9 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
                 SEND_STRING("ould");
             }
             break;
-        case SG_TION:
+        case SG_ION:
             if (pressed) {
-                SEND_STRING("tion");
+                SEND_STRING("ion");
             }
             break;
         case SG_ING:
@@ -707,13 +611,14 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     }
 }
 
+// 50ms default
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     switch (combo->keycode) {
         case REP:
             return 75; // More lenient timings for steno combos
             break;
         default:
-            return 50; // Default timings
+            return 25;
     }
 }
 
@@ -738,30 +643,6 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
             return true;
             break;
 
-        // // case CAPSLOCK:
-        // // case SCROLLLOCK:
-        
-        // // Left hand
-        // case LESSTHAN:
-        // case GREATERTHAN:
-        // case AT:
-        // case BAR:
-
-        // // Right hand
-        // case LEFTPAREN:
-        // case RIGHTPAREN:
-        // case COLON:
-        // case SEMICOLON:
-
-        // // Shared
-        // case EXPONENT:
-        // case ASTERISK:
-        // case COMMA:
-        // case EQUALS:
-        // case PLUS:
-        // case UNDERSCORE:
-        // case MINUS:
-        // case DOT:
         default:
             if (!(layer_state_is(_BASIC) || layer_state_is(_TOUHOU) || layer_state_is(_MOUSE) || layer_state_is(_EDIT))) {
                 return true;
@@ -842,6 +723,110 @@ bool process_select_word(uint16_t keycode, keyrecord_t* record, uint16_t sel_key
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_select_word(keycode, record, SELECT)) { return false; }
     switch (keycode) {
+        // Combo actions
+        case CM_ASTR:
+            if (record->event.pressed) {
+                tap_code16(KC_ASTR);
+            }
+            break;
+        case CM_COMM:
+            if (record->event.pressed) {
+                const uint8_t mods = get_mods();
+                del_mods(MOD_MASK_SHIFT);
+                tap_code(KC_COMM);
+                set_mods(mods);
+            }
+            break;
+        case CM_EQL:
+            if (record->event.pressed) {
+                const uint8_t mods = get_mods();
+                del_mods(MOD_MASK_SHIFT);
+                tap_code(KC_EQL);
+                set_mods(mods);
+            }
+            break;
+        case CM_PLUS:
+            if (record->event.pressed) {
+                tap_code16(KC_PLUS);
+            }
+            break;
+        case CM_UNDS:
+            if (record->event.pressed) {
+                tap_code16(KC_UNDS);
+            }
+            break;
+        case CM_MINS:
+            if (record->event.pressed) {
+                const uint8_t mods = get_mods();
+                del_mods(MOD_MASK_SHIFT);
+                tap_code(KC_MINS);
+                set_mods(mods);
+            }
+            break;
+        case CM_DOT:
+            if (record->event.pressed) {
+                const uint8_t mods = get_mods();
+                del_mods(MOD_MASK_SHIFT);
+                tap_code(KC_DOT);
+                set_mods(mods);
+            }
+            break;
+
+        // Edit layer mod-taps
+        case LT(0,MT_RPRN):
+        {
+            if (!record->tap.count && record->event.pressed) { // Intercept holds only
+                register_mods(MOD_MASK_SHIFT);
+            } else { // On keyup
+                unregister_mods(MOD_MASK_SHIFT);
+            }
+            if (record->tap.count && record->event.pressed) { // Intercept taps
+                tap_code16(KC_RPRN);
+                unregister_mods(MOD_MASK_SHIFT);
+            } else {
+                /* intentionally empty */;
+            }
+            return false; // Return true for normal processing of key
+        }
+            break;
+
+        case LT(0,MT_LPRN):
+        {
+            if (!record->tap.count && record->event.pressed) { // Intercept holds only
+                register_mods(MOD_BIT(KC_LALT));
+            } else { // On keyup
+                unregister_mods(MOD_BIT(KC_LALT));
+            }
+            if (record->tap.count && record->event.pressed) { // Intercept taps
+                tap_code16(KC_LPRN);
+                unregister_mods(MOD_MASK_SHIFT);
+            } else {
+                /* intentionally empty */;
+            }
+            return false; // Return true for normal processing of key
+        }
+            break;
+
+        case LT(0,MT_ASTR):
+        {
+            if (!record->tap.count && record->event.pressed) { // Intercept holds only
+                register_mods(MOD_MASK_GUI);
+            } else { // On keyup
+                unregister_mods(MOD_MASK_GUI);
+            }
+            if (record->tap.count && record->event.pressed) { // Intercept taps
+                tap_code16(KC_ASTR);
+                unregister_mods(MOD_MASK_SHIFT);
+            } else {
+                /* intentionally empty */;
+            }
+            return false; // Return true for normal processing of key
+        }
+            break;
+        
+
+
+        // Repeat key
         case KC_A:
         // case MT_A:
             if (record->event.pressed && no_ctrl()) {
@@ -1037,8 +1022,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             break;
 
-
-
         case CS_COLN:
             if (record->event.pressed) {
                 tap_code16(KC_COLN);
@@ -1117,60 +1100,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
-
-
-        // Edit layer mod-taps
-        case LT(0,MT_RPRN):
-        {
-            if (!record->tap.count && record->event.pressed) { // Intercept holds only
-                register_mods(MOD_MASK_SHIFT);
-            } else { // On keyup
-                unregister_mods(MOD_MASK_SHIFT);
-            }
-            if (record->tap.count && record->event.pressed) { // Intercept taps
-                tap_code16(KC_RPRN);
-                unregister_mods(MOD_MASK_SHIFT);
-            } else {
-                /* intentionally empty */;
-            }
-            return false; // Return true for normal processing of key
-        }
-            break;
-
-        case LT(0,MT_LPRN):
-        {
-            if (!record->tap.count && record->event.pressed) { // Intercept holds only
-                register_mods(MOD_BIT(KC_LALT));
-            } else { // On keyup
-                unregister_mods(MOD_BIT(KC_LALT));
-            }
-            if (record->tap.count && record->event.pressed) { // Intercept taps
-                tap_code16(KC_LPRN);
-                unregister_mods(MOD_MASK_SHIFT);
-            } else {
-                /* intentionally empty */;
-            }
-            return false; // Return true for normal processing of key
-        }
-            break;
-
-        case LT(0,MT_ASTR):
-        {
-            if (!record->tap.count && record->event.pressed) { // Intercept holds only
-                register_mods(MOD_MASK_GUI);
-            } else { // On keyup
-                unregister_mods(MOD_MASK_GUI);
-            }
-            if (record->tap.count && record->event.pressed) { // Intercept taps
-                tap_code16(KC_ASTR);
-                unregister_mods(MOD_MASK_SHIFT);
-            } else {
-                /* intentionally empty */;
-            }
-            return false; // Return true for normal processing of key
-        }
-            break;
-        
     }
     return true;
 }
