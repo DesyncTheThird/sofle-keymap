@@ -93,15 +93,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
      KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
     KC_LSFT,    KC_A,    MT_S,    MT_D,    MT_F,    KC_G,                                KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
-    KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,    KC_V,          MUTE,         KC_NO,  KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
+    KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,    KC_V,         TG(7),         TG(8),  KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
                       KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC), LT(4,KC_BSPC),   REP,   MO(5), CS_UNDS, KC_SLSH),
-
-    //    KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                  KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
-    //    KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
-    // LT(0,SFT),    KC_A,    MT_S,    MT_D,    MT_F,    KC_G,                                  KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
-    //   KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,    KC_V,          MUTE,           KC_NO,  KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-    //                     KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),   REP,   MO(5), CS_UNDS, KC_SLSH),
-
+                      
 [_BASIC] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
      KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                           KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
@@ -110,11 +104,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,      KC_BSPC, KC_TRNS, KC_TRNS, CS_UNDS, KC_SLSH),
 
 [_EDIT] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,          KC_9,    KC_0,  KC_DEL,
-     KC_TAB, KC_BTN4, KC_HOME,   KC_UP,  KC_END, KC_BTN5,                        KC_EQL, KC_RCBR, KC_LCBR,       CS_CIRC, CS_UNDS,  KC_DEL,
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,          KC_7,          KC_8,          KC_9,    KC_0,  KC_DEL,
+     KC_TAB, KC_PAUS, KC_HOME,   KC_UP,  KC_END, KC_CAPS,                        KC_EQL,       KC_RCBR,       KC_LCBR,       CS_CIRC, CS_UNDS,  KC_DEL,
     KC_LSFT, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                         CS_LT, LT(0,MT_RPRN), LT(0,MT_LPRN), LT(0,MT_ASTR),   CS_AT,  KC_ENT,
-    KC_LCTL, KC_PAUS, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS,  CS_GT, MT_RBRC, KC_LBRC,       KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_0,  KC_SPC, KC_CAPS,       KC_SLSH),
+    KC_LCTL, CS_BSLS, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS,  CS_GT,       MT_RBRC,       KC_LBRC,       KC_QUES, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_0,        KC_SPC,       CS_UNDS,       KC_SLSH),
 
 [_DATA] = LAYOUT(
      KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
@@ -132,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_MOUSE] = LAYOUT(
      KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
-     KC_TAB, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
+     KC_TAB, KC_TRNS, KC_BTN4, KC_MS_U, KC_BTN5, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
     KC_LSFT, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R,  KC_DEL,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_ENT,
     KC_LCTL, KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R,  KC_ENT,  KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_ENT,
                       KC_LGUI, KC_LALT, KC_BTN3, KC_BTN2,  KC_BTN1,     KC_TRNS, KC_TRNS,   TG(5), KC_TRNS, KC_TRNS),
@@ -257,20 +251,6 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-
-/*
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(3, KC_SPC):
-        case LT(4, KC_BSPC):
-            return true;
-        default:
-            return false;
-    }
-}
-*/
-
-
 // uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 //     switch (keycode) {
 // //        case MT_A:
@@ -285,7 +265,6 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 //             return TAPPING_TERM;
 //     }
 // }
-
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -327,6 +306,28 @@ enum combo_events {
     UNDERSCORE,
     DOT,
 
+    // Steno
+    SG_THE,
+    SG_AND,
+    SG_THAT,
+    SG_THIS,
+    SG_HERE,
+    SG_HAVE,
+    SG_WITH,
+    SG_YOU,
+    SG_EVERY,
+    SG_FROM,
+    SG_SOME,
+    SG_WHAT,
+    SG_BUT,
+    
+    SG_POLY,
+    SG_OUGH,
+    SG_OULD,
+    SG_TION,
+    SG_ING,
+    SG_MENT,
+
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH;
@@ -366,6 +367,27 @@ const uint16_t PROGMEM r_dot[]          = {KC_B, MT_N, COMBO_END};
 const uint16_t PROGMEM colon[]          = {KC_Y, KC_U, COMBO_END};
 const uint16_t PROGMEM semicolon[]      = {KC_H, KC_U, COMBO_END};
 
+// Steno
+const uint16_t PROGMEM sg_the[]         = {REP, KC_J, COMBO_END};
+const uint16_t PROGMEM sg_and[]         = {REP, KC_K, COMBO_END};
+const uint16_t PROGMEM sg_that[]        = {REP, KC_T, KC_H, COMBO_END};
+const uint16_t PROGMEM sg_this[]        = {REP, KC_T, KC_I, COMBO_END};
+const uint16_t PROGMEM sg_here[]        = {REP, KC_H, COMBO_END};
+const uint16_t PROGMEM sg_have[]        = {REP, KC_H, KC_V, COMBO_END};
+const uint16_t PROGMEM sg_with[]        = {REP, KC_W, KC_I, COMBO_END};
+const uint16_t PROGMEM sg_you[]         = {REP, KC_U, COMBO_END};
+const uint16_t PROGMEM sg_every[]       = {REP, KC_E, COMBO_END};
+const uint16_t PROGMEM sg_from[]        = {REP, MT_F, COMBO_END};
+const uint16_t PROGMEM sg_some[]        = {REP, MT_S, COMBO_END};
+const uint16_t PROGMEM sg_what[]        = {REP, KC_W, COMBO_END};
+const uint16_t PROGMEM sg_but[]         = {REP, KC_B, COMBO_END};
+
+const uint16_t PROGMEM sg_poly[]        = {REP, KC_P, COMBO_END};
+const uint16_t PROGMEM sg_ough[]        = {REP, KC_O, COMBO_END};
+const uint16_t PROGMEM sg_ould[]        = {REP, MT_L, COMBO_END};
+const uint16_t PROGMEM sg_tion[]        = {REP, MT_N, COMBO_END};
+const uint16_t PROGMEM sg_ing[]         = {REP, KC_I, COMBO_END};
+const uint16_t PROGMEM sg_ment[]        = {REP, KC_M, COMBO_END};
 
 combo_t key_combos[] = {
     // [CAPSLOCK]     = COMBO_ACTION(capslock),
@@ -423,7 +445,32 @@ combo_t key_combos[] = {
     // [DOT]          = COMBO(r_dot, KC_DOT),
     // [COLON]        = COMBO(colon, KC_COLN),
     [SEMICOLON]     = COMBO(semicolon, KC_SCLN),
+
+    // Steno
+
+    [SG_THE]        = COMBO_ACTION(sg_the),
+    [SG_AND]        = COMBO_ACTION(sg_and),
+    [SG_THAT]       = COMBO_ACTION(sg_that),
+    [SG_THIS]       = COMBO_ACTION(sg_this),
+    [SG_HERE]       = COMBO_ACTION(sg_here),
+    [SG_HAVE]       = COMBO_ACTION(sg_have),
+    [SG_WITH]       = COMBO_ACTION(sg_with),
+    [SG_YOU]        = COMBO_ACTION(sg_you),
+    [SG_EVERY]      = COMBO_ACTION(sg_every),
+    [SG_FROM]       = COMBO_ACTION(sg_from),
+    [SG_SOME]       = COMBO_ACTION(sg_some),
+    [SG_WHAT]       = COMBO_ACTION(sg_what),
+    [SG_BUT]        = COMBO_ACTION(sg_but),
+    
+    [SG_POLY]       = COMBO_ACTION(sg_poly),
+    [SG_OUGH]       = COMBO_ACTION(sg_ough),
+    [SG_OULD]       = COMBO_ACTION(sg_ould),
+    [SG_TION]       = COMBO_ACTION(sg_tion),
+    [SG_ING]        = COMBO_ACTION(sg_ing),
+    [SG_MENT]       = COMBO_ACTION(sg_ment),
+
 };
+
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
     switch(combo_index) {
@@ -555,53 +602,175 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         //         tap_code(KC_SCLN);
         //     }
         //     break;
+
+        // Steno
+        case SG_THE:
+            if (pressed) {
+                SEND_STRING("the");
+            }
+            break;
+        case SG_AND:
+            if (pressed) {
+                SEND_STRING("and");
+            }
+            break;
+        case SG_THAT:
+            if (pressed) {
+                SEND_STRING("that");
+            }
+            break;
+        case SG_THIS:
+            if (pressed) {
+                SEND_STRING("this");
+            }
+            break;
+        case SG_HERE:
+            if (pressed) {
+                SEND_STRING("here");
+            }
+            break;
+        case SG_HAVE:
+            if (pressed) {
+                SEND_STRING("have");
+            }
+            break;
+        case SG_WITH:
+            if (pressed) {
+                SEND_STRING("with");
+            }
+            break;
+        case SG_YOU:
+            if (pressed) {
+                SEND_STRING("you");
+            }
+            break;
+        case SG_EVERY:
+            if (pressed) {
+                SEND_STRING("every");
+            }
+            break;
+        case SG_FROM:
+            if (pressed) {
+                SEND_STRING("from");
+            }
+            break;
+        case SG_SOME:
+            if (pressed) {
+                SEND_STRING("some");
+            }
+            break;
+        case SG_WHAT:
+            if (pressed) {
+                SEND_STRING("what");
+            }
+            break;
+        case SG_BUT:
+            if (pressed) {
+                SEND_STRING("but");
+            }
+            break;
+
+
+
+
+        case SG_POLY:
+            if (pressed) {
+                SEND_STRING("poly");
+            }
+            break;
+        case SG_OUGH:
+            if (pressed) {
+                SEND_STRING("ough");
+            }
+            break;
+        case SG_OULD:
+            if (pressed) {
+                SEND_STRING("ould");
+            }
+            break;
+        case SG_TION:
+            if (pressed) {
+                SEND_STRING("tion");
+            }
+            break;
+        case SG_ING:
+            if (pressed) {
+                SEND_STRING("ing");
+            }
+            break;
+        case SG_MENT:
+            if (pressed) {
+                SEND_STRING("ment");
+            }
+            break;
+
     }
 }
 
-bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    switch (combo_index) {
-        case NOMODS:
-            return true;
+uint16_t get_combo_term(uint16_t index, combo_t *combo) {
+    switch (combo->keycode) {
+        case REP:
+            return 75; // More lenient timings for steno combos
             break;
-
-        // case CAPSLOCK:
-        // case SCROLLLOCK:
-        
-        // Left hand
-        case LESSTHAN:
-        case GREATERTHAN:
-        case AT:
-        case BAR:
-
-        // Right hand
-        case LEFTPAREN:
-        case RIGHTPAREN:
-        case COLON:
-        case SEMICOLON:
-
-        // Shared
-        case EXPONENT:
-        case ASTERISK:
-        case COMMA:
-        case EQUALS:
-        case PLUS:
-        case UNDERSCORE:
-        case MINUS:
-        case DOT:
-
-        // Stenography
-
-            if (layer_state_is(_BASIC) || layer_state_is(_TOUHOU) || layer_state_is(_MOUSE) || layer_state_is(_EDIT)) {
-                return false;
-            }
-            break;
+        default:
+            return 50; // Default timings
     }
-    return true;
 }
 
 bool get_combo_must_tap(uint16_t index, combo_t *combo) {
     return true;
 }
+
+// bool get_combo_must_press_in_order(uint16_t combo_index, combo_t *combo) {
+//     switch (combo->keycode) {
+//         case REP:
+//             return true;
+//             break;
+//         default:
+//             return false;
+//     }
+// }
+
+bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+    switch (combo_index) {
+        case NOMODS:
+        case TOUHOU:
+            return true;
+            break;
+
+        // // case CAPSLOCK:
+        // // case SCROLLLOCK:
+        
+        // // Left hand
+        // case LESSTHAN:
+        // case GREATERTHAN:
+        // case AT:
+        // case BAR:
+
+        // // Right hand
+        // case LEFTPAREN:
+        // case RIGHTPAREN:
+        // case COLON:
+        // case SEMICOLON:
+
+        // // Shared
+        // case EXPONENT:
+        // case ASTERISK:
+        // case COMMA:
+        // case EQUALS:
+        // case PLUS:
+        // case UNDERSCORE:
+        // case MINUS:
+        // case DOT:
+        default:
+            if (!(layer_state_is(_BASIC) || layer_state_is(_TOUHOU) || layer_state_is(_MOUSE) || layer_state_is(_EDIT))) {
+                return true;
+            }
+            break;
+    }
+    return false;
+}
+
 
 // Store last key
 uint16_t lastkey = KC_NO;

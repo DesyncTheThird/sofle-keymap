@@ -20,14 +20,14 @@
 #define COMBO_MUST_TAP_PER_COMBO // Combos only activate on tap -- stops with interfering with mod tap keys
 //#define EXTRA_SHORT_COMBOS // Saves space, but only 6 keys per combo
 
+#define COMBO_TERM_PER_COMBO
+// #define COMBO_MUST_PRESS_IN_ORDER_PER_COMBO
+
+
 // Timer for mod and layer taps
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
 #define TAPPING_TERM_PER_KEY
-
-// Superceded by hold on other key press
-// #define PERMISSIVE_HOLD
-// #define PERMISSIVE_HOLD_PER_KEY
 
 // Perform hold action if other keys are pressed.
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
