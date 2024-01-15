@@ -8,8 +8,8 @@ enum sofle_layers {
     _SYMBOL,
     _MOUSE,
     _MEDIA,
-    // _FUNCTION,
-    // _NUMPAD,
+    _FUNCTION,
+    _NUMPAD,
     _TOUHOU,
 };
 
@@ -27,8 +27,8 @@ enum custom_keycodes {
     SYMBOL,
     MOUSE,
     MEDIA,
-    // FUNCTION,
-    // NUMPAD,
+    FUNCTION,
+    NUMPAD,
     SELECT,
     MUTE,
     CS_COLN,
@@ -75,7 +75,7 @@ enum custom_keycodes {
 #define MT_K LALT_T(KC_K)
 #define MT_L RGUI_T(KC_L)
 
-#define MT_RBRC LCTL_T(KC_RBRC)
+#define MT_RBRC RCTL_T(KC_RBRC)
 
 
 // ISO
@@ -90,11 +90,17 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_DEFAULT] = LAYOUT(
-       KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                  KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
-       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
-    LT(0,SFT),    KC_A,    MT_S,    MT_D,    MT_F,    KC_G,                                  KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
-      KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,    KC_V,          MUTE,           KC_NO,  KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                        KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),   REP,   MO(5), CS_UNDS, KC_SLSH),
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
+     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
+    KC_LSFT,    KC_A,    MT_S,    MT_D,    MT_F,    KC_G,                                KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
+    KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,    KC_V,          MUTE,         KC_NO,  KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
+                      KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC), LT(4,KC_BSPC),   REP,   MO(5), CS_UNDS, KC_SLSH),
+
+    //    KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                  KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
+    //    KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
+    // LT(0,SFT),    KC_A,    MT_S,    MT_D,    MT_F,    KC_G,                                  KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
+    //   KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,    KC_V,          MUTE,           KC_NO,  KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
+    //                     KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC),   LT(4,KC_BSPC),   REP,   MO(5), CS_UNDS, KC_SLSH),
 
 [_BASIC] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
@@ -105,17 +111,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_EDIT] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,          KC_9,    KC_0,  KC_DEL,
-     KC_TAB, KC_PAUS, KC_HOME,   KC_UP,  KC_END, KC_CAPS,                        KC_EQL, KC_RCBR, KC_LCBR,       CS_CIRC, CS_UNDS,  KC_DEL,
+     KC_TAB, KC_BTN4, KC_HOME,   KC_UP,  KC_END, KC_BTN5,                        KC_EQL, KC_RCBR, KC_LCBR,       CS_CIRC, CS_UNDS,  KC_DEL,
     KC_LSFT, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                         CS_LT, LT(0,MT_RPRN), LT(0,MT_LPRN), LT(0,MT_ASTR),   CS_AT,  KC_ENT,
-    KC_LCTL, KC_SCRL, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS,  CS_GT, MT_RBRC, KC_LBRC,       KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_0,  KC_SPC, CS_UNDS,       KC_SLSH),
+    KC_LCTL, KC_PAUS, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS,  CS_GT, MT_RBRC, KC_LBRC,       KC_QUES, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_0,  KC_SPC, KC_CAPS,       KC_SLSH),
 
 [_DATA] = LAYOUT(
      KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-     KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        KC_EQL,   KC_P7,   KC_P8,   KC_P9, CS_UNDS,  KC_DEL,
-    KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         CS_LT,   KC_P4,   KC_P5,   KC_P6,   CS_AT,  KC_ENT,
-    KC_LCTL,  KC_NUM, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS,  CS_GT,   KC_P1,   KC_P2,   KC_P3, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS,  KC_P0,  KC_DOT, KC_TRNS, KC_TRNS),
+     KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        KC_EQL,    KC_7,    KC_8,    KC_9, CS_UNDS,  KC_DEL,
+    KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         CS_LT,    KC_4,    KC_5,    KC_6,   CS_AT,  KC_ENT,
+    KC_LCTL, CS_BSLS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS,  CS_GT,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS,   KC_0,  KC_DOT, KC_TRNS, KC_TRNS),
 
 [_SYMBOL] = LAYOUT(
      KC_GRV, CS_EXLM, CS_DQUO, CS_POUN,  CS_DLR, CS_PERC,                        CS_CIRC, CS_AMPR, CS_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
@@ -138,19 +144,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                       KC_LGUI, KC_LALT, KC_MSTP,    MUTE, KC_MPLY,      KC_MPLY,    MUTE, KC_MSTP, KC_TRNS, KC_TRNS),
 
-// [_FUNCTION] = LAYOUT(
-//     KC_TRNS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-//     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_F12,
-//     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-//     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-//                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+[_FUNCTION] = LAYOUT(
+    KC_TRNS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_F12,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
-// [_NUMPAD] = LAYOUT(
-//      KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,  KC_NUM, KC_SLSH, KC_ASTR, KC_MINS, KC_TRNS,
-//      KC_TAB, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,   KC_P7,   KC_P8,   KC_P9, KC_PLUS, KC_TRNS,
-//     KC_LSFT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,   KC_P4,   KC_P5,   KC_P6, KC_COMM, KC_TRNS,
-//     KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS,   KC_P1,   KC_P2,   KC_P3,  KC_EQL, KC_TRNS,
-//                       KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_P0,  KC_DOT, KC_TRNS, KC_TRNS),
+[_NUMPAD] = LAYOUT(
+     KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,  KC_NUM, KC_SLSH, KC_ASTR, KC_MINS, KC_TRNS,
+     KC_TAB, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,   KC_P7,   KC_P8,   KC_P9, KC_PLUS, KC_TRNS,
+    KC_LSFT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS,   KC_P4,   KC_P5,   KC_P6, KC_COMM, KC_TRNS,
+    KC_LCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS,   KC_P1,   KC_P2,   KC_P3,  KC_EQL, KC_TRNS,
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_P0,  KC_DOT, KC_TRNS, KC_TRNS),
 
 [_TOUHOU] = LAYOUT(
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -182,7 +188,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-// #define IDLE_TIMEOUT 10000  //idle timeout in milliseconds
+#define IDLE_TIMEOUT 10000  //idle timeout in milliseconds
 
 bool is_alt_tab_active = false; //alt tabbing on rotary encoder
 uint16_t alt_tab_timer = 0;
@@ -193,21 +199,21 @@ uint16_t ctrl_tab_timer = 0;
 uint16_t tabbing_timeout = 1250;
 
 void matrix_scan_user(void) {
-    // if (get_highest_layer(layer_state) == _NUMPAD) {
-    //     if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
-    //         layer_off(_NUMPAD);
-    //     }
-    // }
-    // else if (get_highest_layer(layer_state) == _FUNCTION) {
-    //     if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
-    //         layer_off(_FUNCTION);
-    //     }
+    if (get_highest_layer(layer_state) == _NUMPAD) {
+        if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
+            layer_off(_NUMPAD);
+        }
+    }
+    else if (get_highest_layer(layer_state) == _FUNCTION) {
+        if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
+            layer_off(_FUNCTION);
+        }
 //    else if (get_highest_layer(layer_state) == _MOUSE) {
 //    }
 //        if (last_input_activity_elapsed() > IDLE_TIMEOUT) {
 //            layer_off(_MOUSE);
 //        }
-    // }
+    }
     if (get_highest_layer(layer_state) == _TOUHOU) {
         if (last_input_activity_elapsed() > 900000) { //15 minute time out
             layer_off(_TOUHOU);
@@ -241,7 +247,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
         case MT_K:
         case MT_L:
 //        case OSM(MOD_LSFT): // disables locking shift
-        case LT(0,SFT):
+        // case LT(0,SFT):
             return 0;
 //        case TT(5):
 //        case OSM(MOD_LSFT):
@@ -265,20 +271,20 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 */
 
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-//        case MT_A:
-//            return 250;
-//        case LT(3, KC_SPC):
-//            return 100;
-//        case LT(4, KC_BSPC):
-//            return 100;
-        case LT(0,SFT):
-            return 100;
-        default:
-            return TAPPING_TERM;
-    }
-}
+// uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+// //        case MT_A:
+// //            return 250;
+// //        case LT(3, KC_SPC):
+// //            return 100;
+// //        case LT(4, KC_BSPC):
+// //            return 100;
+//         case LT(0,SFT):
+//             return 100;
+//         default:
+//             return TAPPING_TERM;
+//     }
+// }
 
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
@@ -301,141 +307,122 @@ enum combo_events {
     // SCROLLLOCK,
     NOMODS,
     TOUHOU,
+    
     LESSTHAN,
     GREATERTHAN,
-    L_EXPONENT,
-    L_ASTERISK,
-    L_COMMA,
-    L_PLUS,
-    L_EQUALS,
-    L_MINUS,
-    L_UNDERSCORE,
-    L_DOT,
-    BAR,
     AT,
+    BAR,
+
     LEFTPAREN,
     RIGHTPAREN,
-    R_EXPONENT,
-    R_ASTERISK,
-    R_COMMA,
-    R_PLUS,
-    R_EQUALS,
-    R_MINUS,
-    R_UNDERSCORE,
-    R_DOT,
     COLON,
     SEMICOLON,
+    
+    EXPONENT,
+    ASTERISK,
+    COMMA,
+    PLUS,
+    EQUALS,
+    MINUS,
+    UNDERSCORE,
+    DOT,
+
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
-// const uint16_t PROGMEM capslock[] = {MT_D, MT_K, COMBO_END};
-// const uint16_t PROGMEM scrolllock[] = {MT_F, MT_J, COMBO_END};
-const uint16_t PROGMEM nomods[] = {KC_0, CS_HASH, COMBO_END};
-const uint16_t PROGMEM touhou[] = {KC_0, CS_HASH, KC_ESC, COMBO_END};
+// const uint16_t PROGMEM capslock[]       = {MT_D, MT_K, COMBO_END};
+// const uint16_t PROGMEM scrolllock[]     = {MT_F, MT_J, COMBO_END};
+const uint16_t PROGMEM nomods[]         = {KC_0, CS_HASH, COMBO_END};
+const uint16_t PROGMEM touhou[]         = {KC_0, CS_HASH, KC_ESC, COMBO_END};
 
-// const uint16_t PROGMEM nomods[] = {CS_UNDS, KC_SLSH, COMBO_END};
-//const uint16_t PROGMEM touhou[] = {KC_LGUI, KC_LALT, COMBO_END};
+const uint16_t PROGMEM leftparen[]      = {MT_S, KC_E, COMBO_END};
+const uint16_t PROGMEM rightparen[]     = {KC_E, MT_F, COMBO_END};
+const uint16_t PROGMEM l_exponent[]     = {MT_S, KC_E, MT_F, COMBO_END};
+const uint16_t PROGMEM l_asterisk[]     = {MT_D, MT_C, COMBO_END};
+const uint16_t PROGMEM l_comma[]        = {MT_F, KC_V, COMBO_END};
 
-const uint16_t PROGMEM leftparen[] = {MT_S, KC_E, COMBO_END};
-const uint16_t PROGMEM rightparen[] = {KC_E, MT_F, COMBO_END};
-const uint16_t PROGMEM l_exponent[] = {MT_S, KC_E, MT_F, COMBO_END};
-const uint16_t PROGMEM l_asterisk[] = {MT_D, MT_C, COMBO_END};
-const uint16_t PROGMEM l_comma[] = {MT_F, KC_V, COMBO_END};
+const uint16_t PROGMEM l_equals[]       = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM l_plus[]         = {MT_D, MT_F, COMBO_END};
+const uint16_t PROGMEM l_underscore[]   = {KC_X, MT_C, COMBO_END};
+const uint16_t PROGMEM l_minus[]        = {MT_F, KC_G, COMBO_END};
+const uint16_t PROGMEM l_dot[]          = {MT_C, KC_V, COMBO_END};
 
-//const uint16_t PROGMEM forwardslash[] = {MT_S, KC_E, KC_R, COMBO_END};
-//const uint16_t PROGMEM backslash[] = {KC_W, KC_E, MT_F, COMBO_END};
+const uint16_t PROGMEM bar[]            = {KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM at[]             = {KC_R, KC_G, COMBO_END};
 
-const uint16_t PROGMEM l_equals[] = {KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM l_plus[] = {MT_D, MT_F, COMBO_END};
-const uint16_t PROGMEM l_underscore[] = {KC_X, MT_C, COMBO_END};
-const uint16_t PROGMEM l_minus[] = {MT_F, KC_G, COMBO_END};
-const uint16_t PROGMEM l_dot[] = {MT_C, KC_V, COMBO_END};
+const uint16_t PROGMEM lessthan[]       = {MT_J, KC_I, COMBO_END};
+const uint16_t PROGMEM greaterthan[]    = {KC_I, MT_L, COMBO_END};
+const uint16_t PROGMEM r_exponent[]     = {MT_J, KC_I, MT_L, COMBO_END};
+const uint16_t PROGMEM r_asterisk[]     = {MT_N, MT_K, COMBO_END};
+const uint16_t PROGMEM r_comma[]        = {KC_B, MT_J, COMBO_END};
 
-const uint16_t PROGMEM bar[] = {KC_R, KC_T, COMBO_END};
-const uint16_t PROGMEM at[] = {KC_R, KC_G, COMBO_END};
+const uint16_t PROGMEM r_equals[]       = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM r_plus[]         = {MT_J, MT_K, COMBO_END};
+const uint16_t PROGMEM r_underscore[]   = {MT_N, KC_M, COMBO_END};
+const uint16_t PROGMEM r_minus[]        = {KC_H, MT_J, COMBO_END};
+const uint16_t PROGMEM r_dot[]          = {KC_B, MT_N, COMBO_END};
 
-//const uint16_t PROGMEM l_at[] = {KC_W, KC_E, KC_R, COMBO_END};
-//const uint16_t PROGMEM [] = {MT_S, MT_D, MT_F, COMBO_END};
+const uint16_t PROGMEM colon[]          = {KC_Y, KC_U, COMBO_END};
+const uint16_t PROGMEM semicolon[]      = {KC_H, KC_U, COMBO_END};
 
-const uint16_t PROGMEM lessthan[] = {MT_J, KC_I, COMBO_END};
-const uint16_t PROGMEM greaterthan[] = {KC_I, MT_L, COMBO_END};
-const uint16_t PROGMEM r_exponent[] = {MT_J, KC_I, MT_L, COMBO_END};
-const uint16_t PROGMEM r_asterisk[] = {MT_N, MT_K, COMBO_END};
-const uint16_t PROGMEM r_comma[] = {KC_B, MT_J, COMBO_END};
-
-//const uint16_t PROGMEM dot[] = {MT_J, KC_I, KC_O, COMBO_END};
-//const uint16_t PROGMEM comma[] = {KC_U, KC_I, MT_L, COMBO_END};
-
-const uint16_t PROGMEM r_equals[] = {KC_U, KC_I, COMBO_END};
-const uint16_t PROGMEM r_plus[] = {MT_J, MT_K, COMBO_END};
-const uint16_t PROGMEM r_underscore[] = {MT_N, KC_M, COMBO_END};
-const uint16_t PROGMEM r_minus[] = {KC_H, MT_J, COMBO_END};
-const uint16_t PROGMEM r_dot[] = {KC_B, MT_N, COMBO_END};
-
-const uint16_t PROGMEM colon[] = {KC_Y, KC_U, COMBO_END};
-const uint16_t PROGMEM semicolon[] = {KC_H, KC_U, COMBO_END};
-
-//const uint16_t PROGMEM r_at[] = {KC_U, KC_I, KC_O, COMBO_END};
-//const uint16_t PROGMEM [] = {MT_J, MT_K, MT_L, COMBO_END};
-
-/*
-combo_t key_combos[] = {
-    COMBO(capslock, KC_CAPS),
-    COMBO(scrolllock, KC_SCRL),
-    COMBO(nomods, TG(1)),
-    COMBO(lessthan, KC_LT),
-    COMBO(greaterthan, KC_GT),
-    COMBO(l_exponent, KC_CIRC),
-    COMBO(l_asterisk, KC_ASTR),
-    COMBO(at, LSFT(KC_QUOT)),
-    COMBO(l_plus, KC_PLUS),
-    COMBO(l_equals, KC_EQL),
-    COMBO(l_minus, KC_MINS),
-    COMBO(l_underscore, KC_UNDS),
-    COMBO(deleteback, LCTL(KC_LEFT)),
-    COMBO(leftparen, KC_LPRN),
-    COMBO(rightparen, KC_RPRN),
-    COMBO(r_exponent, KC_CIRC),
-    COMBO(r_asterisk, KC_ASTR),
-    COMBO(dot, KC_DOT),
-    COMBO(r_plus, KC_PLUS),
-    COMBO(r_equals, KC_EQL),
-    COMBO(r_minus, KC_MINS),
-    COMBO(r_underscore, KC_UNDS),
-    COMBO(deleteforward, LCTL(KC_RIGHT)),
-};
-*/
 
 combo_t key_combos[] = {
-    // [CAPSLOCK] = COMBO_ACTION(capslock),
-    // [SCROLLLOCK] = COMBO_ACTION(scrolllock),
-    [NOMODS] = COMBO_ACTION(nomods),
-    [TOUHOU] = COMBO_ACTION(touhou),
-    [LEFTPAREN] = COMBO_ACTION(leftparen),
-    [RIGHTPAREN] = COMBO_ACTION(rightparen),
-    [L_EXPONENT] = COMBO_ACTION(l_exponent),
-    [L_ASTERISK] = COMBO_ACTION(l_asterisk),
-    [L_COMMA] = COMBO_ACTION(l_comma),
-    [L_EQUALS] = COMBO_ACTION(l_equals),
-    [L_PLUS] = COMBO_ACTION(l_plus),
-    [L_UNDERSCORE] = COMBO_ACTION(l_underscore),
-    [L_MINUS] = COMBO_ACTION(l_minus),
-    [L_DOT] = COMBO_ACTION(l_dot),
-    [AT] = COMBO_ACTION(bar),
-    [BAR] = COMBO_ACTION(at),
-    [LESSTHAN] = COMBO_ACTION(lessthan),
-    [GREATERTHAN] = COMBO_ACTION(greaterthan),
-    [R_EXPONENT] = COMBO_ACTION(r_exponent),
-    [R_ASTERISK] = COMBO_ACTION(r_asterisk),
-    [R_COMMA] = COMBO_ACTION(r_comma),
-    [R_EQUALS] = COMBO_ACTION(r_equals),
-    [R_PLUS] = COMBO_ACTION(r_plus),
-    [R_UNDERSCORE] = COMBO_ACTION(r_underscore),
-    [R_MINUS] = COMBO_ACTION(r_minus),
-    [R_DOT] = COMBO_ACTION(r_dot),
-    [COLON] = COMBO_ACTION(colon),
-    [SEMICOLON] = COMBO_ACTION(semicolon),
+    // [CAPSLOCK]     = COMBO_ACTION(capslock),
+    // [SCROLLLOCK]   = COMBO_ACTION(scrolllock),
+    [NOMODS]        = COMBO_ACTION(nomods),
+    [TOUHOU]        = COMBO_ACTION(touhou),
+    
+    // Manual control
+    // [LEFTPAREN]     = COMBO_ACTION(leftparen),
+    // [RIGHTPAREN]    = COMBO_ACTION(rightparen),
+    // [EXPONENT]      = COMBO_ACTION(l_exponent),
+    [ASTERISK]      = COMBO_ACTION(l_asterisk),
+    [COMMA]         = COMBO_ACTION(l_comma),
+    [EQUALS]        = COMBO_ACTION(l_equals),
+    [PLUS]          = COMBO_ACTION(l_plus),
+    [UNDERSCORE]    = COMBO_ACTION(l_underscore),
+    [MINUS]         = COMBO_ACTION(l_minus),
+    [DOT]           = COMBO_ACTION(l_dot),
+    // [AT]            = COMBO_ACTION(bar),
+    // [BAR]           = COMBO_ACTION(at),
+    // [LESSTHAN]      = COMBO_ACTION(lessthan),
+    // [GREATERTHAN]   = COMBO_ACTION(greaterthan),
+    [ASTERISK]      = COMBO_ACTION(r_asterisk),
+    [COMMA]         = COMBO_ACTION(r_comma),
+    [EQUALS]        = COMBO_ACTION(r_equals),
+    [PLUS]          = COMBO_ACTION(r_plus),
+    [UNDERSCORE]    = COMBO_ACTION(r_underscore),
+    [MINUS]         = COMBO_ACTION(r_minus),
+    [DOT]           = COMBO_ACTION(r_dot),
+    [COLON]         = COMBO_ACTION(colon),
+    // [SEMICOLON]     = COMBO_ACTION(semicolon),
+
+    // Basic key combos
+    [LEFTPAREN]     = COMBO(leftparen, KC_LPRN),
+    [RIGHTPAREN]    = COMBO(rightparen, KC_RPRN),
+    [EXPONENT]      = COMBO(l_exponent, KC_CIRC),
+    // [ASTERISK]     = COMBO(l_asterisk, KC_ASTR),
+    // [COMMA]        = COMBO(l_comma, KC_COMM),
+    // [EQUALS]       = COMBO(l_equals, KC_EQL),
+    // [PLUS]         = COMBO(l_plus, KC_PLUS),
+    // [UNDERSCORE]   = COMBO(l_underscore, KC_UNDS),
+    // [MINUS]        = COMBO(l_minus, KC_MINS),
+    // [DOT]          = COMBO(l_dot, KC_DOT),
+    [AT]            = COMBO(bar, S(KC_NUBS)),
+    [BAR]           = COMBO(at, S(KC_QUOT)),
+    [LESSTHAN]      = COMBO(lessthan, KC_LT),
+    [GREATERTHAN]   = COMBO(greaterthan, KC_GT),
+    [EXPONENT]      = COMBO(r_exponent, KC_CIRC),
+    // [ASTERISK]     = COMBO(r_asterisk, KC_ASTR),
+    // [COMMA]        = COMBO(r_comma, KC_COMM),
+    // [EQUALS]       = COMBO(r_equals, KC_EQL),
+    // [PLUS]         = COMBO(r_plus, KC_PLUS),
+    // [UNDERSCORE]   = COMBO(r_underscore, KC_UNDS),
+    // [MINUS]        = COMBO(r_minus, KC_MINS),
+    // [DOT]          = COMBO(r_dot, KC_DOT),
+    // [COLON]        = COMBO(colon, KC_COLN),
+    [SEMICOLON]     = COMBO(semicolon, KC_SCLN),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
@@ -471,127 +458,103 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             }
             break;
 
-        case LEFTPAREN:
-            if (pressed) {
-                tap_code16(KC_LPRN);
-            }
-            break;
-        case RIGHTPAREN:
-            if (pressed) {
-                tap_code16(KC_RPRN);
-            }
-            break;
-        case L_EXPONENT:
-            if (pressed) {
-                tap_code16(KC_CIRC);
-            }
-            break;
-        case L_ASTERISK:
+        // case LEFTPAREN:
+        //     if (pressed) {
+        //         tap_code16(KC_LPRN);
+        //     }
+        //     break;
+        // case RIGHTPAREN:
+        //     if (pressed) {
+        //         tap_code16(KC_RPRN);
+        //     }
+        //     break;
+        // case EXPONENT:
+        //     if (pressed) {
+        //         tap_code16(KC_CIRC);
+        //     }
+        //     break;
+        case ASTERISK:
             if (pressed) {
                 tap_code16(KC_ASTR);
             }
             break;
-        case L_COMMA:
+        case COMMA:
             if (pressed) {
+                const uint8_t mods = get_mods();
+                del_mods(MOD_MASK_SHIFT);
                 tap_code(KC_COMM);
+                set_mods(mods);
             }
             break;
-        case L_PLUS:
+        case PLUS:
             if (pressed) {
                 tap_code16(KC_PLUS);
             }
             break;
-        case L_EQUALS:
+        case EQUALS:
             if (pressed) {
+                const uint8_t mods = get_mods();
+                del_mods(MOD_MASK_SHIFT);
                 tap_code(KC_EQL);
+                set_mods(mods);
             }
             break;
-        case L_UNDERSCORE:
+        case UNDERSCORE:
             if (pressed) {
                 tap_code16(KC_UNDS);
             }
             break;
-        case L_MINUS:
+        case MINUS:
             if (pressed) {
+                const uint8_t mods = get_mods();
+                del_mods(MOD_MASK_SHIFT);
                 tap_code(KC_MINS);
+                set_mods(mods);
             }
             break;
-        case L_DOT:
+        case DOT:
             if (pressed) {
+                const uint8_t mods = get_mods();
+                del_mods(MOD_MASK_SHIFT);
                 tap_code(KC_DOT);
+                set_mods(mods);
             }
             break;
-        case BAR:
-            if (pressed) {
-                tap_code16(S(KC_NUBS));
-            }
-            break;
-        case AT:
-            if (pressed) {
-                tap_code16(S(KC_QUOT));
-            }
-            break;
+        // case BAR:
+        //     if (pressed) {
+        //         tap_code16(S(KC_NUBS));
+        //     }
+        //     break;
+        // case AT:
+        //     if (pressed) {
+        //         tap_code16(S(KC_QUOT));
+        //     }
+        //     break;
 
-        case LESSTHAN:
-            if (pressed) {
-                tap_code16(KC_LT);
-            }
-            break;
-        case GREATERTHAN:
-            if (pressed) {
-                tap_code16(KC_GT);
-            }
-            break;
-        case R_EXPONENT:
-            if (pressed) {
-                tap_code16(KC_CIRC);
-            }
-            break;
-        case R_ASTERISK:
-            if (pressed) {
-                tap_code16(KC_ASTR);
-            }
-            break;
-        case R_COMMA:
-            if (pressed) {
-                tap_code(KC_COMM);
-            }
-            break;
-        case R_PLUS:
-            if (pressed) {
-                tap_code16(KC_PLUS);
-            }
-            break;
-        case R_EQUALS:
-            if (pressed) {
-                tap_code(KC_EQL);
-            }
-            break;
-        case R_UNDERSCORE:
-            if (pressed) {
-                tap_code16(KC_UNDS);
-            }
-            break;
-        case R_MINUS:
-            if (pressed) {
-                tap_code(KC_MINS);
-            }
-            break;
-        case R_DOT:
-            if (pressed) {
-                tap_code(KC_DOT);
-            }
-            break;
+        // case LESSTHAN:
+        //     if (pressed) {
+        //         tap_code16(KC_LT);
+        //     }
+        //     break;
+        // case GREATERTHAN:
+        //     if (pressed) {
+        //         tap_code16(KC_GT);
+        //     }
+        //     break;
+
         case COLON:
             if (pressed) {
+                const uint8_t mods = get_mods();
+                del_mods(MOD_MASK_SHIFT);
                 tap_code16(KC_COLN);
+                set_mods(mods);
             }
             break;
-        case SEMICOLON:
-            if (pressed) {
-                tap_code(KC_SCLN);
-            }
-            break;
+        // case SEMICOLON:
+        //     if (pressed) {
+        //         tap_code(KC_SCLN);
+        //     }
+        //     break;
     }
 }
 
@@ -604,33 +567,30 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
         // case CAPSLOCK:
         // case SCROLLLOCK:
         
-        //left hand
+        // Left hand
         case LESSTHAN:
         case GREATERTHAN:
-        case L_EXPONENT:
-        case L_ASTERISK:
-        case L_COMMA:
-        case L_EQUALS:
-        case L_PLUS:
-        case L_UNDERSCORE:
-        case L_MINUS:
-        case L_DOT:
         case AT:
         case BAR:
-        
-        //right hand
+
+        // Right hand
         case LEFTPAREN:
         case RIGHTPAREN:
-        case R_EXPONENT:
-        case R_ASTERISK:
-        case R_COMMA:
-        case R_EQUALS:
-        case R_PLUS:
-        case R_UNDERSCORE:
-        case R_MINUS:
-        case R_DOT:
         case COLON:
         case SEMICOLON:
+
+        // Shared
+        case EXPONENT:
+        case ASTERISK:
+        case COMMA:
+        case EQUALS:
+        case PLUS:
+        case UNDERSCORE:
+        case MINUS:
+        case DOT:
+
+        // Stenography
+
             if (layer_state_is(_BASIC) || layer_state_is(_TOUHOU) || layer_state_is(_MOUSE) || layer_state_is(_EDIT)) {
                 return false;
             }
@@ -639,6 +599,9 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
     return true;
 }
 
+bool get_combo_must_tap(uint16_t index, combo_t *combo) {
+    return true;
+}
 
 // Store last key
 uint16_t lastkey = KC_NO;
@@ -873,20 +836,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         //     return false; // Return true for normal processing of key
         // }
 
-        case LT(0,SFT):
-        {
-            if (!record->tap.count && record->event.pressed) { // Intercept holds only
-                register_mods(MOD_MASK_SHIFT);
-            } else { // On keyup
-                unregister_mods(MOD_MASK_SHIFT);
-            }
-            if (record->tap.count && record->event.pressed) { // Intercept taps
-                set_oneshot_mods(MOD_BIT(KC_LSFT));
-            } else {
-                /* intentionally empty */;
-            }
-            return false; // Return true for normal processing of key
-        }
+        // case LT(0,SFT):
+        // {
+        //     if (!record->tap.count && record->event.pressed) { // Intercept holds only
+        //         register_mods(MOD_MASK_SHIFT);
+        //     } else { // On keyup
+        //         unregister_mods(MOD_MASK_SHIFT);
+        //     }
+        //     if (record->tap.count && record->event.pressed) { // Intercept taps
+        //         set_oneshot_mods(MOD_BIT(KC_LSFT));
+        //     } else {
+        //         /* intentionally empty */;
+        //     }
+        //     return false; // Return true for normal processing of key
+        // }
 
 
 //        case NEWSENT: 
@@ -909,96 +872,85 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
         case CS_COLN:
             if (record->event.pressed) {
-                register_code16(KC_COLN);
-                unregister_code16(KC_COLN);
+                tap_code16(KC_COLN);
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
         case CS_UNDS:
             if (record->event.pressed) {
-                register_code16(KC_UNDS);
-                unregister_code16(KC_UNDS);
+                tap_code16(KC_UNDS);
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
         case CS_PIPE:
             if (record->event.pressed) {
-                register_code16(LSFT(KC_NUBS));
-                unregister_code16(LSFT(KC_NUBS));
+                tap_code16(LSFT(KC_NUBS));
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
         case CS_LT:
             if (record->event.pressed) {
-                register_code16(KC_LT);
-                unregister_code16(KC_LT);
+                tap_code16(KC_LT);
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
         case CS_GT:
             if (record->event.pressed) {
-                register_code16(KC_GT);
-                unregister_code16(KC_GT);
+                tap_code16(KC_GT);
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
         case CS_PERC:
             if (record->event.pressed) {
-                register_code16(KC_PERC);
-                unregister_code16(KC_PERC);
+                tap_code16(KC_PERC);
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
         case CS_ASTR:
             if (record->event.pressed) {
-                register_code16(KC_ASTR);
-                unregister_code16(KC_ASTR);
+                tap_code16(KC_ASTR);
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
         case CS_DLR:
             if (record->event.pressed) {
-                register_code16(KC_DLR);
-                unregister_code16(KC_DLR);
+                tap_code16(KC_DLR);
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
         case CS_AMPR:
             if (record->event.pressed) {
-                register_code16(KC_AMPR);
-                unregister_code16(KC_AMPR);
+                tap_code16(KC_AMPR);
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
         case CS_CIRC:
             if (record->event.pressed) {
-                register_code16(KC_CIRC);
-                unregister_code16(KC_CIRC);
+                tap_code16(KC_CIRC);
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
         case CS_EXLM:
             if (record->event.pressed) {
-                register_code16(KC_EXLM);
-                unregister_code16(KC_EXLM);
+                tap_code16(KC_EXLM);
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
         case CS_TILD:
             if (record->event.pressed) {
-                register_code16(S(KC_NUHS));
-                unregister_code16(S(KC_NUHS));
+                tap_code16(S(KC_NUHS));
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
         case CS_PLUS:
             if (record->event.pressed) {
-                register_code16(KC_PLUS);
-                unregister_code16(KC_PLUS);
+                tap_code16(KC_PLUS);
                 unregister_mods(MOD_MASK_SHIFT);
             }
             break;
 
+
+        // Edit layer mod-taps
         case LT(0,MT_RPRN):
         {
             if (!record->tap.count && record->event.pressed) { // Intercept holds only
@@ -1007,8 +959,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 unregister_mods(MOD_MASK_SHIFT);
             }
             if (record->tap.count && record->event.pressed) { // Intercept taps
-                register_code16(KC_RPRN);
-                unregister_code16(KC_RPRN);
+                tap_code16(KC_RPRN);
                 unregister_mods(MOD_MASK_SHIFT);
             } else {
                 /* intentionally empty */;
@@ -1020,13 +971,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case LT(0,MT_LPRN):
         {
             if (!record->tap.count && record->event.pressed) { // Intercept holds only
-                register_mods(MOD_MASK_ALT);
+                register_mods(MOD_BIT(KC_LALT));
             } else { // On keyup
-                unregister_mods(MOD_MASK_ALT);
+                unregister_mods(MOD_BIT(KC_LALT));
             }
             if (record->tap.count && record->event.pressed) { // Intercept taps
-                register_code16(KC_LPRN);
-                unregister_code16(KC_LPRN);
+                tap_code16(KC_LPRN);
                 unregister_mods(MOD_MASK_SHIFT);
             } else {
                 /* intentionally empty */;
@@ -1043,8 +993,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 unregister_mods(MOD_MASK_GUI);
             }
             if (record->tap.count && record->event.pressed) { // Intercept taps
-                register_code16(KC_ASTR);
-                unregister_code16(KC_ASTR);
+                tap_code16(KC_ASTR);
                 unregister_mods(MOD_MASK_SHIFT);
             } else {
                 /* intentionally empty */;
@@ -1058,15 +1007,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 }
 
 
-bool ONESHOT_SHIFT = false;
-void oneshot_mods_changed_user(uint8_t mods) {
-    if (mods & MOD_MASK_SHIFT) {
-        ONESHOT_SHIFT = true;
-    }
-    if (!mods) {
-        ONESHOT_SHIFT = false;
-    }
-}
+// bool ONESHOT_SHIFT = false;
+// void oneshot_mods_changed_user(uint8_t mods) {
+//     if (mods & MOD_MASK_SHIFT) {
+//         ONESHOT_SHIFT = true;
+//     }
+//     if (!mods) {
+//         ONESHOT_SHIFT = false;
+//     }
+// }
 
 #ifdef OLED_ENABLE
 
@@ -1210,12 +1159,12 @@ void render_layer(void) {
         case _MEDIA:
             oled_write_P(PSTR("Media"), false);
             break;
-        // case _NUMPAD:
-        //     oled_write_P(PSTR("N.Pad"), false);
-        //     break;
-        // case _FUNCTION:
-        //     oled_write_P(PSTR("F.Key"), false);
-        //     break;
+        case _NUMPAD:
+            oled_write_P(PSTR("N.Pad"), false);
+            break;
+        case _FUNCTION:
+            oled_write_P(PSTR("F.Key"), false);
+            break;
         case _TOUHOU:
             oled_write_P(PSTR("ToHo."), false);
             break;
@@ -1234,7 +1183,8 @@ void render_locking_key_state(led_t led_usb_state) {
 void render_modifier_state(void) {
     oled_write_P(PSTR("G"), (get_mods() & MOD_BIT(KC_LGUI)) == MOD_BIT(KC_LGUI) || (get_mods() & MOD_BIT(KC_RGUI)) == MOD_BIT(KC_RGUI));
     oled_write_P(PSTR("A"), (get_mods() & MOD_BIT(KC_LALT)) == MOD_BIT(KC_LALT) || (get_mods() & MOD_BIT(KC_RALT)) == MOD_BIT(KC_RALT));
-    oled_write_P(PSTR("S"), (get_mods() & MOD_BIT(KC_LSFT)) == MOD_BIT(KC_LSFT) || (get_mods() & MOD_BIT(KC_RSFT)) == MOD_BIT(KC_RSFT) || ONESHOT_SHIFT );
+    oled_write_P(PSTR("S"), (get_mods() & MOD_BIT(KC_LSFT)) == MOD_BIT(KC_LSFT) || (get_mods() & MOD_BIT(KC_RSFT)) == MOD_BIT(KC_RSFT));
+    // oled_write_P(PSTR("S"), (get_mods() & MOD_BIT(KC_LSFT)) == MOD_BIT(KC_LSFT) || (get_mods() & MOD_BIT(KC_RSFT)) == MOD_BIT(KC_RSFT) || ONESHOT_SHIFT );
     oled_write_P(PSTR("C"), (get_mods() & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL) || (get_mods() & MOD_BIT(KC_RCTL)) == MOD_BIT(KC_RCTL));
 }
 
