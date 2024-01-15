@@ -1,6 +1,7 @@
 # Desync's Keymap
 ![Layout](Images/keyboard.png?raw=true)
 ![Combos](Images/combos.png?raw=true)
+Note: images are out of date but are mostly representative of the keymap.
 
 ## Features
 - Common symbols and punctuation accessible through combos with many duplicated on both sides; combos trigger through most layers.
