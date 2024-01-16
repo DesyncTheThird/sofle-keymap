@@ -365,8 +365,8 @@ const uint16_t PROGMEM l_underscore[]   = {KC_X, MT_C, COMBO_END};
 const uint16_t PROGMEM l_minus[]        = {MT_F, KC_G, COMBO_END};
 const uint16_t PROGMEM l_dot[]          = {MT_C, KC_V, COMBO_END};
 
-const uint16_t PROGMEM bar[]            = {KC_R, KC_T, COMBO_END};
-const uint16_t PROGMEM at[]             = {KC_R, KC_G, COMBO_END};
+const uint16_t PROGMEM at[]             = {KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM bar[]            = {KC_R, KC_G, COMBO_END};
 
 const uint16_t PROGMEM lessthan[]       = {MT_J, KC_I, COMBO_END};
 const uint16_t PROGMEM greaterthan[]    = {KC_I, MT_L, COMBO_END};
@@ -433,8 +433,8 @@ combo_t key_combos[] = {
     [LEFTPAREN]     = COMBO(leftparen, KC_LPRN),
     [RIGHTPAREN]    = COMBO(rightparen, KC_RPRN),
     [L_EXPONENT]    = COMBO(l_exponent, KC_CIRC),
-    [AT]            = COMBO(bar, S(KC_NUBS)),
-    [BAR]           = COMBO(at, S(KC_QUOT)),
+    [AT]            = COMBO(at, S(KC_QUOT)),
+    [BAR]           = COMBO(bar, S(KC_NUBS)),
     [LESSTHAN]      = COMBO(lessthan, KC_LT),
     [GREATERTHAN]   = COMBO(greaterthan, KC_GT),
     [R_EXPONENT]    = COMBO(r_exponent, KC_CIRC),
