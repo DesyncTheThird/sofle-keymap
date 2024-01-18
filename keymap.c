@@ -97,11 +97,11 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_DEFAULT] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
-     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
-    KC_LSFT,    KC_A,    MT_S,    MT_D,    MT_F,    KC_G,                                KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
-    KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,    KC_V,         TG(7),         TG(8),  KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                      KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC), LT(4,KC_BSPC),   REP,   MO(5), CS_UNDS, KC_SLSH),
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
+     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
+    KC_LSFT,    KC_A,    MT_S,    MT_D,    MT_F,    KC_G,                                    KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
+    KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,    KC_V,         TG(7),         TG(8),      KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
+                      KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC), LT(4,KC_BSPC), LT(3,REP),   MO(5), CS_UNDS, KC_SLSH),
                       
 [_BASIC] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
@@ -111,18 +111,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,      KC_BSPC, KC_TRNS, KC_TRNS, CS_UNDS, KC_SLSH),
 
 [_EDIT] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,          KC_7,          KC_8,          KC_9,    KC_0,  KC_DEL,
-     KC_TAB, KC_PAUS, KC_HOME,   KC_UP,  KC_END, KC_CAPS,                        KC_EQL,       KC_RCBR,       KC_LCBR,       CS_CIRC, CS_UNDS,  KC_DEL,
-    KC_LSFT, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                         CS_LT, LT(0,MT_RPRN), LT(0,MT_LPRN), LT(0,MT_ASTR),   CS_AT,  KC_ENT,
-    KC_LCTL, CS_BSLS, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS,  CS_GT,       MT_RBRC,       KC_LBRC,       KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,   KC_0,        KC_SPC,       CS_UNDS,       KC_SLSH),
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                              KC_6,          KC_7,          KC_8,          KC_9,    KC_0,  KC_DEL,
+     KC_TAB, KC_PAUS, KC_HOME,   KC_UP,  KC_END, KC_CAPS,                            KC_EQL,       KC_RCBR,       KC_LCBR,       CS_CIRC, CS_UNDS,  KC_DEL,
+    KC_LSFT, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                             CS_LT, LT(0,MT_RPRN), LT(0,MT_LPRN), LT(0,MT_ASTR),   CS_AT,  KC_ENT,
+    KC_LCTL, CS_BSLS, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS,      CS_GT,       MT_RBRC,       KC_LBRC,       KC_QUES, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, LT(3,KC_0),        KC_SPC,       CS_UNDS,       KC_SLSH),
 
 [_DATA] = LAYOUT(
      KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
      KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        KC_EQL,    KC_7,    KC_8,    KC_9, CS_UNDS,  KC_DEL,
     KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         CS_LT,    KC_4,    KC_5,    KC_6,   CS_AT,  KC_ENT,
     KC_LCTL, CS_BSLS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS,  CS_GT,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS,   KC_0,  KC_DOT, KC_TRNS, KC_TRNS),
+                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS,   KC_0,  KC_SPC, KC_TRNS, KC_TRNS),
 
 [_SYMBOL] = LAYOUT(
      KC_GRV, CS_EXLM, CS_DQUO, CS_POUN,  CS_DLR, CS_PERC,                        CS_CIRC, CS_AMPR, CS_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
@@ -975,20 +975,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             };
             break;
 
-        // case LT(3,REP):
-        // {
-        //     if (!record->tap.count && record->event.pressed) { // Intercept holds only
-        //         layer_on(_DATA);
-        //     } else { // On keyup
-        //         layer_off(_DATA);
-        //     }
-        //     if (record->tap.count && record->event.pressed) { // Intercept taps
-        //         register_code(lastkey);
-        //     } else {
-        //         unregister_code(lastkey);
-        //     }
-        //     return false; // Return true for normal processing of key
-        // }
+        case LT(3,REP):
+        {
+            if (!record->tap.count && record->event.pressed) { // Intercept holds only
+                layer_on(_DATA);
+            } else { // On keyup
+                layer_off(_DATA);
+            }
+            if (record->tap.count && record->event.pressed) { // Intercept taps
+                register_code(lastkey);
+            } else {
+                unregister_code(lastkey);
+            }
+            return false; // Return true for normal processing of key
+        }
 
         // case LT(0,SFT):
         // {
