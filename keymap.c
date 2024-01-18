@@ -276,7 +276,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 //        case LT(3, KC_SPC):
-       case LT(3, REP):
+        case LT(3, REP):
         case LT(3,KC_0):
         case LT(4, KC_BSPC):
             // Immediately select the hold action when another key is pressed.
@@ -384,26 +384,26 @@ const uint16_t PROGMEM colon[]          = {KC_Y, KC_U, COMBO_END};
 const uint16_t PROGMEM semicolon[]      = {KC_H, KC_U, COMBO_END};
 
 // Steno
-const uint16_t PROGMEM sg_the[]         = {REP, MT_K, COMBO_END};
-const uint16_t PROGMEM sg_and[]         = {REP, MT_J, COMBO_END};
-const uint16_t PROGMEM sg_that[]        = {REP, KC_T, KC_H, COMBO_END};
-const uint16_t PROGMEM sg_this[]        = {REP, KC_T, KC_I, COMBO_END};
-const uint16_t PROGMEM sg_here[]        = {REP, KC_H, COMBO_END};
-const uint16_t PROGMEM sg_have[]        = {REP, KC_H, KC_A, COMBO_END};
-const uint16_t PROGMEM sg_with[]        = {REP, KC_W, KC_I, COMBO_END};
-const uint16_t PROGMEM sg_you[]         = {REP, KC_U, COMBO_END};
-const uint16_t PROGMEM sg_ever[]        = {REP, KC_E, COMBO_END};
-const uint16_t PROGMEM sg_from[]        = {REP, MT_F, COMBO_END};
-const uint16_t PROGMEM sg_some[]        = {REP, MT_S, COMBO_END};
-const uint16_t PROGMEM sg_what[]        = {REP, KC_W, COMBO_END};
-const uint16_t PROGMEM sg_but[]         = {REP, KC_B, COMBO_END};
+const uint16_t PROGMEM sg_the[]         = {LT(3,REP), MT_K, COMBO_END};
+const uint16_t PROGMEM sg_and[]         = {LT(3,REP), MT_J, COMBO_END};
+const uint16_t PROGMEM sg_that[]        = {LT(3,REP), KC_T, KC_H, COMBO_END};
+const uint16_t PROGMEM sg_this[]        = {LT(3,REP), KC_T, KC_I, COMBO_END};
+const uint16_t PROGMEM sg_here[]        = {LT(3,REP), KC_H, COMBO_END};
+const uint16_t PROGMEM sg_have[]        = {LT(3,REP), KC_H, KC_A, COMBO_END};
+const uint16_t PROGMEM sg_with[]        = {LT(3,REP), KC_W, KC_I, COMBO_END};
+const uint16_t PROGMEM sg_you[]         = {LT(3,REP), KC_U, COMBO_END};
+const uint16_t PROGMEM sg_ever[]        = {LT(3,REP), KC_E, COMBO_END};
+const uint16_t PROGMEM sg_from[]        = {LT(3,REP), MT_F, COMBO_END};
+const uint16_t PROGMEM sg_some[]        = {LT(3,REP), MT_S, COMBO_END};
+const uint16_t PROGMEM sg_what[]        = {LT(3,REP), KC_W, COMBO_END};
+const uint16_t PROGMEM sg_but[]         = {LT(3,REP), KC_B, COMBO_END};
 
-const uint16_t PROGMEM sg_poly[]        = {REP, KC_P, COMBO_END};
-const uint16_t PROGMEM sg_ough[]        = {REP, KC_O, COMBO_END};
-const uint16_t PROGMEM sg_ould[]        = {REP, MT_L, COMBO_END};
-const uint16_t PROGMEM sg_ion[]         = {REP, MT_N, COMBO_END};
-const uint16_t PROGMEM sg_ing[]         = {REP, KC_I, COMBO_END};
-const uint16_t PROGMEM sg_ment[]        = {REP, KC_M, COMBO_END};
+const uint16_t PROGMEM sg_poly[]        = {LT(3,REP), KC_P, COMBO_END};
+const uint16_t PROGMEM sg_ough[]        = {LT(3,REP), KC_O, COMBO_END};
+const uint16_t PROGMEM sg_ould[]        = {LT(3,REP), MT_L, COMBO_END};
+const uint16_t PROGMEM sg_ion[]         = {LT(3,REP), MT_N, COMBO_END};
+const uint16_t PROGMEM sg_ing[]         = {LT(3,REP), KC_I, COMBO_END};
+const uint16_t PROGMEM sg_ment[]        = {LT(3,REP), KC_M, COMBO_END};
 
 combo_t key_combos[] = {
     // [CAPSLOCK]     = COMBO_ACTION(capslock),
