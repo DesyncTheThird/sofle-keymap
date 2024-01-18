@@ -276,7 +276,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 //        case LT(3, KC_SPC):
-//        case LT(3, REP):
+       case LT(3, REP):
         case LT(3,KC_0):
         case LT(4, KC_BSPC):
             // Immediately select the hold action when another key is pressed.
@@ -644,7 +644,7 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
             break;
 
         default:
-            if (!(layer_state_is(_BASIC) || layer_state_is(_TOUHOU) || layer_state_is(_MOUSE) || layer_state_is(_EDIT))) {
+            if (!(layer_state_is(_BASIC) || layer_state_is(_TOUHOU) || layer_state_is(_MOUSE))) {
                 return true;
             }
             break;
