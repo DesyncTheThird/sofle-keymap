@@ -97,12 +97,12 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_DEFAULT] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
-     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
-    KC_LSFT,    KC_A,    MT_S,    MT_D,    MT_F,    KC_G,                                    KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
-    KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,    KC_V,         TG(7),         TG(8),      KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                      KC_LGUI, KC_LALT,   MO(6),   MO(2),  LT(3,KC_SPC), LT(4,KC_BSPC), LT(3,REP),   MO(5), CS_UNDS, KC_SLSH),
-                      
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,  KC_5,                                    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
+     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,  KC_T,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
+    KC_LSFT,    KC_A,    MT_S,    MT_D,    MT_F,  KC_G,                                    KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
+    KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,  KC_V,         TG(7),         TG(8),      KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
+                      KC_LGUI, KC_LALT,   MO(6), MO(2),  LT(3,KC_SPC), LT(4,KC_BSPC), LT(2,REP),   MO(5), CS_UNDS, KC_SLSH),
+
 [_BASIC] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
      KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                           KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
@@ -111,17 +111,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,      KC_BSPC, KC_TRNS, KC_TRNS, CS_UNDS, KC_SLSH),
 
 [_EDIT] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                              KC_6,          KC_7,          KC_8,          KC_9,    KC_0,  KC_DEL,
-     KC_TAB, KC_PAUS, KC_HOME,   KC_UP,  KC_END, KC_CAPS,                            KC_EQL,       KC_RCBR,       KC_LCBR,       CS_CIRC, CS_UNDS,  KC_DEL,
-    KC_LSFT, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                             CS_LT, LT(0,MT_RPRN), LT(0,MT_LPRN), LT(0,MT_ASTR),   CS_AT,  KC_ENT,
-    KC_LCTL, CS_BSLS, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS,      CS_GT,       MT_RBRC,       KC_LBRC,       KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, LT(3,KC_0),        KC_SPC,       CS_UNDS,       KC_SLSH),
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,          KC_7,          KC_8,          KC_9,    KC_0,  KC_DEL,
+     KC_TAB, KC_PAUS, KC_HOME,   KC_UP,  KC_END, KC_CAPS,                        KC_EQL,       KC_RCBR,       KC_LCBR,       CS_CIRC, CS_UNDS,  KC_DEL,
+    KC_LSFT, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                         CS_LT, LT(0,MT_RPRN), LT(0,MT_LPRN), LT(0,MT_ASTR),   CS_AT,  KC_ENT,
+    KC_LCTL, KC_TRNS, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS,  CS_GT,       MT_RBRC,       KC_LBRC,       KC_QUES, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_SLSH, KC_LCTL, KC_TRNS,      KC_TRNS,   KC_0,        KC_SPC,       CS_UNDS,       KC_SLSH),
 
 [_DATA] = LAYOUT(
      KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-     KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        KC_EQL,    KC_7,    KC_8,    KC_9, CS_UNDS,  KC_DEL,
-    KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         CS_LT,    KC_4,    KC_5,    KC_6,   CS_AT,  KC_ENT,
-    KC_LCTL, CS_BSLS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS,  CS_GT,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
+     KC_TAB, CS_PERC, CS_ASTR,   KC_UP, CS_AMPR, CS_CIRC,                        KC_EQL,    KC_7,    KC_8,    KC_9, CS_UNDS,  KC_DEL,
+    KC_LSFT, CS_PIPE, KC_LEFT, KC_DOWN, KC_RGHT,  KC_EQL,                         CS_LT,    KC_4,    KC_5,    KC_6,   CS_AT,  KC_ENT,
+    KC_LCTL, KC_TRNS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS,  CS_GT,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
                       KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS,   KC_0,  KC_SPC, KC_TRNS, KC_TRNS),
 
 [_SYMBOL] = LAYOUT(
@@ -236,9 +236,9 @@ void matrix_scan_user(void) {
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case LT(2,REP):
         case LT(3,KC_SPC):
         case LT(4,KC_BSPC):
-        case LT(3,KC_0):
         case MT_S:
         case MT_D:
         case MT_F:
@@ -247,12 +247,11 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
         case MT_J:
         case MT_K:
         case MT_L:
-//        case OSM(MOD_LSFT): // disables locking shift
-        // case LT(0,SFT):
+        case MT_RBRC:
+        case LT(0,MT_RPRN):
+        case LT(0,MT_LPRN):
+        case LT(0,MT_ASTR):
             return 0;
-//        case TT(5):
-//        case OSM(MOD_LSFT):
-//            return TAPPING_TERM;
         default:
             return TAPPING_TERM;
     }
@@ -275,9 +274,8 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-//        case LT(3, KC_SPC):
-        case LT(3, REP):
-        case LT(3,KC_0):
+        // case LT(2, REP):
+        // case LT(3, KC_SPC):
         case LT(4, KC_BSPC):
             // Immediately select the hold action when another key is pressed.
             return true;
@@ -294,13 +292,13 @@ enum combo_events {
     NOMODS,
     TOUHOU,
     
-    LESSTHAN,
-    GREATERTHAN,
+    // LESSTHAN,
+    // GREATERTHAN,
     AT,
     BAR,
 
-    LEFTPAREN,
-    RIGHTPAREN,
+    // LEFTPAREN,
+    // RIGHTPAREN,
     COLON,
     SEMICOLON,
     
@@ -336,14 +334,16 @@ enum combo_events {
     SG_SOME,
     SG_WHAT,
     SG_BUT,
+    SG_ABOUT,
+    SG_WHICH,
+    SG_JUST,
+    SG_LIKE,
     
-    SG_POLY,
     SG_OUGH,
     SG_OULD,
     SG_ION,
     SG_ING,
-    SG_MENT,
-
+    
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH;
@@ -353,8 +353,8 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 const uint16_t PROGMEM nomods[]         = {KC_0, CS_HASH, COMBO_END};
 const uint16_t PROGMEM touhou[]         = {KC_0, CS_HASH, KC_ESC, COMBO_END};
 
-const uint16_t PROGMEM leftparen[]      = {MT_S, KC_E, COMBO_END};
-const uint16_t PROGMEM rightparen[]     = {KC_E, MT_F, COMBO_END};
+// const uint16_t PROGMEM leftparen[]      = {MT_S, KC_E, COMBO_END};
+// const uint16_t PROGMEM rightparen[]     = {KC_E, MT_F, COMBO_END};
 const uint16_t PROGMEM l_exponent[]     = {MT_S, KC_E, MT_F, COMBO_END};
 const uint16_t PROGMEM l_asterisk[]     = {MT_D, MT_C, COMBO_END};
 const uint16_t PROGMEM l_comma[]        = {MT_F, KC_V, COMBO_END};
@@ -368,8 +368,8 @@ const uint16_t PROGMEM l_dot[]          = {MT_C, KC_V, COMBO_END};
 const uint16_t PROGMEM at[]             = {KC_R, KC_T, COMBO_END};
 const uint16_t PROGMEM bar[]            = {KC_R, KC_G, COMBO_END};
 
-const uint16_t PROGMEM lessthan[]       = {MT_J, KC_I, COMBO_END};
-const uint16_t PROGMEM greaterthan[]    = {KC_I, MT_L, COMBO_END};
+// const uint16_t PROGMEM lessthan[]       = {MT_J, KC_I, COMBO_END};
+// const uint16_t PROGMEM greaterthan[]    = {KC_I, MT_L, COMBO_END};
 const uint16_t PROGMEM r_exponent[]     = {MT_J, KC_I, MT_L, COMBO_END};
 const uint16_t PROGMEM r_asterisk[]     = {MT_N, MT_K, COMBO_END};
 const uint16_t PROGMEM r_comma[]        = {KC_B, MT_J, COMBO_END};
@@ -384,26 +384,28 @@ const uint16_t PROGMEM colon[]          = {KC_Y, KC_U, COMBO_END};
 const uint16_t PROGMEM semicolon[]      = {KC_H, KC_U, COMBO_END};
 
 // Steno
-const uint16_t PROGMEM sg_the[]         = {LT(3,REP), MT_K, COMBO_END};
-const uint16_t PROGMEM sg_and[]         = {LT(3,REP), MT_J, COMBO_END};
-const uint16_t PROGMEM sg_that[]        = {LT(3,REP), KC_T, KC_H, COMBO_END};
-const uint16_t PROGMEM sg_this[]        = {LT(3,REP), KC_T, KC_I, COMBO_END};
-const uint16_t PROGMEM sg_here[]        = {LT(3,REP), KC_H, COMBO_END};
-const uint16_t PROGMEM sg_have[]        = {LT(3,REP), KC_H, KC_A, COMBO_END};
-const uint16_t PROGMEM sg_with[]        = {LT(3,REP), KC_W, KC_I, COMBO_END};
-const uint16_t PROGMEM sg_you[]         = {LT(3,REP), KC_U, COMBO_END};
-const uint16_t PROGMEM sg_ever[]        = {LT(3,REP), KC_E, COMBO_END};
-const uint16_t PROGMEM sg_from[]        = {LT(3,REP), MT_F, COMBO_END};
-const uint16_t PROGMEM sg_some[]        = {LT(3,REP), MT_S, COMBO_END};
-const uint16_t PROGMEM sg_what[]        = {LT(3,REP), KC_W, COMBO_END};
-const uint16_t PROGMEM sg_but[]         = {LT(3,REP), KC_B, COMBO_END};
+const uint16_t PROGMEM sg_the[]         = {LT(2,REP), KC_T, COMBO_END};
+const uint16_t PROGMEM sg_and[]         = {LT(2,REP), KC_A, COMBO_END};
+const uint16_t PROGMEM sg_that[]        = {LT(2,REP), KC_T, KC_H, COMBO_END};
+const uint16_t PROGMEM sg_this[]        = {LT(2,REP), KC_T, KC_I, COMBO_END};
+const uint16_t PROGMEM sg_here[]        = {LT(2,REP), KC_H, COMBO_END};
+const uint16_t PROGMEM sg_have[]        = {LT(2,REP), KC_H, KC_A, COMBO_END};
+const uint16_t PROGMEM sg_with[]        = {LT(2,REP), KC_W, KC_I, COMBO_END};
+const uint16_t PROGMEM sg_you[]         = {LT(2,REP), KC_U, COMBO_END};
+const uint16_t PROGMEM sg_ever[]        = {LT(2,REP), KC_E, COMBO_END};
+const uint16_t PROGMEM sg_from[]        = {LT(2,REP), MT_F, COMBO_END};
+const uint16_t PROGMEM sg_some[]        = {LT(2,REP), MT_S, COMBO_END};
+const uint16_t PROGMEM sg_what[]        = {LT(2,REP), KC_W, COMBO_END};
+const uint16_t PROGMEM sg_but[]         = {LT(2,REP), KC_B, COMBO_END};
+const uint16_t PROGMEM sg_about[]       = {LT(2,REP), KC_A, KC_B, COMBO_END};
+const uint16_t PROGMEM sg_which[]       = {LT(2,REP), KC_W, KC_H, COMBO_END};
+const uint16_t PROGMEM sg_just[]        = {LT(2,REP), MT_J, COMBO_END};
+const uint16_t PROGMEM sg_like[]        = {LT(2,REP), MT_K, COMBO_END};
 
-const uint16_t PROGMEM sg_poly[]        = {LT(3,REP), KC_P, COMBO_END};
-const uint16_t PROGMEM sg_ough[]        = {LT(3,REP), KC_O, COMBO_END};
-const uint16_t PROGMEM sg_ould[]        = {LT(3,REP), MT_L, COMBO_END};
-const uint16_t PROGMEM sg_ion[]         = {LT(3,REP), MT_N, COMBO_END};
-const uint16_t PROGMEM sg_ing[]         = {LT(3,REP), KC_I, COMBO_END};
-const uint16_t PROGMEM sg_ment[]        = {LT(3,REP), KC_M, COMBO_END};
+const uint16_t PROGMEM sg_ough[]        = {LT(2,REP), KC_O, COMBO_END};
+const uint16_t PROGMEM sg_ould[]        = {LT(2,REP), MT_L, COMBO_END};
+const uint16_t PROGMEM sg_ion[]         = {LT(2,REP), KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM sg_ing[]         = {LT(2,REP), KC_I, COMBO_END};
 
 combo_t key_combos[] = {
     // [CAPSLOCK]     = COMBO_ACTION(capslock),
@@ -430,13 +432,13 @@ combo_t key_combos[] = {
     [COLON]         = COMBO_ACTION(colon),
 
     // Basic key combos
-    [LEFTPAREN]     = COMBO(leftparen, KC_LPRN),
-    [RIGHTPAREN]    = COMBO(rightparen, KC_RPRN),
+    // [LEFTPAREN]     = COMBO(leftparen, KC_LPRN),
+    // [RIGHTPAREN]    = COMBO(rightparen, KC_RPRN),
     [L_EXPONENT]    = COMBO(l_exponent, KC_CIRC),
     [AT]            = COMBO(at, S(KC_QUOT)),
     [BAR]           = COMBO(bar, S(KC_NUBS)),
-    [LESSTHAN]      = COMBO(lessthan, KC_LT),
-    [GREATERTHAN]   = COMBO(greaterthan, KC_GT),
+    // [LESSTHAN]      = COMBO(lessthan, KC_LT),
+    // [GREATERTHAN]   = COMBO(greaterthan, KC_GT),
     [R_EXPONENT]    = COMBO(r_exponent, KC_CIRC),
     [SEMICOLON]     = COMBO(semicolon, KC_SCLN),
 
@@ -454,14 +456,15 @@ combo_t key_combos[] = {
     [SG_SOME]       = COMBO_ACTION(sg_some),
     [SG_WHAT]       = COMBO_ACTION(sg_what),
     [SG_BUT]        = COMBO_ACTION(sg_but),
+    [SG_ABOUT]      = COMBO_ACTION(sg_about),
+    [SG_WHICH]      = COMBO_ACTION(sg_which),
+    [SG_JUST]       = COMBO_ACTION(sg_just),
     
-    [SG_POLY]       = COMBO_ACTION(sg_poly),
     [SG_OUGH]       = COMBO_ACTION(sg_ough),
     [SG_OULD]       = COMBO_ACTION(sg_ould),
     [SG_ION]        = COMBO_ACTION(sg_ion),
     [SG_ING]        = COMBO_ACTION(sg_ing),
-    [SG_MENT]       = COMBO_ACTION(sg_ment),
-
+    
 };
 
 
@@ -489,11 +492,11 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             break;
         case TOUHOU:
             if (pressed) {
-                if (layer_state_is(_BASIC) || layer_state_is(_TOUHOU)) {
-                    layer_move(_DEFAULT);
-                }
-                else if (layer_state_is(_DEFAULT)) {
+                if (layer_state_is(_BASIC) || layer_state_is(_DEFAULT)) {
                     layer_move(_TOUHOU);
+                }
+                else if (layer_state_is(_TOUHOU)) {
+                    layer_move(_DEFAULT);
                 }
             }
             break;
@@ -573,15 +576,30 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
                 SEND_STRING("but");
             }
             break;
-
-
-
-
-        case SG_POLY:
+        case SG_ABOUT:
             if (pressed) {
-                SEND_STRING("poly");
+                SEND_STRING("about");
             }
             break;
+        case SG_WHICH:
+            if (pressed) {
+                SEND_STRING("which");
+            }
+            break;
+        case SG_JUST:
+            if (pressed) {
+                SEND_STRING("just");
+            }
+            break;
+        case SG_LIKE:
+            if (pressed) {
+                SEND_STRING("like");
+            }
+            break;
+
+
+
+
         case SG_OUGH:
             if (pressed) {
                 SEND_STRING("ough");
@@ -602,11 +620,6 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
                 SEND_STRING("ing");
             }
             break;
-        case SG_MENT:
-            if (pressed) {
-                SEND_STRING("ment");
-            }
-            break;
 
     }
 }
@@ -615,10 +628,10 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     switch (combo->keycode) {
         case REP:
-            return 75; // More lenient timings for steno combos
+            return 100; // More lenient timings for steno combos
             break;
         default:
-            return 25;
+            return 40;
     }
 }
 
@@ -975,12 +988,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             };
             break;
 
-        case LT(3,REP):
+        case LT(2,REP):
         {
             if (!record->tap.count && record->event.pressed) { // Intercept holds only
-                layer_on(_DATA);
+                layer_on(_EDIT);
             } else { // On keyup
-                layer_off(_DATA);
+                layer_off(_EDIT);
             }
             if (record->tap.count && record->event.pressed) { // Intercept taps
                 register_code(lastkey);
