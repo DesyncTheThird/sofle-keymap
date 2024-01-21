@@ -119,9 +119,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_DATA] = LAYOUT(
      KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-     KC_TAB, CS_PERC, CS_ASTR,   KC_UP, CS_AMPR, CS_CIRC,                        KC_EQL,    KC_7,    KC_8,    KC_9, CS_UNDS,  KC_DEL,
-    KC_LSFT, CS_PIPE, KC_LEFT, KC_DOWN, KC_RGHT,  KC_EQL,                         CS_LT,    KC_4,    KC_5,    KC_6,   CS_AT,  KC_ENT,
-    KC_LCTL, KC_TRNS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS,  CS_GT,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
+     KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                        KC_EQL,    KC_7,    KC_8,    KC_9, CS_UNDS,  KC_DEL,
+    KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         CS_LT,    KC_4,    KC_5,    KC_6,   CS_AT,  KC_ENT,
+    KC_LCTL, KC_TRNS, KC_LEFT,  KC_DOT, KC_RGHT, CS_UNDS, KC_TRNS,      KC_TRNS,  CS_GT,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
                       KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS,   KC_0,  KC_SPC, KC_TRNS, KC_TRNS),
 
 [_SYMBOL] = LAYOUT(
@@ -404,7 +404,7 @@ const uint16_t PROGMEM sg_like[]        = {LT(2,REP), MT_K, COMBO_END};
 
 const uint16_t PROGMEM sg_ough[]        = {LT(2,REP), KC_O, COMBO_END};
 const uint16_t PROGMEM sg_ould[]        = {LT(2,REP), MT_L, COMBO_END};
-const uint16_t PROGMEM sg_ion[]         = {LT(2,REP), KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM sg_ion[]         = {LT(2,REP), MT_N, COMBO_END};
 const uint16_t PROGMEM sg_ing[]         = {LT(2,REP), KC_I, COMBO_END};
 
 combo_t key_combos[] = {
@@ -459,6 +459,7 @@ combo_t key_combos[] = {
     [SG_ABOUT]      = COMBO_ACTION(sg_about),
     [SG_WHICH]      = COMBO_ACTION(sg_which),
     [SG_JUST]       = COMBO_ACTION(sg_just),
+    [SG_LIKE]       = COMBO_ACTION(sg_like),
     
     [SG_OUGH]       = COMBO_ACTION(sg_ough),
     [SG_OULD]       = COMBO_ACTION(sg_ould),
@@ -628,7 +629,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     switch (combo->keycode) {
         case REP:
-            return 100; // More lenient timings for steno combos
+            return 75; // More lenient timings for steno combos
             break;
         default:
             return 40;
