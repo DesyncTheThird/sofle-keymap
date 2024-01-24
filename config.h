@@ -13,8 +13,8 @@
 // #define ONESHOT_TIMEOUT 1000
 #define NO_ACTION_ONESHOT
 
-// #define COMBO_COUNT 23
-#define COMBO_TERM 20 //Combo timer
+//#define COMBO_TERM 20
+#define COMBO_TERM_PER_COMBO
 #define COMBO_SHOULD_TRIGGER
 #define COMBO_ONLY_FROM_LAYER 0
 #define COMBO_MUST_TAP_PER_COMBO // Combos only activate on tap -- stops with interfering with mod tap keys

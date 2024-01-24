@@ -629,10 +629,10 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     switch (combo->keycode) {
         case REP:
-            return 75; // More lenient timings for steno combos
+            return 100; // More lenient timings for steno combos
             break;
         default:
-            return 40;
+            return 20;
     }
 }
 
