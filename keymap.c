@@ -3,8 +3,8 @@
 enum sofle_layers {
     _DEFAULT,
     _BASIC,
-    _EDIT,
     _DATA,
+    _EDIT,
     _SYMBOL,
     _MOUSE,
     _MEDIA,
