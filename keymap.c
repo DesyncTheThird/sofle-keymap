@@ -3,14 +3,15 @@
 enum sofle_layers {
     _DEFAULT,
     _BASIC,
-    _DATA,
     _EDIT,
+    _DATA,
     _SYMBOL,
     _MOUSE,
     _MEDIA,
     _FUNCTION,
     _NUMPAD,
     _TOUHOU,
+    _EDIT_OVERLAY,
 };
 
 /*
@@ -101,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,  KC_T,                                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_SCLN,
     KC_LSFT,    KC_A,    MT_S,    MT_D,    MT_F,  KC_G,                                    KC_H,    MT_J,    MT_K,    MT_L, KC_LBRC, KC_RBRC,
     KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    MT_C,  KC_V,         TG(7),         TG(8),      KC_B,    MT_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
-                      KC_LGUI, KC_LALT,   MO(6), MO(3),  LT(2,KC_SPC), LT(4,KC_BSPC), LT(3,REP),   MO(5), CS_UNDS, KC_SLSH),
+                      KC_LGUI, KC_LALT,   MO(6), MO(2),  LT(3,KC_SPC), LT(4,KC_BSPC), LT(2,REP),   MO(5), CS_UNDS, KC_SLSH),
 
 [_BASIC] = LAYOUT(
      KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           KC_6,    KC_7,    KC_8,    KC_9,    KC_0, CS_HASH,
@@ -110,20 +111,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, CS_BSLS,    KC_Z,    KC_X,    KC_C,    KC_V, KC_TRNS,      KC_TRNS,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,
                       KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS,  KC_SPC,      KC_BSPC, KC_TRNS, KC_TRNS, CS_UNDS, KC_SLSH),
 
-[_DATA] = LAYOUT(
-     KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                             KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-     KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                            KC_EQL,    KC_7,    KC_8,    KC_9, CS_UNDS,  KC_DEL,
-    KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                             CS_LT,    KC_4,    KC_5,    KC_6,   CS_AT,  KC_ENT,
-    KC_LCTL, KC_TRNS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS,      CS_GT,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS, LT(3,KC_0),  KC_SPC, KC_TRNS, KC_TRNS),
-
 [_EDIT] = LAYOUT(
-     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,          KC_7,          KC_8,          KC_9,    KC_0,  KC_DEL,
-     KC_TAB, KC_PAUS, KC_HOME,   KC_UP,  KC_END, KC_CAPS,                        KC_EQL,       KC_RCBR,       KC_LCBR,       CS_CIRC, CS_UNDS,  KC_DEL,
-    KC_LSFT, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                         CS_LT, LT(0,MT_RPRN), LT(0,MT_LPRN), LT(0,MT_ASTR),   CS_AT,  KC_ENT,
-    KC_LCTL, KC_TRNS, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS,  CS_GT,       MT_RBRC,       KC_LBRC,       KC_QUES, CS_TILD,  KC_ENT,
-                      KC_LGUI, KC_LALT, KC_SLSH, KC_LCTL, KC_TRNS,      KC_TRNS,   KC_0,        KC_SPC,       CS_UNDS,       KC_SLSH),
+     KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                              KC_6,          KC_7,          KC_8,          KC_9,    KC_0,  KC_DEL,
+     KC_TAB, KC_PAUS, KC_HOME,   KC_UP,  KC_END, KC_CAPS,                            KC_EQL,       KC_RCBR,       KC_LCBR,       CS_CIRC, CS_UNDS,  KC_DEL,
+    KC_LSFT, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                             CS_LT, LT(0,MT_RPRN), LT(0,MT_LPRN), LT(0,MT_ASTR),   CS_AT,  KC_ENT,
+    KC_LCTL, KC_TRNS, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS,      CS_GT,       MT_RBRC,       KC_LBRC,       KC_QUES, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_SLSH, KC_TRNS, KC_TRNS,      KC_TRNS, LT(3,KC_0),        KC_SPC,       CS_UNDS,       KC_SLSH),
 
+[_DATA] = LAYOUT(
+     KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                              KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+     KC_TAB, CS_PERC, CS_ASTR,  CS_DLR, CS_AMPR, CS_CIRC,                             KC_EQL,    KC_7,    KC_8,    KC_9, CS_UNDS,  KC_DEL,
+    KC_LSFT,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                              CS_LT,    KC_4,    KC_5,    KC_6,   CS_AT,  KC_ENT,
+    KC_LCTL, KC_TRNS, CS_COLN,  KC_DOT, KC_COMM, CS_UNDS, KC_TRNS,      KC_TRNS,       CS_GT,    KC_1,    KC_2,    KC_3, CS_TILD,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS,  KC_SPC,      KC_TRNS, LT(10,KC_0),  KC_SPC, KC_TRNS, KC_TRNS),
 
 [_SYMBOL] = LAYOUT(
      KC_GRV, CS_EXLM, CS_DQUO, CS_POUN,  CS_DLR, CS_PERC,                        CS_CIRC, CS_AMPR, CS_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
@@ -166,6 +166,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS,                        KC_TRNS,    KC_Z,    KC_X, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+
+[_EDIT_OVERLAY] = LAYOUT(
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
+    KC_TRNS, KC_PAUS, KC_HOME,   KC_UP,  KC_END, KC_CAPS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
+    KC_TRNS, KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_ENT,
+    KC_TRNS, KC_TRNS, KC_PGUP,  KC_INS, KC_PGDN,  SELECT, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_ENT,
+                      KC_LGUI, KC_LALT, KC_SLSH, CS_BSLS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+
 
 //[_NAVIGATION] = LAYOUT(
 //     KC_ESC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_DEL,
@@ -237,8 +245,8 @@ void matrix_scan_user(void) {
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(3,REP):
-        case LT(2,KC_SPC):
+        case LT(2,REP):
+        case LT(3,KC_SPC):
         case LT(4,KC_BSPC):
         case MT_S:
         case MT_D:
@@ -385,28 +393,28 @@ const uint16_t PROGMEM colon[]          = {KC_Y, KC_U, COMBO_END};
 const uint16_t PROGMEM semicolon[]      = {KC_H, KC_U, COMBO_END};
 
 // Steno
-const uint16_t PROGMEM sg_the[]         = {LT(3,REP), KC_T, COMBO_END};
-const uint16_t PROGMEM sg_and[]         = {LT(3,REP), KC_A, COMBO_END};
-const uint16_t PROGMEM sg_that[]        = {LT(3,REP), KC_T, KC_H, COMBO_END};
-const uint16_t PROGMEM sg_this[]        = {LT(3,REP), KC_T, KC_I, COMBO_END};
-const uint16_t PROGMEM sg_here[]        = {LT(3,REP), KC_H, COMBO_END};
-const uint16_t PROGMEM sg_have[]        = {LT(3,REP), KC_H, KC_A, COMBO_END};
-const uint16_t PROGMEM sg_with[]        = {LT(3,REP), KC_W, KC_I, COMBO_END};
-const uint16_t PROGMEM sg_you[]         = {LT(3,REP), KC_U, COMBO_END};
-const uint16_t PROGMEM sg_ever[]        = {LT(3,REP), KC_E, COMBO_END};
-const uint16_t PROGMEM sg_from[]        = {LT(3,REP), MT_F, COMBO_END};
-const uint16_t PROGMEM sg_some[]        = {LT(3,REP), MT_S, COMBO_END};
-const uint16_t PROGMEM sg_what[]        = {LT(3,REP), KC_W, COMBO_END};
-const uint16_t PROGMEM sg_but[]         = {LT(3,REP), KC_B, COMBO_END};
-const uint16_t PROGMEM sg_about[]       = {LT(3,REP), KC_A, KC_B, COMBO_END};
-const uint16_t PROGMEM sg_which[]       = {LT(3,REP), KC_W, KC_H, COMBO_END};
-const uint16_t PROGMEM sg_just[]        = {LT(3,REP), MT_J, COMBO_END};
-const uint16_t PROGMEM sg_like[]        = {LT(3,REP), MT_K, COMBO_END};
+const uint16_t PROGMEM sg_the[]         = {LT(2,REP), KC_T, COMBO_END};
+const uint16_t PROGMEM sg_and[]         = {LT(2,REP), KC_A, COMBO_END};
+const uint16_t PROGMEM sg_that[]        = {LT(2,REP), KC_T, KC_H, COMBO_END};
+const uint16_t PROGMEM sg_this[]        = {LT(2,REP), KC_T, KC_I, COMBO_END};
+const uint16_t PROGMEM sg_here[]        = {LT(2,REP), KC_H, COMBO_END};
+const uint16_t PROGMEM sg_have[]        = {LT(2,REP), KC_H, KC_A, COMBO_END};
+const uint16_t PROGMEM sg_with[]        = {LT(2,REP), KC_W, KC_I, COMBO_END};
+const uint16_t PROGMEM sg_you[]         = {LT(2,REP), KC_U, COMBO_END};
+const uint16_t PROGMEM sg_ever[]        = {LT(2,REP), KC_E, COMBO_END};
+const uint16_t PROGMEM sg_from[]        = {LT(2,REP), MT_F, COMBO_END};
+const uint16_t PROGMEM sg_some[]        = {LT(2,REP), MT_S, COMBO_END};
+const uint16_t PROGMEM sg_what[]        = {LT(2,REP), KC_W, COMBO_END};
+const uint16_t PROGMEM sg_but[]         = {LT(2,REP), KC_B, COMBO_END};
+const uint16_t PROGMEM sg_about[]       = {LT(2,REP), KC_A, KC_B, COMBO_END};
+const uint16_t PROGMEM sg_which[]       = {LT(2,REP), KC_W, KC_H, COMBO_END};
+const uint16_t PROGMEM sg_just[]        = {LT(2,REP), MT_J, COMBO_END};
+const uint16_t PROGMEM sg_like[]        = {LT(2,REP), MT_K, COMBO_END};
 
-const uint16_t PROGMEM sg_ough[]        = {LT(3,REP), KC_O, COMBO_END};
-const uint16_t PROGMEM sg_ould[]        = {LT(3,REP), MT_L, COMBO_END};
-const uint16_t PROGMEM sg_ion[]         = {LT(3,REP), MT_N, COMBO_END};
-const uint16_t PROGMEM sg_ing[]         = {LT(3,REP), KC_I, COMBO_END};
+const uint16_t PROGMEM sg_ough[]        = {LT(2,REP), KC_O, COMBO_END};
+const uint16_t PROGMEM sg_ould[]        = {LT(2,REP), MT_L, COMBO_END};
+const uint16_t PROGMEM sg_ion[]         = {LT(2,REP), MT_N, COMBO_END};
+const uint16_t PROGMEM sg_ing[]         = {LT(2,REP), KC_I, COMBO_END};
 
 combo_t key_combos[] = {
     // [CAPSLOCK]     = COMBO_ACTION(capslock),
@@ -990,7 +998,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             };
             break;
 
-        case LT(3,REP):
+        case LT(2,REP):
         {
             if (!record->tap.count && record->event.pressed) { // Intercept holds only
                 layer_on(_EDIT);
@@ -1279,7 +1287,10 @@ void render_layer(void) {
             oled_write_P(PSTR("F.Key"), false);
             break;
         case _TOUHOU:
-            oled_write_P(PSTR("ToHo."), false);
+            oled_write_P(PSTR("2Hu."), false);//
+            break;
+        case _EDIT_OVERLAY:
+            oled_write_P(PSTR("Edit'"), false);
             break;
         default:
             oled_write_ln_P(PSTR("Undef"), false);
