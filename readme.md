@@ -15,3 +15,6 @@ Note: images are out of date but are mostly representative of the keymap.
 - Media control layer on left hand.
 - Combo to disable home row mods available.
 - WPM counter, modifier states, locking key states, and mute status on master side OLED.
+
+My Sofle's MCU is currently bricked, so updates for this keymap are on hold.
+See also my (vastly more updated) [Corne keymap](https://github.com/DesyncTheThird/corne-keymap).
